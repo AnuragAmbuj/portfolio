@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      String   @default("USER") // ADMIN for the owner
+  posts     Post[]
+  createdAt DateTime @default(now())
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  excerpt     String?
+  content     String   // MDX content or path to file
+  published   Boolean  @default(false)
+  views       Int      @default(0)
+  tags        Tag[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id])
+}
+
+model Tag {
+  id    String @id @default(cuid())
+  name  String @unique
+  posts Post[]
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  imageUrl    String?
+  demoUrl     String?
+  repoUrl     String?
+  tags        String // Stored as comma separated string
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+}
+
+model Analytics {
+  id        String   @id @default(cuid())
+  path      String
+  views     Int      @default(1)
+  updatedAt DateTime @updatedAt
+}

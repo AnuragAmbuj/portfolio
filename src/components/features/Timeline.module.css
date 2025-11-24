@@ -1,0 +1,107 @@
+.section {
+    padding: 100px 0;
+    position: relative;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    opacity: 0.3;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 4rem;
+    position: relative;
+}
+
+.dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: var(--background);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    z-index: 1;
+    box-shadow: 0 0 15px rgba(112, 0, 255, 0.5);
+}
+
+.content {
+    width: 45%;
+    padding: 2rem;
+    border-radius: 16px;
+    position: relative;
+    margin-left: auto;
+    /* Default to right side */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.item:nth-child(odd) .content {
+    margin-left: 0;
+    margin-right: auto;
+    /* Left side */
+}
+
+.period {
+    font-size: 0.9rem;
+    color: var(--secondary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.role {
+    font-size: 1.25rem;
+    color: var(--foreground);
+    margin-bottom: 0.25rem;
+}
+
+.company {
+    font-size: 1rem;
+    color: var(--gray-400);
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.description {
+    font-size: 0.95rem;
+    color: var(--gray-400);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .line {
+        left: 20px;
+    }
+
+    .dot {
+        left: 20px;
+    }
+
+    .content {
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+    }
+}

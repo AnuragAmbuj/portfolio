@@ -1,0 +1,186 @@
+.navbar {
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 0.5rem 0.75rem 0.5rem 0.5rem;
+    /* Less padding on left for logo */
+    background: rgba(255, 255, 255, 0.7);
+    /* Match .glass */
+    backdrop-filter: blur(12px);
+    /* Match .glass */
+    -webkit-backdrop-filter: blur(12px);
+    /* Match .glass */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* Match .glass */
+    border-radius: 100px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    /* Softer shadow */
+    width: auto;
+    max-width: 90vw;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .navbar {
+    background: rgba(3, 0, 20, 0.7);
+    /* Match .dark .glass */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Match .dark .glass */
+    box-shadow: 0 0 20px rgba(112, 0, 255, 0.15);
+    /* Neon glow */
+}
+
+/* Remove navContainer wrapper styles as we use navbar directly */
+.navContainer {
+    display: contents;
+}
+
+.logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    /* Proper padding between icon and name */
+}
+
+.logoIcon {
+    font-family: 'JetBrains Mono', monospace;
+    /* Ensure monospace */
+    background: var(--foreground);
+    color: var(--background);
+    padding: 0.5rem 0.75rem;
+    border-radius: 100px;
+    /* Pill shape for logo too */
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    min-width: 40px;
+}
+
+.logoText {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--foreground);
+}
+
+.logoText span {
+    font-weight: 800;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.link {
+    color: var(--gray-500);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.link:hover {
+    color: var(--secondary);
+    background: rgba(37, 99, 235, 0.05);
+    /* Subtle blue tint */
+}
+
+.dark .link:hover {
+    color: var(--secondary);
+    background: rgba(0, 240, 255, 0.1);
+    /* Cyan tint for dark mode */
+}
+
+/* Mobile Controls */
+.mobileControls {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.menuButton {
+    background: none;
+    border: none;
+    color: var(--foreground);
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.menuButton:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.dark .menuButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Menu Overlay - Detached from pill */
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--background);
+    z-index: 999;
+    /* Below navbar z-index but high */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    opacity: 0;
+    animation: fadeIn 0.2s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.mobileLink {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--foreground);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .links {
+        display: none;
+    }
+
+    .mobileControls {
+        display: flex;
+    }
+
+    .navbar {
+        padding-right: 0.5rem;
+        /* Balance padding on mobile */
+    }
+}

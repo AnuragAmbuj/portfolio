@@ -1,0 +1,18 @@
+.link {
+    color: var(--foreground);
+    text-decoration: underline;
+    text-decoration-color: var(--gray-400);
+    text-underline-offset: 4px;
+    transition: text-decoration-color 0.2s ease;
+}
+
+.link:hover {
+    text-decoration-color: var(--foreground);
+}
+
+.image {
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+    margin: 2rem 0;
+}

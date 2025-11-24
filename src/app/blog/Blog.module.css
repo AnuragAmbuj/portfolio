@@ -1,0 +1,51 @@
+.container {
+    padding: 4rem 1.5rem;
+    max-width: 800px;
+}
+
+.title {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.card {
+    border-bottom: 1px solid var(--gray-200);
+    padding-bottom: 3rem;
+}
+
+.card:last-child {
+    border-bottom: none;
+}
+
+.link {
+    display: block;
+    transition: opacity 0.2s ease;
+}
+
+.link:hover {
+    opacity: 0.7;
+}
+
+.postTitle {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.excerpt {
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    font-family: var(--font-mono);
+}

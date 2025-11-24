@@ -1,0 +1,29 @@
+import Link from "next/link";
+import Image from "next/image";
+import styles from "./MDXComponents.module.css";
+
+const CustomLink = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+    const href = props.href;
+    const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
+
+    if (isInternalLink) {
+        return (
+            <Link href={href} className={styles.link} {...props}>
+                {props.children}
+            </Link>
+        );
+    }
+
+    return <a target="_blank" rel="noopener noreferrer" className={styles.link} {...props}>{props.children || props.href}</a>;
+};
+
+const RoundedImage = (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    // eslint-disable-next-line jsx-a11y/alt-text
+    return <Image alt={props.alt || ""} className={styles.image} {...props as any} />;
+};
+
+export const components = {
+    a: CustomLink,
+    img: RoundedImage,
+    // Add more custom components here (Callout, etc.)
+};

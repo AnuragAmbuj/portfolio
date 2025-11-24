@@ -1,0 +1,23 @@
+.toggle {
+    background: transparent;
+    border: 1px solid rgba(112, 0, 255, 0.2);
+    color: var(--foreground);
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.toggle:hover {
+    background: rgba(112, 0, 255, 0.1);
+    border-color: var(--primary);
+    transform: scale(1.05);
+}
+
+.placeholder {
+    width: 36px;
+    height: 36px;
+}

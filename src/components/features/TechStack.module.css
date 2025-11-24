@@ -1,0 +1,41 @@
+.section {
+    padding: 4rem 0;
+}
+
+.heading {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+}
+
+.categoryTitle {
+    font-size: 1.1rem;
+    color: var(--gray-500);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.item {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.item:hover {
+    border-color: var(--foreground);
+    background: var(--gray-100);
+}
