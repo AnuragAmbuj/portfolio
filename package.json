@@ -22,7 +22,11 @@
     "prisma": "^5.22.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
+    "react-markdown": "^10.1.0",
+    "react-textarea-autosize": "^8.5.9",
+    "rehype-highlight": "^7.0.2",
     "rehype-pretty-code": "^0.14.1",
+    "remark-gfm": "^4.0.1",
     "shiki": "^3.15.0",
     "tailwind-merge": "^3.4.0"
   },

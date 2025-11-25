@@ -4,7 +4,10 @@ import styles from "./MDXComponents.module.css";
 
 const CustomLink = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     const href = props.href;
-    const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
+
+    if (!href) return <span {...props}>{props.children}</span>;
+
+    const isInternalLink = href.startsWith("/") || href.startsWith("#");
 
     if (isInternalLink) {
         return (
@@ -14,7 +17,16 @@ const CustomLink = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
         );
     }
 
-    return <a target="_blank" rel="noopener noreferrer" className={styles.link} {...props}>{props.children || props.href}</a>;
+    return (
+        <a
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.link}
+            {...props}
+        >
+            {props.children}
+        </a>
+    );
 };
 
 const RoundedImage = (props: React.ImgHTMLAttributes<HTMLImageElement>) => {

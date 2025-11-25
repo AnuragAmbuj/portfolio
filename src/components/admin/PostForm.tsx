@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useFormStatus } from "react-dom";
 import styles from "./PostForm.module.css";
+import MdxEditor from "./MdxEditor";
 
 export default function PostForm({
     action,
@@ -57,15 +58,10 @@ export default function PostForm({
             </div>
 
             <div className={styles.formGroup}>
-                <label htmlFor="content">Content (MDX)</label>
-                <textarea
-                    id="content"
-                    name="content"
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                    rows={15}
-                    required
-                />
+                <label htmlFor="content">Content</label>
+                {/* Hidden input for form submission */}
+                <input type="hidden" name="content" value={content} />
+                <MdxEditor value={content} onChange={setContent} />
             </div>
 
             <div className={styles.checkboxGroup}>
