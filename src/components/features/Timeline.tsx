@@ -63,10 +63,10 @@ export default function Timeline() {
                         <motion.div
                             key={`${exp.role}-${exp.company}`}
                             className={styles.item}
-                            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                            initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.2 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
                             <div className={styles.dot}>
                                 <Briefcase size={16} />

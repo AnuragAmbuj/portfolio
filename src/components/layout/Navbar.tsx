@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -20,7 +21,16 @@ export default function Navbar() {
         <>
             <nav className={styles.navbar}>
                 <Link href="/" className={styles.logo}>
-                    <span className={styles.logoIcon}>&lt;A /&gt;</span>
+                    <div className={styles.logoImageContainer}>
+                        <Image
+                            src="/logo.svg"
+                            alt="Logo"
+                            fill
+                            className="object-cover"
+                            sizes="32px"
+                            priority
+                        />
+                    </div>
                     <span className={styles.logoText}>
                         Anurag <span className="text-gradient">Ambuj</span>
                     </span>

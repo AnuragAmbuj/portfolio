@@ -36,13 +36,13 @@ const container = {
     show: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.2
+            staggerChildren: 0.1
         }
     }
 };
 
 const item = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 }
 };
 
@@ -54,7 +54,7 @@ export default function Projects() {
                     className={styles.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-50px" }}
                 >
                     Featured <span className="text-gradient">Projects</span>
                 </motion.h2>
@@ -64,7 +64,7 @@ export default function Projects() {
                     variants={container}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-50px" }}
                 >
                     {projects.map((project) => (
                         <motion.div key={project.title} className={`${styles.card} glass`} variants={item}>

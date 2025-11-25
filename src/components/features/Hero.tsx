@@ -20,7 +20,7 @@ export default function Hero() {
                         className={styles.greeting}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 }}
+                        transition={{ delay: 0.1 }}
                     >
                         Hello, I&apos;m
                     </motion.span>
@@ -29,7 +29,7 @@ export default function Hero() {
                         className={styles.title}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
+                        transition={{ delay: 0.2 }}
                     >
                         Anurag <span className="text-gradient">Ambuj</span>
                     </motion.h1>
@@ -38,7 +38,7 @@ export default function Hero() {
                         className={styles.subtitle}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
+                        transition={{ delay: 0.3 }}
                     >
                         Software Engineering Expert <br />
                         Java, Go, Rust & Zig
@@ -48,7 +48,7 @@ export default function Hero() {
                         className={styles.description}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5 }}
+                        transition={{ delay: 0.4 }}
                     >
                         Close to 10 years of experience in building robust, scalable backend systems.
                         Specializing in domain-driven architectures, distributed systems, and solving real-world problems at scale.
@@ -58,7 +58,7 @@ export default function Hero() {
                         className={styles.actions}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6 }}
+                        transition={{ delay: 0.5 }}
                     >
                         <Link href="#projects" className={styles.primaryBtn}>
                             View Work <ArrowRight size={20} />
@@ -72,7 +72,7 @@ export default function Hero() {
                         className={styles.socials}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 0.8 }}
+                        transition={{ delay: 0.6 }}
                     >
                         <a href="https://github.com/anuragambuj" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                             <Github size={24} />

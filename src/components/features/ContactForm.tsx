@@ -18,14 +18,16 @@ export default function ContactForm() {
                 <motion.div
                     className={`${styles.card} glass`}
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5 }}
                 >
                     <div className={styles.header}>
                         <motion.h1
                             className={styles.title}
                             initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
                         >
                             Get in <span className="text-gradient">Touch</span>
@@ -33,7 +35,8 @@ export default function ContactForm() {
                         <motion.p
                             className={styles.subtitle}
                             initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
                         >
                             Have a project in mind or just want to say hi?
