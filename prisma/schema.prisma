@@ -55,3 +55,15 @@ model Analytics {
   views     Int      @default(1)
   updatedAt DateTime @updatedAt
 }
+
+model News {
+  id          String   @id @default(cuid())
+  title       String
+  summary     String
+  url         String?
+  imageUrl    String?
+  source      String
+  category    String?
+  publishedAt DateTime
+  createdAt   DateTime @default(now())
+}

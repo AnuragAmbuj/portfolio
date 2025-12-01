@@ -6,10 +6,29 @@
   /* Light Mode (Default) */
   --background: #ffffff;
   --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
   --primary: #7000ff;
+  --primary-foreground: #ffffff;
   --secondary: #2563eb;
-  /* Royal Blue instead of Cyan for Light Mode */
-  --accent: #ff0080;
+  --secondary-foreground: #ffffff;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #7000ff;
+  --radius: 0.5rem;
+  --chart-1: #e76e50;
+  --chart-2: #2a9d8f;
+  --chart-3: #264653;
+  --chart-4: #f4a261;
+  --chart-5: #e9c46a;
 
   --gray-100: #f1f5f9;
   --gray-200: #e2e8f0;
@@ -33,6 +52,28 @@
   /* Dark Mode (Midnight & Neon) */
   --background: #030014;
   --foreground: #ffffff;
+  --card: #0f172a;
+  --card-foreground: #ffffff;
+  --popover: #0f172a;
+  --popover-foreground: #ffffff;
+  --primary: #7000ff;
+  --primary-foreground: #ffffff;
+  --secondary: #2563eb;
+  --secondary-foreground: #ffffff;
+  --muted: #1e293b;
+  --muted-foreground: #a3a3a3;
+  --accent: #1e293b;
+  --accent-foreground: #ffffff;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #ffffff;
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #7000ff;
+  --chart-1: #220404;
+  --chart-2: #022c22;
+  --chart-3: #0c4a6e;
+  --chart-4: #431407;
+  --chart-5: #422006;
 
   --gray-100: #1a1a2e;
   --gray-200: #16213e;
