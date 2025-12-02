@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
+import GithubIcon from "@/components/icons/GithubIcon";
+import LinkedinIcon from "@/components/icons/LinkedinIcon";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -75,12 +77,12 @@ export default function Hero() {
                         transition={{ delay: 0.6 }}
                     >
                         <a href="https://github.com/anuragambuj" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                            <Github size={24} />
+                            <GithubIcon size={24} />
                         </a>
                         <a href="https://www.linkedin.com/in/anurag-ambuj-75b773b6/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                            <Linkedin size={24} />
+                            <LinkedinIcon size={24} />
                         </a>
-                        <a href="mailto:hello@example.com" aria-label="Email">
+                        <a href="mailto:anuragambuj@gmail.com" aria-label="Email">
                             <Mail size={24} />
                         </a>
                     </motion.div>
