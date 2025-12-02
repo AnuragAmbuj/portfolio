@@ -32,7 +32,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main style={{ minHeight: "calc(100vh - 200px)", paddingTop: "64px" }}>
+          <main style={{ minHeight: "calc(100vh - 200px)", paddingTop: "140px" }}>
             {children}
           </main>
           <Footer />

@@ -23,10 +23,6 @@ export default function NewsCard({ news, index }: NewsCardProps) {
     return (
         <motion.div
             className="group relative overflow-hidden rounded-xl bg-card border border-border/50 hover:border-primary/50 transition-colors"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
         >
             {news.imageUrl && (
                 <div className="relative h-48 w-full overflow-hidden">
@@ -47,7 +43,16 @@ export default function NewsCard({ news, index }: NewsCardProps) {
                     </span>
                     <span className="flex items-center gap-1">
                         <Calendar size={12} />
-                        {format(new Date(news.publishedAt), "MMM d, yyyy")}
+                        {(() => {
+                            try {
+                                const date = new Date(news.publishedAt);
+                                return isNaN(date.getTime())
+                                    ? "Recent"
+                                    : format(date, "MMM d, yyyy");
+                            } catch {
+                                return "Recent";
+                            }
+                        })()}
                     </span>
                 </div>
 

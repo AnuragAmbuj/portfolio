@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { prisma } from "@/lib/db";
-import styles from "./Blog.module.css";
+import BlogCard from "@/components/features/BlogCard";
 
 export const metadata = {
     title: "Blog | Portfolio",
@@ -14,25 +13,25 @@ export default async function BlogIndex() {
     });
 
     return (
-        <div className={`container ${styles.container}`}>
-            <h1 className={styles.title}>Blog</h1>
-            <div className={styles.grid}>
-                {posts.map((post) => (
-                    <article key={post.id} className={styles.card}>
-                        <Link href={`/blog/${post.slug}`} className={styles.link}>
-                            <h2 className={styles.postTitle}>{post.title}</h2>
-                            <p className={styles.excerpt}>{post.excerpt}</p>
-                            <span className={styles.date}>
-                                {new Date(post.createdAt).toLocaleDateString("en-US", {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                })}
-                            </span>
-                        </Link>
-                    </article>
-                ))}
+        <div className="container mx-auto px-4 py-12">
+            <div className="mb-12 text-center">
+                <h1 className="text-4xl font-bold mb-4">Blog</h1>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Thoughts, tutorials, and insights on software engineering and design.
+                </p>
             </div>
+
+            {posts.length === 0 ? (
+                <div className="text-center py-12">
+                    <p className="text-muted-foreground">No posts found.</p>
+                </div>
+            ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {posts.map((post, index) => (
+                        <BlogCard key={post.id} post={post} index={index} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 }

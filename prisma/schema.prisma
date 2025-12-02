@@ -22,6 +22,7 @@ model Post {
   title       String
   excerpt     String?
   content     String   // MDX content or path to file
+  imageUrl    String?  // Cover image URL
   published   Boolean  @default(false)
   views       Int      @default(0)
   tags        Tag[]
