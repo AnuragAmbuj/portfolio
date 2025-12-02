@@ -9,37 +9,37 @@ const experiences = [
         role: "Software Engineering Expert",
         company: "Applied Materials",
         period: "Jun 2025 - Present",
-        description: "Building robust, scalable backend systems. Specializing in Java, Go, Rust, and Zig. Designing domain-driven and distributed architectures.",
+        description: "Designing domain-driven architectures. Diving deeper into software required for advanced semiconductor manufacturing.",
     },
     {
         role: "Team Lead",
         company: "BluSmart Mobility",
         period: "Oct 2022 - Apr 2024",
-        description: "Led the backend team for the all-electric ride-hailing platform. Architected core services and managed team delivery.",
+        description: "Led the backend team for the all-electric ride-hailing platform. Architected core services and managed team delivery. Built tech teams from scratch to support the growth.",
     },
     {
         role: "SDE 3",
         company: "BharatPe",
         period: "Apr 2022 - Oct 2022",
-        description: "Developed high-performance payment processing systems. Contributed to the growth of the merchant lending platform.",
+        description: "Developed high-performance lending and bill payment systems. Contributed to the growth of their lending platform.",
     },
     {
         role: "SDE 2",
         company: "Mobikwik",
         period: "Jun 2021 - Mar 2022",
-        description: "Worked on digital wallet and payment gateway integrations. Optimized transaction processing pipelines.",
+        description: "Built Lending Management System and robust solutions for repayments.",
     },
     {
         role: "Lead SDE",
         company: "Freecharge",
         period: "Aug 2018 - Mar 2021",
-        description: "Led development of key features for the digital payments platform. Mentored junior developers and improved code quality.",
+        description: "Led development of key features for the digital payments platform. Delivered end-to-end solutions for Merchants.",
     },
     {
         role: "Software Engineer",
         company: "Envestnet | Yodlee",
         period: "Jul 2016 - Aug 2018",
-        description: "Worked on financial data aggregation and analytics platforms. Optimized high-volume data processing pipelines.",
+        description: "Financial data aggregation and analytics platforms. Optimized high-volume data processing pipelines.",
     },
 ];
 

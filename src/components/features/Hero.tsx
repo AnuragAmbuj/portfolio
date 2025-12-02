@@ -50,7 +50,7 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
                     >
-                        Close to 10 years of experience in building robust, scalable backend systems.
+                        Close to a decade of experience in building robust, scalable backend systems.
                         Specializing in domain-driven architectures, distributed systems, and solving real-world problems at scale.
                     </motion.p>
 
