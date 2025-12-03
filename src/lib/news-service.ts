@@ -13,16 +13,40 @@ export async function fetchNews() {
     }
 
     try {
-        const response = await fetch(
+        // Fetch Global Tech News
+        const globalNewsPromise = fetch(
             `https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=10&apiKey=${apiKey}`
         );
 
-        if (!response.ok) {
-            throw new Error(`NewsAPI failed with status ${response.status}`);
+        // Fetch India Tech News
+        const indiaNewsPromise = fetch(
+            `https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=10&apiKey=${apiKey}`
+        );
+
+        const [globalResponse, indiaResponse] = await Promise.all([
+            globalNewsPromise,
+            indiaNewsPromise
+        ]);
+
+        if (!globalResponse.ok) {
+            console.error(`Global NewsAPI failed with status ${globalResponse.status}`);
+        }
+        if (!indiaResponse.ok) {
+            console.error(`India NewsAPI failed with status ${indiaResponse.status}`);
         }
 
-        const data = await response.json();
-        return data.articles.map((article: any) => ({
+        const globalData = globalResponse.ok ? await globalResponse.json() : { articles: [] };
+        const indiaData = indiaResponse.ok ? await indiaResponse.json() : { articles: [] };
+
+        // Combine articles, prioritizing India news by interleaving or just concatenating
+        // Let's concatenate for now, maybe India first? Or mix them.
+        // Let's put India news first to ensure visibility as requested.
+        const allArticles = [...indiaData.articles, ...globalData.articles];
+
+        // Deduplicate based on URL
+        const uniqueArticles = Array.from(new Map(allArticles.map(item => [item.url, item])).values());
+
+        return uniqueArticles.map((article: any) => ({
             title: article.title,
             description: article.description || article.content || "No description available.",
             url: article.url,

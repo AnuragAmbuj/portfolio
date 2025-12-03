@@ -9,7 +9,7 @@
     gap: 2rem;
     padding: 0.5rem 0.75rem 0.5rem 0.5rem;
     /* Less padding on left for logo */
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.75);
     /* Match .glass */
     backdrop-filter: blur(12px);
     /* Match .glass */
@@ -29,7 +29,7 @@
 }
 
 :global(.dark) .navbar {
-    background-color: rgba(3, 0, 20, 0.95);
+    background-color: rgba(3, 0, 20, 0.75);
     /* Match .dark .glass */
     border: 1px solid rgba(255, 255, 255, 0.05);
     /* Match .dark .glass */
@@ -109,14 +109,14 @@
 
 .link:hover {
     color: var(--secondary);
-    background: rgba(37, 99, 235, 0.05);
-    /* Subtle blue tint */
+    background: rgba(37, 99, 235, 0.15);
+    /* More visible blue tint */
 }
 
 :global(.dark) .link:hover {
     color: var(--secondary);
-    background: rgba(0, 240, 255, 0.1);
-    /* Cyan tint for dark mode */
+    background: rgba(0, 240, 255, 0.2);
+    /* More visible cyan tint */
 }
 
 /* Mobile Controls */

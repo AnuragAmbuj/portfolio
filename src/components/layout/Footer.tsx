@@ -9,9 +9,9 @@ export default function Footer() {
                         &copy; {new Date().getFullYear()} Anurag Ambuj. All rights reserved.
                     </p>
                     <div className={styles.socials}>
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://github.com/anuragambuj" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://x.com/nikallus" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+                        <a href="https://www.linkedin.com/in/anurag-ambuj-75b773b6/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     </div>
                 </div>
             </div>
