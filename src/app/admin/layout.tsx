@@ -15,6 +15,7 @@ export default function AdminLayout({
                     <Link href="/admin" className={styles.link}>Dashboard</Link>
                     <Link href="/admin/posts" className={styles.link}>Posts</Link>
                     <Link href="/admin/projects" className={styles.link}>Projects</Link>
+                    <Link href="/admin/messages" className={styles.link}>Messages</Link>
                 </nav>
                 <form
                     action={async () => {
