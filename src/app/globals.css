@@ -62,8 +62,8 @@
   --card-foreground: #E3E3E3;
   --popover: #234C6A;
   --popover-foreground: #E3E3E3;
-  --primary: #456882;
-  --primary-foreground: #ffffff;
+  --primary: #E3E3E3;
+  --primary-foreground: #1B3C53;
   --secondary: #E3E3E3;
   --secondary-foreground: #1B3C53;
   --muted: #234C6A;
@@ -96,7 +96,7 @@
     radial-gradient(circle at 100% 0%, rgba(35, 76, 106, 0.15) 0%, transparent 60%);
 
   /* RGB Values for transparency support */
-  --primary-rgb: 69, 104, 130;
+  --primary-rgb: 227, 227, 227;
   --secondary-rgb: 227, 227, 227;
   --background-rgb: 27, 60, 83;
   --foreground-rgb: 227, 227, 227;

@@ -112,14 +112,14 @@
 .secondaryBtn {
     padding: 0.8rem 1.5rem;
     border-radius: 50px;
-    border: 1px solid var(--gray-600);
+    border: 1px solid var(--secondary);
     color: var(--foreground);
     font-weight: 500;
     transition: all 0.3s ease;
 }
 
 .secondaryBtn:hover {
-    border-color: var(--foreground);
+    border-color: var(--secondary);
     background: rgba(255, 255, 255, 0.05);
 }
 
