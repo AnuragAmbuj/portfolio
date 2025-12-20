@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Download, Briefcase, Award, BookOpen, Code2, CheckCircle2 } from "lucide-react";
@@ -72,6 +73,22 @@ export default function AboutPage() {
         { name: "Concurrent, Parallel, and Distributed Programming", date: "Feb 2020" }
     ];
 
+    const [currentFrame, setCurrentFrame] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentFrame((prev) => (prev + 1) % 3);
+        }, 500); // Change frame every 500ms for a jolly laugh speed
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const profileImages = [
+        "/profile-santa-laugh.png",
+        "/profile-santa-laugh-2.png",
+        "/profile-santa-laugh-3.png"
+    ];
+
     return (
         <main className={styles.container}>
             <motion.div
@@ -82,7 +99,7 @@ export default function AboutPage() {
             >
                 <div className={styles.imageWrapper}>
                     <Image
-                        src="/profile-santa.png"
+                        src={profileImages[currentFrame]}
                         alt="Anurag Ambuj"
                         fill
                         className={styles.profileImage}
