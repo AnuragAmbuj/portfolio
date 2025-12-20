@@ -45,7 +45,7 @@
     justify-content: center;
     color: var(--primary);
     z-index: 1;
-    box-shadow: 0 0 15px rgba(112, 0, 255, 0.5);
+    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.5);
 }
 
 .content {

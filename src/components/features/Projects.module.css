@@ -26,7 +26,7 @@
     transform: translateY(-5px);
     /* Subtler lift */
     border-color: var(--primary);
-    box-shadow: 0 12px 32px -8px rgba(112, 0, 255, 0.15);
+    box-shadow: 0 12px 32px -8px rgba(var(--primary-rgb), 0.15);
     /* Softer, more diffuse shadow */
 }
 
@@ -78,7 +78,7 @@
     font-size: 0.85rem;
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
-    background: rgba(112, 0, 255, 0.1);
+    background: rgba(var(--primary-rgb), 0.1);
     color: var(--primary);
-    border: 1px solid rgba(112, 0, 255, 0.2);
+    border: 1px solid rgba(var(--primary-rgb), 0.2);
 }

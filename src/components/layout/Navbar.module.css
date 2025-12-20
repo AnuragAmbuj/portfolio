@@ -9,13 +9,13 @@
     gap: 2rem;
     padding: 0.5rem 0.75rem 0.5rem 0.5rem;
     /* Less padding on left for logo */
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(var(--background-rgb), 0.75);
     /* Match .glass */
     backdrop-filter: blur(12px);
     /* Match .glass */
     -webkit-backdrop-filter: blur(12px);
     /* Match .glass */
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(var(--foreground-rgb), 0.05);
     /* Match .glass */
     border-radius: 100px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
@@ -29,11 +29,11 @@
 }
 
 :global(.dark) .navbar {
-    background-color: rgba(3, 0, 20, 0.75);
+    /* Background color handled by var(--background-rgb) automatically */
     /* Match .dark .glass */
     border: 1px solid rgba(255, 255, 255, 0.05);
     /* Match .dark .glass */
-    box-shadow: 0 0 20px rgba(112, 0, 255, 0.15);
+    box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.15);
     /* Neon glow */
 }
 
@@ -109,14 +109,12 @@
 
 .link:hover {
     color: var(--secondary);
-    background: rgba(37, 99, 235, 0.15);
-    /* More visible blue tint */
+    background: rgba(var(--secondary-rgb), 0.15);
 }
 
 :global(.dark) .link:hover {
     color: var(--secondary);
-    background: rgba(0, 240, 255, 0.2);
-    /* More visible cyan tint */
+    background: rgba(var(--secondary-rgb), 0.2);
 }
 
 /* Mobile Controls */
