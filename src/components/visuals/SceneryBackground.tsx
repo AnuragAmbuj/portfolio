@@ -3,8 +3,10 @@
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 
 export default function SceneryBackground() {
+    const pathname = usePathname();
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     const [stars, setStars] = useState<{ id: number; x: number; y: number; size: number }[]>([]);
@@ -104,6 +106,9 @@ export default function SceneryBackground() {
 
     // Prevent hydration mismatch
     if (!mounted) return null;
+
+    // Disable scenery on blog pages to improve text readability
+    if (pathname?.startsWith("/blog")) return null;
 
     const isDark = resolvedTheme === "dark";
 
