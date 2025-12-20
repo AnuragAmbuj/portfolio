@@ -45,6 +45,7 @@ export async function createPost(formData: FormData) {
     const slug = formData.get("slug") as string;
     const excerpt = formData.get("excerpt") as string;
     const content = formData.get("content") as string;
+    const imageUrl = formData.get("imageUrl") as string;
     const published = formData.get("published") === "on";
 
     await prisma.post.create({
@@ -53,6 +54,7 @@ export async function createPost(formData: FormData) {
             slug,
             excerpt,
             content,
+            imageUrl,
             published,
             authorId: user.id,
         },
@@ -72,6 +74,7 @@ export async function updatePost(id: string, formData: FormData) {
     const slug = formData.get("slug") as string;
     const excerpt = formData.get("excerpt") as string;
     const content = formData.get("content") as string;
+    const imageUrl = formData.get("imageUrl") as string;
     const published = formData.get("published") === "on";
 
     await prisma.post.update({
@@ -81,6 +84,7 @@ export async function updatePost(id: string, formData: FormData) {
             slug,
             excerpt,
             content,
+            imageUrl,
             published,
         },
     });

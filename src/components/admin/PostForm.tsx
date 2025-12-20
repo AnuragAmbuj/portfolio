@@ -15,6 +15,7 @@ export default function PostForm({
         slug: string;
         excerpt: string | null;
         content: string;
+        imageUrl: string | null;
         published: boolean;
     };
     action: (formData: FormData) => Promise<void>;
@@ -54,6 +55,17 @@ export default function PostForm({
                     name="excerpt"
                     defaultValue={post?.excerpt || ""}
                     rows={3}
+                />
+            </div>
+
+            <div className={styles.formGroup}>
+                <label htmlFor="imageUrl">Cover Image URL</label>
+                <input
+                    type="text"
+                    id="imageUrl"
+                    name="imageUrl"
+                    defaultValue={post?.imageUrl || ""}
+                    placeholder="https://example.com/image.jpg"
                 />
             </div>
 
