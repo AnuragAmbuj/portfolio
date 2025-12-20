@@ -1,6 +1,7 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { components } from "./MDXComponents";
 import rehypePrettyCode from "rehype-pretty-code";
+import { remarkMermaid } from "@/lib/remark-mermaid";
 
 const options = {
     theme: "github-dark",
@@ -15,6 +16,7 @@ export default function MDXContent({ source }: { source: string }) {
                 components={components}
                 options={{
                     mdxOptions: {
+                        remarkPlugins: [remarkMermaid],
                         rehypePlugins: [[rehypePrettyCode, options]],
                     },
                 }}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./MDXComponents.module.css";
+import Mermaid from "./Mermaid";
 
 const CustomLink = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     const href = props.href;
@@ -37,5 +38,5 @@ const RoundedImage = (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
 export const components = {
     a: CustomLink,
     img: RoundedImage,
-    // Add more custom components here (Callout, etc.)
+    Mermaid,
 };
