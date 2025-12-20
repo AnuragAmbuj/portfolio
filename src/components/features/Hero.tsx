@@ -10,7 +10,6 @@ import styles from "./Hero.module.css";
 export default function Hero() {
     return (
         <section className={styles.hero}>
-            <div className={styles.blob} />
             <div className={`container ${styles.container}`}>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

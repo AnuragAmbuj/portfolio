@@ -7,41 +7,14 @@
     padding-top: 80px;
 }
 
-.blob {
-    position: absolute;
-    top: -20%;
-    right: -10%;
-    width: 800px;
-    /* Larger */
-    height: 800px;
-    background: radial-gradient(circle, var(--primary) 0%, rgba(0, 0, 0, 0) 70%);
-    opacity: 0.15;
-    /* Subtler */
-    filter: blur(80px);
-    z-index: -1;
-    animation: float 15s infinite ease-in-out;
-    /* Slower */
-}
 
-@keyframes float {
-    0% {
-        transform: translate(0, 0);
-    }
-
-    50% {
-        transform: translate(-20px, 30px);
-        /* Subtler movement */
-    }
-
-    100% {
-        transform: translate(0, 0);
-    }
-}
 
 .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    z-index: 10;
 }
 
 .content {

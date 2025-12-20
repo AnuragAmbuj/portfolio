@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import SceneryBackground from "@/components/visuals/SceneryBackground";
 
 // ... (imports)
 
@@ -31,6 +32,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <SceneryBackground />
           <Navbar />
           <main style={{ minHeight: "calc(100vh - 200px)", paddingTop: "140px" }}>
             {children}

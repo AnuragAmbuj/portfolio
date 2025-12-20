@@ -84,12 +84,17 @@
 
 .subtitle {
     font-size: 1.25rem;
-    color: var(--text-secondary);
+    color: var(--muted-foreground);
     margin-bottom: 2rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
     line-height: 1.6;
+    background: rgba(var(--background-rgb), 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
 .actions {
@@ -103,7 +108,7 @@
     align-items: center;
     gap: 0.75rem;
     background: var(--primary);
-    color: white;
+    color: var(--primary-foreground);
     padding: 0.875rem 2rem;
     border-radius: 3rem;
     font-weight: 600;
@@ -128,23 +133,38 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: var(--text-primary);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--foreground);
+    border-bottom: 1px solid var(--border);
     padding-bottom: 0.75rem;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 1rem;
     padding: 2rem;
     margin-bottom: 1.5rem;
     transition: all 0.3s ease;
 }
 
+@media (prefers-color-scheme: dark) {
+    .card {
+        background: rgba(3, 0, 20, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Force dark mode styles if a parent has .dark class (Next-Themes) */
+:global(.dark) .card {
+    background: rgba(3, 0, 20, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .card:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(var(--primary-rgb), 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
 .projectTitle {
@@ -156,7 +176,7 @@
 
 .projectRole {
     font-size: 1rem;
-    color: var(--text-secondary);
+    color: var(--muted-foreground);
     margin-bottom: 1rem;
     font-style: italic;
 }
@@ -174,7 +194,7 @@
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
-    color: var(--text-secondary);
+    color: var(--muted-foreground);
     font-size: 0.95rem;
     line-height: 1.6;
 }
@@ -198,11 +218,11 @@
 .skillCategory {
     margin-bottom: 0.5rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: var(--foreground);
 }
 
 .skillList {
-    color: var(--text-secondary);
+    color: var(--muted-foreground);
     font-size: 0.95rem;
     line-height: 1.6;
 }
@@ -212,7 +232,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border);
 }
 
 .courseItem:last-child {
@@ -221,10 +241,10 @@
 
 .courseName {
     font-weight: 500;
-    color: var(--text-primary);
+    color: var(--foreground);
 }
 
 .courseDate {
     font-size: 0.875rem;
-    color: var(--text-secondary);
+    color: var(--muted-foreground);
 }
