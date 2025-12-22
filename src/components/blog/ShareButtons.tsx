@@ -1,6 +1,6 @@
 "use client";
 
-import { Linkedin, Twitter, Facebook } from "lucide-react";
+import { Linkedin, Twitter, Facebook, Share2 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 interface ShareButtonsProps {
@@ -41,8 +41,8 @@ export default function ShareButtons({ title }: ShareButtonsProps) {
     };
 
     return (
-        <div className="flex items-center gap-4 mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
-
+        <div className="flex items-center justify-center gap-4 mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
+            <Share2 size={20} className="text-muted-foreground" />
             <div className="flex gap-3">
                 {shareLinks.map((link) => (
                     <button
