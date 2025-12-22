@@ -19,7 +19,7 @@ export default function ShareButtons({ title }: ShareButtonsProps) {
         {
             name: "LinkedIn",
             icon: <Linkedin size={20} />,
-            url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+            url: `https://www.linkedin.com/feed/?shareActive=true&text=${encodedTitle}%20${encodedUrl}`,
             color: "hover:text-[#0077b5]",
         },
         {
