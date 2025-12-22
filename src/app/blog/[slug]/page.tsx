@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { incrementView } from "@/lib/actions";
 import MDXContent from "@/components/mdx/MDXContent";
+import ShareButtons from "@/components/blog/ShareButtons";
 import styles from "./BlogPost.module.css";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -44,6 +45,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             <div className={styles.content}>
                 <MDXContent source={post.content} />
             </div>
+
+            <ShareButtons title={post.title} />
         </article>
     );
 }

@@ -1,0 +1,61 @@
+"use client";
+
+import { Linkedin, Twitter, Facebook } from "lucide-react";
+import { usePathname } from "next/navigation";
+
+interface ShareButtonsProps {
+    title: string;
+}
+
+export default function ShareButtons({ title }: ShareButtonsProps) {
+    const pathname = usePathname();
+    // Default to proper URL in production, fallback for dev
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://anuragambuj.dev";
+    const url = `${baseUrl}${pathname}`;
+    const encodedUrl = encodeURIComponent(url);
+    const encodedTitle = encodeURIComponent(title);
+
+    const shareLinks = [
+        {
+            name: "LinkedIn",
+            icon: <Linkedin size={20} />,
+            url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+            color: "hover:text-[#0077b5]",
+        },
+        {
+            name: "X (Twitter)",
+            icon: <Twitter size={20} />,
+            url: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+            color: "hover:text-[#1DA1F2]",
+        },
+        {
+            name: "Facebook",
+            icon: <Facebook size={20} />,
+            url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+            color: "hover:text-[#4267B2]",
+        },
+    ];
+
+    const handleShare = (linkUrl: string) => {
+        window.open(linkUrl, "_blank", "width=600,height=400");
+    };
+
+    return (
+        <div className="flex items-center gap-4 mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
+
+            <div className="flex gap-3">
+                {shareLinks.map((link) => (
+                    <button
+                        key={link.name}
+                        onClick={() => handleShare(link.url)}
+                        className={`p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 transition-colors duration-200 ${link.color} hover:bg-gray-200 dark:hover:bg-gray-700`}
+                        title={`Share on ${link.name}`}
+                        aria-label={`Share on ${link.name}`}
+                    >
+                        {link.icon}
+                    </button>
+                ))}
+            </div>
+        </div>
+    );
+}
