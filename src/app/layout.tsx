@@ -13,6 +13,10 @@ import SceneryBackground from "@/components/visuals/SceneryBackground";
 
 // ... (imports)
 
+import { Analytics } from "@vercel/analytics/react";
+
+// ... (imports)
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,6 +42,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
