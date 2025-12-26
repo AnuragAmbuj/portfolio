@@ -8,6 +8,12 @@ export const authConfig = {
         authorized({ auth, request: { nextUrl } }) {
             const isLoggedIn = !!auth?.user
             const isOnAdmin = nextUrl.pathname.startsWith('/admin')
+            console.log("Middleware checking:", {
+                path: nextUrl.pathname,
+                isLoggedIn,
+                user: auth?.user
+            });
+
             if (isOnAdmin) {
                 if (isLoggedIn) return true
                 return false // Redirect unauthenticated users to login page

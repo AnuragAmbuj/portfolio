@@ -7,9 +7,21 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
     providers: [
         Credentials({
             async authorize(credentials) {
-                if (credentials?.password === process.env.ADMIN_PASSWORD) {
+                const password = credentials?.password && String(credentials.password);
+                const adminPassword = process.env.ADMIN_PASSWORD;
+
+                console.log("Authorize called with credentials");
+
+                if (!password || !adminPassword) {
+                    console.log("Missing password or env var");
+                    return null;
+                }
+
+                if (password === adminPassword) {
+                    console.log("Password match! returning user.");
                     return { id: "1", name: "Admin", email: "admin@example.com" }
                 }
+                console.log("Password mismatch return null");
                 return null
             },
         }),
