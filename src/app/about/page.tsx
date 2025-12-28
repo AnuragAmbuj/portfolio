@@ -1,12 +1,28 @@
 "use client";
 
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Download, Briefcase, Award, BookOpen, Code2, CheckCircle2 } from "lucide-react";
 import styles from "./about.module.css";
 
 export default function AboutPage() {
+    const [currentFrame, setCurrentFrame] = useState(0);
+    const profileImages = [
+        "/profile-cartoon-1.png", // Neutral
+        "/profile-cartoon-2.png", // Smile
+        "/profile-cartoon-3.png", // Laugh
+        "/profile-cartoon-2.png", // Smile (cycle back)
+    ];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentFrame((prev) => (prev + 1) % profileImages.length);
+        }, 200); // Change frame every 200ms
+
+        return () => clearInterval(interval);
+    }, [profileImages.length]);
+
     const projects = [
         {
             title: "Vehicle Telematics and Data Pipeline (Blusmart)",
@@ -83,7 +99,7 @@ export default function AboutPage() {
             >
                 <div className={styles.imageWrapper}>
                     <Image
-                        src="/profile.jpg"
+                        src={profileImages[currentFrame]}
                         alt="Anurag Ambuj"
                         fill
                         className={styles.profileImage}
