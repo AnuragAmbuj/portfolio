@@ -9,10 +9,10 @@ import styles from "./about.module.css";
 export default function AboutPage() {
     const [currentFrame, setCurrentFrame] = useState(0);
     const profileImages = [
-        "/profile-cartoon-1.png", // Neutral
-        "/profile-cartoon-2.png", // Smile
-        "/profile-cartoon-3.png", // Laugh
-        "/profile-cartoon-2.png", // Smile (cycle back)
+        "/profile-2d-1.png", // Neutral
+        "/profile-2d-2.png", // Smile
+        "/profile-2d-3.png", // Laugh
+        "/profile-2d-2.png", // Smile (cycle back)
     ];
 
     useEffect(() => {
