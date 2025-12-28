@@ -290,8 +290,15 @@ export default function SceneryBackground() {
                 style={{ x: layer1X, y: layer1Y }}
             >
                 <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="snowGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stopColor="#FFFFFF" />
+                            <stop offset="15%" stopColor={isDark ? '#234C6A' : '#cbd5e1'} />
+                            <stop offset="100%" stopColor={isDark ? '#1a3a52' : '#94a3b8'} />
+                        </linearGradient>
+                    </defs>
                     <path
-                        fill={isDark ? "#234C6A" : "#cbd5e1"}
+                        fill="url(#snowGradient1)"
                         fillOpacity="1"
                         d="M0,320 L0,180 L80,140 L160,200 L240,120 L350,180 L480,90 L600,160 L750,100 L900,190 L1050,110 L1200,170 L1300,130 L1440,190 L1440,320 Z"
                         className="transition-colors duration-1000"
@@ -308,8 +315,15 @@ export default function SceneryBackground() {
                 style={{ x: layer2X, y: layer2Y }}
             >
                 <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="snowGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stopColor="#FFFFFF" />
+                            <stop offset="20%" stopColor={isDark ? '#1B3C53' : '#94a3b8'} />
+                            <stop offset="100%" stopColor={isDark ? '#132b3c' : '#64748b'} />
+                        </linearGradient>
+                    </defs>
                     <path
-                        fill={isDark ? "#1B3C53" : "#94a3b8"}
+                        fill="url(#snowGradient2)"
                         fillOpacity="1"
                         d="M0,320 L0,240 L60,220 L140,260 L240,210 L360,250 L500,200 L650,240 L800,190 L950,250 L1100,200 L1250,240 L1380,210 L1440,250 L1440,320 Z"
                         className="transition-colors duration-1000"
@@ -326,8 +340,15 @@ export default function SceneryBackground() {
                 style={{ x: layer3X, y: layer3Y }}
             >
                 <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="snowGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stopColor="#FFFFFF" />
+                            <stop offset="25%" stopColor={isDark ? '#0f172a' : '#64748b'} />
+                            <stop offset="100%" stopColor={isDark ? '#080c16' : '#475569'} />
+                        </linearGradient>
+                    </defs>
                     <path
-                        fill={isDark ? "#0f172a" : "#64748b"}
+                        fill="url(#snowGradient3)"
                         fillOpacity="1"
                         d="M0,320 L0,290 L100,270 L220,300 L350,260 L500,290 L650,250 L850,300 L1000,260 L1200,290 L1350,270 L1440,300 L1440,320 Z"
                         className="transition-colors duration-1000"
