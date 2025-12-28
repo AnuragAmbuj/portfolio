@@ -11,7 +11,7 @@ export default function SceneryBackground() {
     const [mounted, setMounted] = useState(false);
     const [stars, setStars] = useState<{ id: number; x: number; y: number; size: number }[]>([]);
     const [clouds, setClouds] = useState<{ id: number; x: number; y: number; scale: number; opacity: number }[]>([]);
-    const [snowflakes, setSnowflakes] = useState<{ id: number; x: number; delay: number; duration: number; size: number }[]>([]);
+    const [fireworks, setFireworks] = useState<{ id: number; x: number; y: number; color: string; delay: number }[]>([]);
     const [birds, setBirds] = useState<{ id: number; y: number; delay: number; duration: number; scale: number }[]>([]);
 
     // Mouse Parallax Motion Values
@@ -24,15 +24,12 @@ export default function SceneryBackground() {
     const springY = useSpring(mouseY, springConfig);
 
     // Parallax Transforms for different layers (Multiplier determines depth)
-    // Layer 1 (Back) - Moves least
     const layer1X = useTransform(springX, [-1, 1], [-10, 10]);
     const layer1Y = useTransform(springY, [-1, 1], [-5, 5]);
 
-    // Layer 2 (Middle) - Moves moderate
     const layer2X = useTransform(springX, [-1, 1], [-20, 20]);
     const layer2Y = useTransform(springY, [-1, 1], [-10, 10]);
 
-    // Layer 3 (Front) - Moves most
     const layer3X = useTransform(springX, [-1, 1], [-40, 40]);
     const layer3Y = useTransform(springY, [-1, 1], [-15, 15]);
 
@@ -43,7 +40,7 @@ export default function SceneryBackground() {
     useEffect(() => {
         setMounted(true);
         const generateElements = () => {
-            // Stars for dark mode - More magical count
+            // Stars for dark mode
             const starCount = 100;
             const newStars = Array.from({ length: starCount }).map((_, i) => ({
                 id: i,
@@ -64,25 +61,26 @@ export default function SceneryBackground() {
             }));
             setClouds(newClouds);
 
-            // Falling Snow (Christmas Vibe)
-            const snowCount = 50;
-            const newSnow = Array.from({ length: snowCount }).map((_, i) => ({
+            // Fireworks for New Year (Dark Mode)
+            const fireworkCount = 5;
+            const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"];
+            const newFireworks = Array.from({ length: fireworkCount }).map((_, i) => ({
                 id: i,
-                x: Math.random() * 100, // Random Horizontal
-                delay: Math.random() * 5, // Random start time
-                duration: Math.random() * 5 + 5, // Random fall speed (5-10s)
-                size: Math.random() * 3 + 2, // Random size
+                x: Math.random() * 80 + 10,
+                y: Math.random() * 40 + 10,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                delay: Math.random() * 5,
             }));
-            setSnowflakes(newSnow);
+            setFireworks(newFireworks);
 
             // Birds for light mode
             const birdCount = 5;
             const newBirds = Array.from({ length: birdCount }).map((_, i) => ({
                 id: i,
-                y: Math.random() * 30 + 10, // Top 10-40% of screen
+                y: Math.random() * 30 + 10,
                 delay: Math.random() * 10,
-                duration: Math.random() * 10 + 15, // Slow, distant flight
-                scale: Math.random() * 0.4 + 0.3, // Small, distant birds
+                duration: Math.random() * 10 + 15,
+                scale: Math.random() * 0.4 + 0.3,
             }));
             setBirds(newBirds);
         };
@@ -90,9 +88,7 @@ export default function SceneryBackground() {
         generateElements();
 
         const handleMouseMove = (e: MouseEvent) => {
-            // Use globalThis window check or just ensure hydration
             if (typeof window !== "undefined") {
-                // Normalize mouse position from -1 to 1
                 const normalizedX = (e.clientX / window.innerWidth) * 2 - 1;
                 const normalizedY = (e.clientY / window.innerHeight) * 2 - 1;
                 mouseX.set(normalizedX);
@@ -129,7 +125,7 @@ export default function SceneryBackground() {
             />
 
             <AnimatePresence>
-                {/* Dark Mode Elements: Stars, Shooting Stars & Snow */}
+                {/* Dark Mode Elements: Stars & Fireworks */}
                 {isDark && (
                     <>
                         {stars.map((star) => (
@@ -141,74 +137,60 @@ export default function SceneryBackground() {
                                     top: `${star.y}%`,
                                     width: star.size,
                                     height: star.size,
-                                    boxShadow: `0 0 ${star.size + 2}px white`, // Glow effect
+                                    boxShadow: `0 0 ${star.size + 2}px white`,
                                 }}
                                 initial={{ opacity: 0 }}
                                 animate={{
-                                    opacity: [0.2, 1, 0.2], // Sharper twinkle
+                                    opacity: [0.2, 1, 0.2],
                                     scale: [0.8, 1.2, 0.8],
                                 }}
                                 exit={{ opacity: 0 }}
                                 transition={{
-                                    duration: Math.random() * 1.5 + 1, // Faster twinkle
+                                    duration: Math.random() * 1.5 + 1,
                                     repeat: Infinity,
                                     ease: "easeInOut",
                                 }}
                             />
                         ))}
-                        {/* Shooting Stars */}
-                        {[1, 2, 3].map((i) => (
+
+                        {/* Fireworks */}
+                        {fireworks.map((fw) => (
                             <motion.div
-                                key={`shooting-star-${i}`}
-                                className="absolute h-[2px] bg-gradient-to-r from-transparent via-white to-transparent"
+                                key={`fw-${fw.id}`}
+                                className="absolute"
                                 style={{
-                                    width: "100px",
-                                    left: "50%",
-                                    top: "20%",
+                                    left: `${fw.x}%`,
+                                    top: `${fw.y}%`,
                                 }}
-                                initial={{ x: 0, y: 0, opacity: 0, rotate: -45 }}
+                                initial={{ scale: 0, opacity: 0 }}
                                 animate={{
-                                    x: [-100, 300], // Move across
-                                    y: [0, 300],
-                                    opacity: [0, 1, 0],
+                                    scale: [0, 1.5],
+                                    opacity: [1, 0],
                                 }}
                                 transition={{
                                     duration: 1.5,
                                     repeat: Infinity,
-                                    repeatDelay: Math.random() * 8 + 5,
-                                    delay: Math.random() * 5,
-                                    ease: "linear",
+                                    repeatDelay: Math.random() * 3 + 2,
+                                    delay: fw.delay,
+                                    ease: "easeOut",
                                 }}
-                            />
+                            >
+                                {/* Firework Particles */}
+                                {Array.from({ length: 12 }).map((_, i) => (
+                                    <div
+                                        key={i}
+                                        className="absolute w-1 h-1 rounded-full"
+                                        style={{
+                                            backgroundColor: fw.color,
+                                            transform: `rotate(${i * 30}deg) translate(20px)`,
+                                            boxShadow: `0 0 4px ${fw.color}`,
+                                        }}
+                                    />
+                                ))}
+                            </motion.div>
                         ))}
                     </>
                 )}
-
-                {/* Falling Snow (Any Mode or just Dark - keeping both for winter vibe) */}
-                {snowflakes.map((flake) => (
-                    <motion.div
-                        key={`snow-${flake.id}`}
-                        className="absolute bg-white rounded-full opacity-60"
-                        style={{
-                            left: `${flake.x}%`,
-                            top: -20, // Start above screen
-                            width: flake.size,
-                            height: flake.size,
-                            filter: "blur(0.5px)",
-                        }}
-                        animate={{
-                            y: ["0vh", "110vh"], // Fall way past bottom
-                            x: [0, Math.random() * 50 - 25], // Drift left/right
-                        }}
-                        transition={{
-                            duration: flake.duration,
-                            repeat: Infinity,
-                            delay: flake.delay,
-                            ease: "linear",
-                        }}
-                    />
-                ))}
-
 
                 {/* Light Mode Elements: Clouds & Birds */}
                 {!isDark && (
@@ -251,7 +233,7 @@ export default function SceneryBackground() {
                                 animate={{
                                     x: "110vw",
                                     opacity: [0, 1, 1, 0],
-                                    y: [`${bird.y}%`, `${bird.y + (Math.random() * 5 - 2.5)}%`, `${bird.y}%`] // Slight vertical undulation
+                                    y: [`${bird.y}%`, `${bird.y + (Math.random() * 5 - 2.5)}%`, `${bird.y}%`]
                                 }}
                                 transition={{
                                     duration: bird.duration,
@@ -274,7 +256,7 @@ export default function SceneryBackground() {
                 className={`absolute top-[10%] right-[15%] w-24 h-24 rounded-full transition-all duration-1000 ${isDark ? "bg-slate-200 shadow-[0_0_60px_rgba(255,255,255,0.3)]" : "bg-yellow-100 shadow-[0_0_80px_rgba(253,186,116,0.6)]"
                     }`}
                 animate={{
-                    y: isDark ? 0 : [0, -10, 0], // Subtle float for sun
+                    y: isDark ? 0 : [0, -10, 0],
                 }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 style={{
@@ -284,7 +266,6 @@ export default function SceneryBackground() {
             >
                 {!isDark && (
                     <>
-                        {/* Pulsing Sun Glow */}
                         <motion.div
                             className="absolute inset-[-40%] rounded-full bg-orange-300 blur-3xl"
                             animate={{
@@ -293,14 +274,12 @@ export default function SceneryBackground() {
                             }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                         />
-
-                        {/* Sun Body Gradient */}
                         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-yellow-200 to-orange-300 opacity-80" />
                     </>
                 )}
             </motion.div>
 
-            {/* Mountains - Theme Aware Colors with Snow Caps */}
+            {/* Mountains - Standard Look (Removed Snow Caps) */}
 
             {/* Layer 1 (Back) */}
             <motion.div
@@ -311,19 +290,11 @@ export default function SceneryBackground() {
                 style={{ x: layer1X, y: layer1Y }}
             >
                 <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
-                    <defs>
-                        <linearGradient id="snowGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stopColor="white" />
-                            <stop offset="15%" stopColor="white" />
-                            <stop offset="15%" stopColor={isDark ? "#234C6A" : "#cbd5e1"} style={{ transition: "stop-color 1s" }} />
-                            <stop offset="100%" stopColor={isDark ? "#234C6A" : "#cbd5e1"} style={{ transition: "stop-color 1s" }} />
-                        </linearGradient>
-                    </defs>
                     <path
-                        className="transition-colors duration-1000"
-                        fill="url(#snowGradient1)"
+                        fill={isDark ? "#234C6A" : "#cbd5e1"}
                         fillOpacity="1"
                         d="M0,320 L0,180 L80,140 L160,200 L240,120 L350,180 L480,90 L600,160 L750,100 L900,190 L1050,110 L1200,170 L1300,130 L1440,190 L1440,320 Z"
+                        className="transition-colors duration-1000"
                     ></path>
                 </svg>
             </motion.div>
@@ -337,19 +308,11 @@ export default function SceneryBackground() {
                 style={{ x: layer2X, y: layer2Y }}
             >
                 <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
-                    <defs>
-                        <linearGradient id="snowGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stopColor="white" />
-                            <stop offset="10%" stopColor="white" />
-                            <stop offset="10%" stopColor={isDark ? "#1B3C53" : "#94a3b8"} style={{ transition: "stop-color 1s" }} />
-                            <stop offset="100%" stopColor={isDark ? "#1B3C53" : "#94a3b8"} style={{ transition: "stop-color 1s" }} />
-                        </linearGradient>
-                    </defs>
                     <path
-                        className="transition-colors duration-1000"
-                        fill="url(#snowGradient2)"
+                        fill={isDark ? "#1B3C53" : "#94a3b8"}
                         fillOpacity="1"
                         d="M0,320 L0,240 L60,220 L140,260 L240,210 L360,250 L500,200 L650,240 L800,190 L950,250 L1100,200 L1250,240 L1380,210 L1440,250 L1440,320 Z"
+                        className="transition-colors duration-1000"
                     ></path>
                 </svg>
             </motion.div>
@@ -363,19 +326,11 @@ export default function SceneryBackground() {
                 style={{ x: layer3X, y: layer3Y }}
             >
                 <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
-                    <defs>
-                        <linearGradient id="snowGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stopColor="white" />
-                            <stop offset="5%" stopColor="white" />
-                            <stop offset="5%" stopColor={isDark ? "#0f172a" : "#64748b"} style={{ transition: "stop-color 1s" }} />
-                            <stop offset="100%" stopColor={isDark ? "#0f172a" : "#64748b"} style={{ transition: "stop-color 1s" }} />
-                        </linearGradient>
-                    </defs>
                     <path
-                        className="transition-colors duration-1000"
-                        fill="url(#snowGradient3)"
+                        fill={isDark ? "#0f172a" : "#64748b"}
                         fillOpacity="1"
                         d="M0,320 L0,290 L100,270 L220,300 L350,260 L500,290 L650,250 L850,300 L1000,260 L1200,290 L1350,270 L1440,300 L1440,320 Z"
+                        className="transition-colors duration-1000"
                     ></path>
                 </svg>
             </motion.div>

@@ -83,7 +83,7 @@ export default function AboutPage() {
             >
                 <div className={styles.imageWrapper}>
                     <Image
-                        src="/profile-happy.png"
+                        src="/profile.jpg"
                         alt="Anurag Ambuj"
                         fill
                         className={styles.profileImage}
