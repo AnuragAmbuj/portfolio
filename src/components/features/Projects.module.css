@@ -5,7 +5,18 @@
 
 .title {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
+    font-size: 2.25rem; /* 36px */
+    line-height: 2.5rem; /* 40px */
+    font-weight: 700;
+    color: var(--foreground);
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 3rem; /* 48px */
+        line-height: 1;
+    }
 }
 
 .grid {

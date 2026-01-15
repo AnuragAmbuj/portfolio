@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -11,42 +12,42 @@ const experiences = [
         company: "Applied Materials",
         period: "Jun 2025 - Present",
         description: "Designing domain-driven architectures. Diving deeper into software required for advanced semiconductor manufacturing.",
-        logo: "/companies/applied-materials.svg",
+        logo: "/companies/Applied_Materials/Applied_Materials.svg",
     },
     {
         role: "Team Lead",
         company: "BluSmart Mobility",
         period: "Oct 2022 - Apr 2024",
         description: "Led the backend team for the all-electric ride-hailing platform. Architected core services and managed team delivery. Built tech teams from scratch to support the growth.",
-        logo: "/companies/blusmart.svg",
+        logo: "/companies/Blusmart.png",
     },
     {
         role: "SDE 3",
         company: "BharatPe",
         period: "Apr 2022 - Oct 2022",
         description: "Developed high-performance lending and bill payment systems. Contributed to the growth of their lending platform.",
-        logo: "/companies/bharatpe.svg",
+        logo: "/companies/BharatPe/BharatPe_idcm_6aijV_0.svg",
     },
     {
         role: "SDE 2",
         company: "Mobikwik",
         period: "Jun 2021 - Mar 2022",
         description: "Built Lending Management System and robust solutions for repayments.",
-        logo: "/companies/mobikwik.svg",
+        logo: "/companies/mobikwik.png",
     },
     {
         role: "Lead SDE",
         company: "Freecharge",
         period: "Aug 2018 - Mar 2021",
         description: "Led development of key features for the digital payments platform. Delivered end-to-end solutions for Merchants.",
-        logo: "/companies/freecharge.svg",
+        logo: "/companies/Freecharge.jpeg",
     },
     {
         role: "Software Engineer",
         company: "Envestnet | Yodlee",
         period: "Jul 2016 - Aug 2018",
         description: "Financial data aggregation and analytics platforms. Optimized high-volume data processing pipelines.",
-        logo: "/companies/yodlee.svg",
+        logo: "/companies/Yodlee.jpeg",
     },
 ];
 

@@ -1,108 +1,46 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import ProjectCard from "./ProjectCard";
+import { getGithubProjects } from "@/lib/github";
 import styles from "./Projects.module.css";
 
-const projects = [
-    {
-        title: "ziggydb",
-        description: "A transaction KV database in the works, built with Zig.",
-        tags: ["Zig", "Database", "Systems"],
-        demoUrl: "https://github.com/anuragambuj/ziggydb",
-        repoUrl: "https://github.com/anuragambuj/ziggydb",
-        image: "/project1.jpg", // Placeholder
-    },
-    {
-        title: "Logan",
-        description: "Kafka Broker implementation in Rust.",
-        tags: ["Rust", "Kafka", "Distributed Systems"],
-        demoUrl: "https://github.com/anuragambuj/Logan",
-        repoUrl: "https://github.com/anuragambuj/Logan",
-        image: "/project2.jpg", // Placeholder
-    },
-    {
-        title: "forge-plugin-rover",
-        description: "IntelliJ platform plugin based on forge command line tool.",
-        tags: ["Kotlin", "IntelliJ", "Plugin"],
-        demoUrl: "https://github.com/anuragambuj/forge-plugin-rover",
-        repoUrl: "https://github.com/anuragambuj/forge-plugin-rover",
-        image: "/project3.jpg", // Placeholder
-    },
-    {
-        title: "Kubespark",
-        description: "A Kubernetes dashboard for managing multiple clusters.",
-        tags: ["Kubernetes", "Dashboard", "Cluster Management"],
-        demoUrl: "https://github.com/AnuragAmbuj/kubespark",
-        repoUrl: "https://github.com/AnuragAmbuj/kubespark",
-        image: "/project4.jpg", // Placeholder
-    }
-];
+export default async function Projects() {
+  const allProjects = await getGithubProjects();
+  
+  // Logic to select "Featured" projects:
+  // 1. Sort by "Recently Pushed" (pushedAt descending)
+  // 2. Take top 3
+  const featuredProjects = [...allProjects]
+    .sort((a, b) => new Date(b.pushedAt).getTime() - new Date(a.pushedAt).getTime())
+    .slice(0, 3);
 
-const container = {
-    hidden: { opacity: 0 },
-    show: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1
-        }
-    }
-};
+  return (
+    <section id="projects" className="py-32 relative">
+      <div className="container px-4 mx-auto relative z-10">
+        <div className="max-w-4xl mx-auto mb-16 text-center">
+            {/* Using a standard h2 here, relying on global styles or module if preferred */}
+          <h2 className={styles.title}>Featured Projects</h2>
+          <p className="text-lg text-slate-600 dark:text-slate-400">
+            My most active open source contributions and personal projects.
+          </p>
+        </div>
 
-const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 }
-};
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {featuredProjects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
+        </div>
 
-export default function Projects() {
-    return (
-        <section id="projects" className={styles.section}>
-            <div className={`container ${styles.container}`}>
-                <motion.h2
-                    className={styles.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                >
-                    Featured <span className="text-gradient">Projects</span>
-                </motion.h2>
-
-                <motion.div
-                    className={styles.grid}
-                    variants={container}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: "-50px" }}
-                >
-                    {projects.map((project) => (
-                        <motion.div key={project.title} className={`${styles.card} glass`} variants={item}>
-                            <div className={styles.cardContent}>
-                                <div className={styles.header}>
-                                    <h3 className={styles.projectTitle}>{project.title}</h3>
-                                    <div className={styles.links}>
-                                        <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repo">
-                                            <Github size={20} />
-                                        </a>
-                                        <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
-                                            <ExternalLink size={20} />
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <p className={styles.description}>{project.description}</p>
-
-                                <div className={styles.tags}>
-                                    {project.tags.map((tag) => (
-                                        <span key={tag} className={styles.tag}>
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </motion.div>
-            </div>
-        </section>
-    );
+        <div className="flex justify-center">
+            <Link 
+                href="/projects"
+                className="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full hover:border-primary hover:text-primary transition-all duration-300 shadow-sm"
+            >
+                <span className="font-medium">View All Projects</span>
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+        </div>
+      </div>
+    </section>
+  );
 }
