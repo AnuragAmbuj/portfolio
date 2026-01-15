@@ -4,6 +4,8 @@ import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
+import Butterflies from "./Butterflies";
+import FlowerDefs, { Rose, Tulip, Daisy } from "./SpringFlowers";
 
 export default function SceneryBackground() {
     const pathname = usePathname();
@@ -61,7 +63,7 @@ export default function SceneryBackground() {
             }));
             setClouds(newClouds);
 
-            // Kites for Makar Sankranti (Light & Dark Mode)
+            // Kites for Makar Sankranti (Light Mode Only)
             // Colorful kites
             const kiteColors = ["#ef4444", "#eab308", "#22c55e", "#3b82f6", "#a855f7", "#f97316"];
             const kiteCount = 8;
@@ -91,16 +93,16 @@ export default function SceneryBackground() {
         generateElements();
 
         const handleMouseMove = (e: MouseEvent) => {
-            if (typeof window !== "undefined") {
-                const normalizedX = (e.clientX / window.innerWidth) * 2 - 1;
-                const normalizedY = (e.clientY / window.innerHeight) * 2 - 1;
+            if (globalThis.window !== undefined) {
+                const normalizedX = (e.clientX / globalThis.window.innerWidth) * 2 - 1;
+                const normalizedY = (e.clientY / globalThis.window.innerHeight) * 2 - 1;
                 mouseX.set(normalizedX);
                 mouseY.set(normalizedY);
             }
         };
 
-        window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
+        globalThis.window.addEventListener("mousemove", handleMouseMove);
+        return () => globalThis.window.removeEventListener("mousemove", handleMouseMove);
     }, [mouseX, mouseY]);
 
     // Prevent hydration mismatch
@@ -113,20 +115,24 @@ export default function SceneryBackground() {
 
     return (
         <div className="fixed inset-0 overflow-hidden z-[-1] pointer-events-none transition-colors duration-1000">
-            {/* Sky Gradient - Warmer for Spring/Basant Panchami */}
+            {/* Sky Gradient */}
             <div
                 className={`absolute inset-0 transition-opacity duration-1000 ${isDark ? "opacity-100" : "opacity-0"}`}
                 style={{
-                    background: "linear-gradient(to bottom, #0f172a, #1e293b, #1e1b4b)", // Deep spring night
+                    // Cold Spring Night: Deep Blues & Cyans
+                    background: "linear-gradient(to bottom, #020617, #0f172a, #172554, #1e3a8a)", 
                 }}
             />
             <div
-                className={`absolute inset-0 transition-opacity duration-1000 ${!isDark ? "opacity-100" : "opacity-0"}`}
+                className={`absolute inset-0 transition-opacity duration-1000 ${isDark ? "opacity-0" : "opacity-100"}`}
                 style={{
-                    // Sunny spring sky with a hint of warm yellow for Basant Panchami
+                    // Sunny spring sky with a hint of warm yellow
                     background: "linear-gradient(to bottom, #38bdf8, #7dd3fc, #fef08a)", 
                 }}
             />
+
+            {/* GSAP Butterflies (Dark Mode Only) */}
+            {isDark && <Butterflies />}
 
             <AnimatePresence>
                 {/* Dark Mode Elements: Stars */}
@@ -141,7 +147,7 @@ export default function SceneryBackground() {
                                     top: `${star.y}%`,
                                     width: star.size,
                                     height: star.size,
-                                    boxShadow: `0 0 ${star.size + 2}px white`,
+                                    boxShadow: `0 0 ${star.size + 4}px rgba(255,255,255,0.8)`, // Increased glow
                                 }}
                                 initial={{ opacity: 0 }}
                                 animate={{
@@ -159,8 +165,8 @@ export default function SceneryBackground() {
                     </>
                 )}
 
-                {/* Flying Kites (Visible in both themes, but maybe subtler in dark?) */}
-                {kites.map((kite) => (
+                {/* Flying Kites (Light Mode Only) */}
+                {!isDark && kites.map((kite) => (
                     <motion.div
                         key={`kite-${kite.id}`}
                         className="absolute"
@@ -264,7 +270,7 @@ export default function SceneryBackground() {
 
             {/* Celestial Body (Sun/Moon) */}
             <motion.div
-                className={`absolute top-[10%] right-[15%] w-24 h-24 rounded-full transition-all duration-1000 ${isDark ? "bg-slate-200 shadow-[0_0_60px_rgba(255,255,255,0.3)]" : "bg-yellow-200 shadow-[0_0_80px_rgba(253,224,71,0.6)]"
+                className={`absolute top-[10%] right-[15%] w-24 h-24 rounded-full transition-all duration-1000 ${isDark ? "bg-slate-100 shadow-[0_0_80px_rgba(255,255,255,0.4)]" : "bg-yellow-200 shadow-[0_0_80px_rgba(253,224,71,0.6)]"
                     }`}
                 animate={{
                     y: isDark ? 0 : [0, -10, 0],
@@ -276,16 +282,24 @@ export default function SceneryBackground() {
                 }}
             >
                 {!isDark && (
-                    <>
-                        <motion.div
-                            className="absolute inset-[-40%] rounded-full bg-yellow-300 blur-3xl opacity-40"
-                            animate={{
-                                scale: [1, 1.2, 1],
-                                opacity: [0.3, 0.5, 0.3]
-                            }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        />
-                    </>
+                    <motion.div
+                        className="absolute inset-[-40%] rounded-full bg-yellow-300 blur-3xl opacity-40"
+                        animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.3, 0.5, 0.3]
+                        }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                )}
+                {isDark && (
+                    <motion.div
+                        className="absolute inset-[-40%] rounded-full bg-blue-100 blur-3xl opacity-20"
+                        animate={{
+                            scale: [1, 1.1, 1],
+                            opacity: [0.2, 0.4, 0.2]
+                        }}
+                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                    />
                 )}
             </motion.div>
 
@@ -301,7 +315,7 @@ export default function SceneryBackground() {
             >
                 <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
                     <path
-                        fill={isDark ? "#14532d" : "#86efac"} // Dark Green vs Light Green
+                        fill={isDark ? "#0f172a" : "#86efac"} // Very Dark/Blueish for night
                         fillOpacity="1"
                         d="M0,320 L0,180 L80,140 L160,200 L240,120 L350,180 L480,90 L600,160 L750,100 L900,190 L1050,110 L1200,170 L1300,130 L1440,190 L1440,320 Z"
                         className="transition-colors duration-1000"
@@ -319,7 +333,7 @@ export default function SceneryBackground() {
             >
                 <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
                     <path
-                        fill={isDark ? "#166534" : "#4ade80"} // Slightly darker green
+                        fill={isDark ? "#172554" : "#4ade80"} // Dark Blue
                         fillOpacity="1"
                         d="M0,320 L0,240 L60,220 L140,260 L240,210 L360,250 L500,200 L650,240 L800,190 L950,250 L1100,200 L1250,240 L1380,210 L1440,250 L1440,320 Z"
                         className="transition-colors duration-1000"
@@ -335,19 +349,34 @@ export default function SceneryBackground() {
                 transition={{ duration: 1, delay: 0.6 }}
                 style={{ x: layer3X, y: layer3Y }}
             >
+                {/* Individual Flowers (Foreground) */}
+                <FlowerDefs />
+                
+                {/* Left Group */}
+                <Rose className="absolute bottom-[-10%] left-[5%] w-24 h-48 z-10" />
+                <Tulip className="absolute bottom-[-5%] left-[15%] w-20 h-40 z-10" variant="orange" />
+                <Daisy className="absolute bottom-[-8%] left-[10%] w-20 h-40 z-10 scale-75" />
+                
+                {/* Center-Left Group */}
+                <Tulip className="absolute bottom-[5%] left-[30%] w-20 h-40 z-10" variant="purple" />
+                <Rose className="absolute bottom-[-2%] left-[35%] w-24 h-48 z-10 scale-90" />
+                
+                {/* Center Group */}
+                <Daisy className="absolute bottom-[-5%] left-[48%] w-20 h-40 z-10" />
+                <Tulip className="absolute bottom-[2%] left-[53%] w-20 h-40 z-10 scale-110" variant="orange" />
+
+                {/* Right Group */}
+                <Rose className="absolute bottom-[0%] left-[70%] w-24 h-48 z-10" />
+                <Daisy className="absolute bottom-[-6%] left-[78%] w-20 h-40 z-10" />
+                <Tulip className="absolute bottom-[-4%] left-[85%] w-20 h-40 z-10" variant="purple" />
+                
                 <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
                     <path
-                        fill={isDark ? "#15803d" : "#22c55e"} // Vibrant Green
+                        fill={isDark ? "#1e3a8a" : "#22c55e"} // Blue/Green
                         fillOpacity="1"
                         d="M0,320 L0,290 L100,270 L220,300 L350,260 L500,290 L650,250 L850,300 L1000,260 L1200,290 L1350,270 L1440,300 L1440,320 Z"
                         className="transition-colors duration-1000"
                     ></path>
-                    {/* Basant Panchami Flowers (Mustard - Yellow dots on front hills) */}
-                    <circle cx="100" cy="280" r="3" fill="#facc15" className="animate-pulse" />
-                    <circle cx="150" cy="290" r="2" fill="#facc15" />
-                    <circle cx="500" cy="300" r="3" fill="#facc15" className="animate-pulse delay-100" />
-                    <circle cx="850" cy="310" r="4" fill="#facc15" />
-                    <circle cx="1200" cy="300" r="3" fill="#facc15" className="animate-pulse" />
                 </svg>
             </motion.div>
         </div>
