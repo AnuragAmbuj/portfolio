@@ -10,7 +10,7 @@ interface ShareButtonsProps {
 export default function ShareButtons({ title }: ShareButtonsProps) {
     const pathname = usePathname();
     // Default to proper URL in production, fallback for dev
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://anuragambuj.dev";
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://anuragambuj.com";
     const url = `${baseUrl}${pathname}`;
     const encodedUrl = encodeURIComponent(url);
     const encodedTitle = encodeURIComponent(title);

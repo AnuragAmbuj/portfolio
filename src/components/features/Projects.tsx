@@ -29,6 +29,14 @@ const projects = [
         repoUrl: "https://github.com/anuragambuj/forge-plugin-rover",
         image: "/project3.jpg", // Placeholder
     },
+    {
+        title: "Kubespark",
+        description: "A Kubernetes dashboard for managing multiple clusters.",
+        tags: ["Kubernetes", "Dashboard", "Cluster Management"],
+        demoUrl: "https://github.com/AnuragAmbuj/kubespark",
+        repoUrl: "https://github.com/AnuragAmbuj/kubespark",
+        image: "/project4.jpg", // Placeholder
+    }
 ];
 
 const container = {

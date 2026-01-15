@@ -11,7 +11,7 @@ export default function SceneryBackground() {
     const [mounted, setMounted] = useState(false);
     const [stars, setStars] = useState<{ id: number; x: number; y: number; size: number }[]>([]);
     const [clouds, setClouds] = useState<{ id: number; x: number; y: number; scale: number; opacity: number }[]>([]);
-    const [fireworks, setFireworks] = useState<{ id: number; x: number; y: number; color: string; delay: number }[]>([]);
+    const [kites, setKites] = useState<{ id: number; x: number; y: number; color: string; scale: number; delay: number; duration: number }[]>([]);
     const [birds, setBirds] = useState<{ id: number; y: number; delay: number; duration: number; scale: number }[]>([]);
 
     // Mouse Parallax Motion Values
@@ -61,17 +61,20 @@ export default function SceneryBackground() {
             }));
             setClouds(newClouds);
 
-            // Fireworks for New Year (Dark Mode)
-            const fireworkCount = 5;
-            const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"];
-            const newFireworks = Array.from({ length: fireworkCount }).map((_, i) => ({
+            // Kites for Makar Sankranti (Light & Dark Mode)
+            // Colorful kites
+            const kiteColors = ["#ef4444", "#eab308", "#22c55e", "#3b82f6", "#a855f7", "#f97316"];
+            const kiteCount = 8;
+            const newKites = Array.from({ length: kiteCount }).map((_, i) => ({
                 id: i,
-                x: Math.random() * 80 + 10,
-                y: Math.random() * 40 + 10,
-                color: colors[Math.floor(Math.random() * colors.length)],
+                x: Math.random() * 90 + 5,
+                y: Math.random() * 50 + 5,
+                color: kiteColors[Math.floor(Math.random() * kiteColors.length)],
+                scale: Math.random() * 0.4 + 0.5,
                 delay: Math.random() * 5,
+                duration: Math.random() * 5 + 5,
             }));
-            setFireworks(newFireworks);
+            setKites(newKites);
 
             // Birds for light mode
             const birdCount = 5;
@@ -110,22 +113,23 @@ export default function SceneryBackground() {
 
     return (
         <div className="fixed inset-0 overflow-hidden z-[-1] pointer-events-none transition-colors duration-1000">
-            {/* Sky Gradient */}
+            {/* Sky Gradient - Warmer for Spring/Basant Panchami */}
             <div
                 className={`absolute inset-0 transition-opacity duration-1000 ${isDark ? "opacity-100" : "opacity-0"}`}
                 style={{
-                    background: "linear-gradient(to bottom, #0f172a, #1e293b, #1B3C53)",
+                    background: "linear-gradient(to bottom, #0f172a, #1e293b, #1e1b4b)", // Deep spring night
                 }}
             />
             <div
                 className={`absolute inset-0 transition-opacity duration-1000 ${!isDark ? "opacity-100" : "opacity-0"}`}
                 style={{
-                    background: "linear-gradient(to bottom, #bae6fd, #e0f2fe, #E3E3E3)",
+                    // Sunny spring sky with a hint of warm yellow for Basant Panchami
+                    background: "linear-gradient(to bottom, #38bdf8, #7dd3fc, #fef08a)", 
                 }}
             />
 
             <AnimatePresence>
-                {/* Dark Mode Elements: Stars & Fireworks */}
+                {/* Dark Mode Elements: Stars */}
                 {isDark && (
                     <>
                         {stars.map((star) => (
@@ -152,45 +156,52 @@ export default function SceneryBackground() {
                                 }}
                             />
                         ))}
-
-                        {/* Fireworks */}
-                        {fireworks.map((fw) => (
-                            <motion.div
-                                key={`fw-${fw.id}`}
-                                className="absolute"
-                                style={{
-                                    left: `${fw.x}%`,
-                                    top: `${fw.y}%`,
-                                }}
-                                initial={{ scale: 0, opacity: 0 }}
-                                animate={{
-                                    scale: [0, 1.5],
-                                    opacity: [1, 0],
-                                }}
-                                transition={{
-                                    duration: 1.5,
-                                    repeat: Infinity,
-                                    repeatDelay: Math.random() * 3 + 2,
-                                    delay: fw.delay,
-                                    ease: "easeOut",
-                                }}
-                            >
-                                {/* Firework Particles */}
-                                {Array.from({ length: 12 }).map((_, i) => (
-                                    <div
-                                        key={i}
-                                        className="absolute w-1 h-1 rounded-full"
-                                        style={{
-                                            backgroundColor: fw.color,
-                                            transform: `rotate(${i * 30}deg) translate(20px)`,
-                                            boxShadow: `0 0 4px ${fw.color}`,
-                                        }}
-                                    />
-                                ))}
-                            </motion.div>
-                        ))}
                     </>
                 )}
+
+                {/* Flying Kites (Visible in both themes, but maybe subtler in dark?) */}
+                {kites.map((kite) => (
+                    <motion.div
+                        key={`kite-${kite.id}`}
+                        className="absolute"
+                        style={{
+                            left: `${kite.x}%`,
+                            top: `${kite.y}%`,
+                            scale: kite.scale,
+                        }}
+                        animate={{
+                            y: [-15, 15, -15],
+                            x: [-10, 10, -10],
+                            rotate: [-5, 5, -5],
+                        }}
+                        transition={{
+                            duration: kite.duration,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: kite.delay,
+                        }}
+                    >
+                        {/* Kite Diamond */}
+                        <div 
+                            className="w-8 h-8 rotate-45 transform origin-center shadow-lg"
+                            style={{ 
+                                backgroundColor: kite.color,
+                                border: '1px solid rgba(255,255,255,0.4)'
+                            }} 
+                        />
+                        {/* Kite Tail */}
+                        <div 
+                            className="w-1 h-8 absolute top-6 left-1/2 -translate-x-1/2 origin-top"
+                            style={{ backgroundColor: kite.color }}
+                        />
+                        <motion.div 
+                             className="w-1 h-3 absolute top-14 left-1/2 -translate-x-1/2 rounded-full"
+                             style={{ backgroundColor: kite.color }}
+                             animate={{ rotate: [-20, 20, -20] }}
+                             transition={{ duration: 0.5, repeat: Infinity }}
+                        />
+                    </motion.div>
+                ))}
 
                 {/* Light Mode Elements: Clouds & Birds */}
                 {!isDark && (
@@ -253,7 +264,7 @@ export default function SceneryBackground() {
 
             {/* Celestial Body (Sun/Moon) */}
             <motion.div
-                className={`absolute top-[10%] right-[15%] w-24 h-24 rounded-full transition-all duration-1000 ${isDark ? "bg-slate-200 shadow-[0_0_60px_rgba(255,255,255,0.3)]" : "bg-yellow-100 shadow-[0_0_80px_rgba(253,186,116,0.6)]"
+                className={`absolute top-[10%] right-[15%] w-24 h-24 rounded-full transition-all duration-1000 ${isDark ? "bg-slate-200 shadow-[0_0_60px_rgba(255,255,255,0.3)]" : "bg-yellow-200 shadow-[0_0_80px_rgba(253,224,71,0.6)]"
                     }`}
                 animate={{
                     y: isDark ? 0 : [0, -10, 0],
@@ -267,19 +278,18 @@ export default function SceneryBackground() {
                 {!isDark && (
                     <>
                         <motion.div
-                            className="absolute inset-[-40%] rounded-full bg-orange-300 blur-3xl"
+                            className="absolute inset-[-40%] rounded-full bg-yellow-300 blur-3xl opacity-40"
                             animate={{
                                 scale: [1, 1.2, 1],
                                 opacity: [0.3, 0.5, 0.3]
                             }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                         />
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-yellow-200 to-orange-300 opacity-80" />
                     </>
                 )}
             </motion.div>
 
-            {/* Mountains - Standard Look (Removed Snow Caps) */}
+            {/* Mountains - Spring Theme (Fresh Greens & Yellows) */}
 
             {/* Layer 1 (Back) */}
             <motion.div
@@ -290,15 +300,8 @@ export default function SceneryBackground() {
                 style={{ x: layer1X, y: layer1Y }}
             >
                 <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
-                    <defs>
-                        <linearGradient id="snowGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stopColor="#FFFFFF" />
-                            <stop offset="15%" stopColor={isDark ? '#234C6A' : '#cbd5e1'} />
-                            <stop offset="100%" stopColor={isDark ? '#1a3a52' : '#94a3b8'} />
-                        </linearGradient>
-                    </defs>
                     <path
-                        fill="url(#snowGradient1)"
+                        fill={isDark ? "#14532d" : "#86efac"} // Dark Green vs Light Green
                         fillOpacity="1"
                         d="M0,320 L0,180 L80,140 L160,200 L240,120 L350,180 L480,90 L600,160 L750,100 L900,190 L1050,110 L1200,170 L1300,130 L1440,190 L1440,320 Z"
                         className="transition-colors duration-1000"
@@ -315,15 +318,8 @@ export default function SceneryBackground() {
                 style={{ x: layer2X, y: layer2Y }}
             >
                 <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
-                    <defs>
-                        <linearGradient id="snowGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stopColor="#FFFFFF" />
-                            <stop offset="20%" stopColor={isDark ? '#1B3C53' : '#94a3b8'} />
-                            <stop offset="100%" stopColor={isDark ? '#132b3c' : '#64748b'} />
-                        </linearGradient>
-                    </defs>
                     <path
-                        fill="url(#snowGradient2)"
+                        fill={isDark ? "#166534" : "#4ade80"} // Slightly darker green
                         fillOpacity="1"
                         d="M0,320 L0,240 L60,220 L140,260 L240,210 L360,250 L500,200 L650,240 L800,190 L950,250 L1100,200 L1250,240 L1380,210 L1440,250 L1440,320 Z"
                         className="transition-colors duration-1000"
@@ -340,19 +336,18 @@ export default function SceneryBackground() {
                 style={{ x: layer3X, y: layer3Y }}
             >
                 <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
-                    <defs>
-                        <linearGradient id="snowGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stopColor="#FFFFFF" />
-                            <stop offset="25%" stopColor={isDark ? '#0f172a' : '#64748b'} />
-                            <stop offset="100%" stopColor={isDark ? '#080c16' : '#475569'} />
-                        </linearGradient>
-                    </defs>
                     <path
-                        fill="url(#snowGradient3)"
+                        fill={isDark ? "#15803d" : "#22c55e"} // Vibrant Green
                         fillOpacity="1"
                         d="M0,320 L0,290 L100,270 L220,300 L350,260 L500,290 L650,250 L850,300 L1000,260 L1200,290 L1350,270 L1440,300 L1440,320 Z"
                         className="transition-colors duration-1000"
                     ></path>
+                    {/* Basant Panchami Flowers (Mustard - Yellow dots on front hills) */}
+                    <circle cx="100" cy="280" r="3" fill="#facc15" className="animate-pulse" />
+                    <circle cx="150" cy="290" r="2" fill="#facc15" />
+                    <circle cx="500" cy="300" r="3" fill="#facc15" className="animate-pulse" delay-100 />
+                    <circle cx="850" cy="310" r="4" fill="#facc15" />
+                    <circle cx="1200" cy="300" r="3" fill="#facc15" className="animate-pulse" />
                 </svg>
             </motion.div>
         </div>
