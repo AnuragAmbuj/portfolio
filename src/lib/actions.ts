@@ -47,6 +47,7 @@ export async function createPost(formData: FormData) {
     const content = formData.get("content") as string;
     const imageUrl = formData.get("imageUrl") as string;
     const published = formData.get("published") === "on";
+    const authorName = formData.get("authorName") as string || "Anurag Ambuj";
 
     await prisma.post.create({
         data: {
@@ -57,6 +58,7 @@ export async function createPost(formData: FormData) {
             imageUrl,
             published,
             authorId: user.id,
+            authorName,
         },
     });
 
@@ -76,6 +78,7 @@ export async function updatePost(id: string, formData: FormData) {
     const content = formData.get("content") as string;
     const imageUrl = formData.get("imageUrl") as string;
     const published = formData.get("published") === "on";
+    const authorName = formData.get("authorName") as string || "Anurag Ambuj";
 
     await prisma.post.update({
         where: { id },
@@ -86,6 +89,7 @@ export async function updatePost(id: string, formData: FormData) {
             content,
             imageUrl,
             published,
+            authorName,
         },
     });
 

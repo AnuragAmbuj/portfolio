@@ -33,13 +33,17 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             <header className={styles.header}>
                 <h1 className={styles.title}>{post.title}</h1>
                 <div className={styles.meta}>
-                    <span className={styles.date}>
-                        {new Date(post.createdAt).toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                        })}
-                    </span>
+                    <div className="flex items-center justify-center gap-2">
+                        <span className={styles.author}>{post.authorName || "Anurag Ambuj"}</span>
+                        <span>•</span>
+                        <span className={styles.date}>
+                            {new Date(post.createdAt).toLocaleDateString("en-US", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            })}
+                        </span>
+                    </div>
                 </div>
             </header>
             <div className={styles.content}>

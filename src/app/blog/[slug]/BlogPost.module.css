@@ -28,8 +28,25 @@
 /* Typography for MDX content handled via global prose or here */
 .content h2 {
     font-size: 1.75rem;
-    margin-top: 2.5rem;
+    margin-top: 3rem;
     margin-bottom: 1rem;
+    font-weight: 700;
+    color: var(--foreground);
+}
+
+.content h3 {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+.content h4 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
 .content p {

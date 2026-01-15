@@ -30,6 +30,7 @@ model Post {
   updatedAt   DateTime @updatedAt
   authorId    String
   author      User     @relation(fields: [authorId], references: [id])
+  authorName  String   @default("Anurag Ambuj")
 }
 
 model Tag {

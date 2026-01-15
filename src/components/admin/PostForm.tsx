@@ -17,6 +17,7 @@ export default function PostForm({
         content: string;
         imageUrl: string | null;
         published: boolean;
+        authorName: string;
     };
     action: (formData: FormData) => Promise<void>;
 }>) {
@@ -67,6 +68,18 @@ export default function PostForm({
                     defaultValue={post?.imageUrl || ""}
                     placeholder="https://example.com/image.jpg"
                 />
+            </div>
+
+            <div className={styles.formGroup}>
+                <label htmlFor="authorName">Author</label>
+                <select
+                    id="authorName"
+                    name="authorName"
+                    defaultValue={post?.authorName ?? "Anurag Ambuj"}
+                >
+                    <option value="Anurag Ambuj">Anurag Ambuj</option>
+                    <option value="Shubham">Shubham</option>
+                </select>
             </div>
 
             <div className={styles.formGroup}>
