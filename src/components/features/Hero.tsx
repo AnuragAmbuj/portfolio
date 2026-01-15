@@ -36,13 +36,13 @@ export default function Hero() {
                     </motion.h1>
 
                     <motion.h2
-                        className={styles.subtitle}
+                        className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 mb-6 font-light"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
                     >
-                        Software Engineering Expert <br />
-                        Java, Go, Rust & Zig
+                        Software Engineering Expert <br/> 
+                        <span className="font-medium text-slate-800 dark:text-slate-200">Java, Go, Rust & Zig</span>
                     </motion.h2>
 
                     <motion.p
@@ -75,13 +75,13 @@ export default function Hero() {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.6 }}
                     >
-                        <a href="https://github.com/anuragambuj" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <a href="https://github.com/anuragambuj" className="text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                             <GithubIcon size={24} />
                         </a>
-                        <a href="https://www.linkedin.com/in/anurag-ambuj-75b773b6/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/in/anurag-ambuj-75b773b6/" className="text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                             <LinkedinIcon size={24} />
                         </a>
-                        <a href="mailto:anuragambuj@gmail.com" aria-label="Email">
+                        <a href="mailto:anuragambuj@gmail.com" className="text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" aria-label="Email">
                             <Mail size={24} />
                         </a>
                     </motion.div>

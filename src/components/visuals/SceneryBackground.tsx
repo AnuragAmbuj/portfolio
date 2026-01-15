@@ -345,7 +345,7 @@ export default function SceneryBackground() {
                     {/* Basant Panchami Flowers (Mustard - Yellow dots on front hills) */}
                     <circle cx="100" cy="280" r="3" fill="#facc15" className="animate-pulse" />
                     <circle cx="150" cy="290" r="2" fill="#facc15" />
-                    <circle cx="500" cy="300" r="3" fill="#facc15" className="animate-pulse" delay-100 />
+                    <circle cx="500" cy="300" r="3" fill="#facc15" className="animate-pulse delay-100" />
                     <circle cx="850" cy="310" r="4" fill="#facc15" />
                     <circle cx="1200" cy="300" r="3" fill="#facc15" className="animate-pulse" />
                 </svg>
