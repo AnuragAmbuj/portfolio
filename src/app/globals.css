@@ -118,8 +118,18 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-sans), sans-serif !important;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -50;
   background-image: var(--bg-gradient);
-  background-attachment: fixed;
+  background-size: cover;
+  pointer-events: none;
 }
 
 a {

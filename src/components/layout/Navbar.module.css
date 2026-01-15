@@ -1,7 +1,9 @@
 .navbar {
     position: fixed;
     top: 1.5rem;
-    left: 50%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -9,32 +11,19 @@
     gap: 2rem;
     padding: 0.5rem 0.75rem 0.5rem 0.5rem;
     /* Less padding on left for logo */
-    background-color: rgba(var(--background-rgb), 0.75);
-    /* Match .glass */
-    backdrop-filter: blur(12px);
-    /* Match .glass */
-    -webkit-backdrop-filter: blur(12px);
-    /* Match .glass */
-    border: 1px solid rgba(var(--foreground-rgb), 0.05);
-    /* Match .glass */
+    padding: 0.5rem 0.75rem 0.5rem 0.5rem;
+    /* Less padding on left for logo */
+    
+    /* Visuals handled by Tailwind in TSX now to ensure Chrome compatibility */
     border-radius: 100px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-    /* Softer shadow */
-    width: auto;
+    
+    width: fit-content;
     max-width: 90vw;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Fix for Chrome opacity/backdrop-filter rendering */
-    -webkit-transform: translateX(-50%) translateZ(0);
-    transform: translateX(-50%) translateZ(0);
 }
 
 :global(.dark) .navbar {
-    /* Background color handled by var(--background-rgb) automatically */
-    /* Match .dark .glass */
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    /* Match .dark .glass */
-    box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.15);
-    /* Neon glow */
+    /* Visuals handled by Tailwind */
 }
 
 /* Remove navContainer wrapper styles as we use navbar directly */

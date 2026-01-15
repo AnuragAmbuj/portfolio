@@ -21,7 +21,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className={styles.navbar}>
+            <nav className={`${styles.navbar} bg-white/70 dark:bg-[#1B3C53]/70 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 shadow-lg shadow-black/5 dark:shadow-primary/10`}>
                 <Link href="/" className={styles.logo}>
                     <div className={styles.logoImageContainer}>
                         <Image
