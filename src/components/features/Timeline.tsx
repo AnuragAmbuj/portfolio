@@ -89,12 +89,12 @@ export default function Timeline() {
                                             <h3 className={styles.role}>{exp.role}</h3>
                                             <h4 className={styles.company}>{exp.company}</h4>
                                         </div>
-                                        <div className="relative w-12 h-12 flex-shrink-0 rounded-xl overflow-hidden bg-white/50 dark:bg-slate-800/50 p-1 ring-1 ring-slate-900/5 dark:ring-white/10">
+                                        <div className="relative w-12 h-12 flex-shrink-0 rounded-xl overflow-hidden bg-white shadow-sm ring-1 ring-slate-900/10">
                                             <Image 
                                                 src={exp.logo} 
                                                 alt={`${exp.company} Logo`}
                                                 fill
-                                                className="object-contain p-1"
+                                                className="object-contain p-1.5"
                                             />
                                         </div>
                                     </div>
