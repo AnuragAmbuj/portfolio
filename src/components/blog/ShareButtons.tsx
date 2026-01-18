@@ -41,14 +41,14 @@ export default function ShareButtons({ title }: ShareButtonsProps) {
     };
 
     return (
-        <div className="flex items-center justify-center gap-4 mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
-            <Share2 size={20} className="text-muted-foreground" />
-            <div className="flex gap-3">
+        <div className="flex items-center justify-center gap-4">
+            <Share2 size={16} className="text-muted-foreground" />
+            <div className="flex gap-2">
                 {shareLinks.map((link) => (
                     <button
                         key={link.name}
                         onClick={() => handleShare(link.url)}
-                        className={`p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 transition-colors duration-200 ${link.color} hover:bg-gray-200 dark:hover:bg-gray-700`}
+                        className={`p-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 transition-colors duration-200 ${link.color} hover:bg-gray-200 dark:hover:bg-gray-700`}
                         title={`Share on ${link.name}`}
                         aria-label={`Share on ${link.name}`}
                     >

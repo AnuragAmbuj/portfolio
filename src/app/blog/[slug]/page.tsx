@@ -4,6 +4,7 @@ import { incrementView } from "@/lib/actions";
 import MDXContent from "@/components/mdx/MDXContent";
 import ShareButtons from "@/components/blog/ShareButtons";
 import styles from "./BlogPost.module.css";
+import GiscusComments from "@/components/blog/GiscusComments";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -43,6 +44,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                                 day: "numeric",
                             })}
                         </span>
+                        <span>•</span>
+                        <ShareButtons title={post.title} />
                     </div>
                 </div>
             </header>
@@ -50,7 +53,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 <MDXContent source={post.content} />
             </div>
 
-            <ShareButtons title={post.title} />
+
+            <GiscusComments />
         </article>
     );
 }

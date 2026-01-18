@@ -10,7 +10,7 @@ const options = {
 
 export default function MDXContent({ source }: { source: string }) {
     return (
-        <div className="prose">
+        <div className="prose dark:prose-invert max-w-none" suppressHydrationWarning>
             <MDXRemote
                 source={source}
                 components={components}

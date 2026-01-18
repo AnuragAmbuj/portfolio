@@ -61,8 +61,12 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5 }}
                     >
-                        <Link href="#projects" className={styles.primaryBtn}>
-                            View Work <ArrowRight size={20} />
+                        <Link 
+                            href="#projects" 
+                            className="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full hover:border-primary hover:text-primary transition-all duration-300 shadow-sm"
+                        >
+                            <span className="font-medium">View Work</span>
+                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <Link href="/blog" className={styles.secondaryBtn}>
                             Read Blog

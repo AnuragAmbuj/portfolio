@@ -116,7 +116,7 @@
     justify-content: center;
     gap: 0.5rem;
     background: var(--primary);
-    color: white;
+    color: var(--primary-foreground);
     padding: 1rem;
     border: none;
     border-radius: 50px;
@@ -133,15 +133,22 @@
 }
 
 /* Dark Mode Overrides */
-.global-dark .input,
-.global-dark .textarea {
+:global(.dark) .input,
+:global(.dark) .textarea {
     background: rgba(0, 0, 0, 0.2);
     border-color: var(--gray-700);
+    color: var(--foreground);
 }
 
-.global-dark .input:focus,
-.global-dark .textarea:focus {
+:global(.dark) .input::placeholder,
+:global(.dark) .textarea::placeholder {
+    color: var(--gray-500);
+}
+
+:global(.dark) .input:focus,
+:global(.dark) .textarea:focus {
     background: rgba(0, 0, 0, 0.4);
+    border-color: var(--primary);
 }
 
 @media (max-width: 768px) {

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Folder, Star, GitFork, ExternalLink, Globe } from "lucide-react";
+import { Folder, Star, ExternalLink, Globe } from "lucide-react";
 import Link from "next/link";
 import { Project } from "@/lib/github";
 
@@ -59,25 +59,29 @@ export default function ProjectCard({ project, layout = "grid" }: ProjectCardPro
         </p>
 
         <div className={`flex items-center justify-between mt-auto ${!isGrid ? "w-full" : ""}`}>
-          <div className="flex flex-wrap gap-2">
-            {project.tech.slice(0, 3).map((tech) => (
-              <span
-                key={tech}
-                className="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300"
-              >
-                {tech}
-              </span>
-            ))}
-            {project.tech.length > 3 && (
-                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700/50 text-slate-500">
-                    +{project.tech.length - 3}
-                </span>
-            )}
-            {project.tech.length === 0 && (
-                 <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700/50 text-slate-500">
-                    Code
-                </span>
-            )}
+          <div className="flex flex-col gap-3 w-full">
+            <div className="flex flex-wrap gap-2">
+                {project.languages && project.languages.length > 0 ? (
+                    project.languages.map((lang) => (
+                        <span
+                            key={lang.name}
+                            className="flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                        >
+                            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: lang.color }} />
+                            {lang.name}
+                        </span>
+                    ))
+                ) : (
+                    project.tech.slice(0, 5).map((tech) => (
+                    <span
+                        key={tech}
+                        className="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300"
+                    >
+                        {tech}
+                    </span>
+                    ))
+                )}
+            </div>
           </div>
           
            <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400 ml-4">
