@@ -84,7 +84,7 @@ export default function ProjectCard({ project, layout = "grid" }: ProjectCardPro
             </div>
           </div>
           
-           <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400 ml-4">
+           <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400 ml-4">
                {/* Optional: Add Last Updated if desired */}
                {/* <span>{project.lastUpdated}</span> */}
                 <div className="flex items-center gap-1">

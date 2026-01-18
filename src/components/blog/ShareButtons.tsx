@@ -48,7 +48,7 @@ export default function ShareButtons({ title }: ShareButtonsProps) {
                     <button
                         key={link.name}
                         onClick={() => handleShare(link.url)}
-                        className={`p-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 transition-colors duration-200 ${link.color} hover:bg-gray-200 dark:hover:bg-gray-700`}
+                        className={`p-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors duration-200 ${link.color} hover:bg-gray-200 dark:hover:bg-gray-700`}
                         title={`Share on ${link.name}`}
                         aria-label={`Share on ${link.name}`}
                     >
