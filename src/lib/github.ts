@@ -76,7 +76,8 @@ export async function getGithubProjects(): Promise<Project[]> {
     const filteredRepos = repos.filter(
       (repo) => 
         !repo.fork && 
-        !repo.name.toLowerCase().includes(USERNAME.toLowerCase())
+        !repo.name.toLowerCase().includes(USERNAME.toLowerCase()) &&
+        repo.name !== "BlogPostDiscussions"
     );
 
     // Fetch languages for each repo
