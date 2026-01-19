@@ -1,9 +1,4 @@
 import { prisma } from "@/lib/db";
-import OpenAI from "openai";
-
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-});
 
 export async function fetchNews() {
     const apiKey = process.env.NEWS_API_KEY;
@@ -60,34 +55,6 @@ export async function fetchNews() {
     }
 }
 
-export async function generateNewsSummary(newsItem: any) {
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-        return newsItem.description;
-    }
-
-    try {
-        const completion = await openai.chat.completions.create({
-            messages: [
-                {
-                    role: "system",
-                    content: "You are a helpful assistant that summarizes tech news. Keep it concise (under 30 words).",
-                },
-                {
-                    role: "user",
-                    content: `Summarize this news article: Title: ${newsItem.title}. Description: ${newsItem.description}`,
-                },
-            ],
-            model: "gpt-3.5-turbo",
-        });
-
-        return completion.choices[0].message.content || newsItem.description;
-    } catch (error) {
-        console.error("Error generating summary:", error);
-        return newsItem.description;
-    }
-}
-
 export async function updateNewsDatabase() {
     const newsItems = await fetchNews();
     let count = 0;
@@ -96,7 +63,7 @@ export async function updateNewsDatabase() {
         // Skip items without images or valid content
         if (!item.urlToImage || !item.title || item.title === "[Removed]") continue;
 
-        const summary = await generateNewsSummary(item);
+        const summary = item.description;
 
         // Check if news already exists
         const existing = await prisma.news.findFirst({
