@@ -1,5 +1,3 @@
-import { prisma } from "@/lib/db";
-
 export async function fetchNews() {
     const apiKey = process.env.NEWS_API_KEY;
     if (!apiKey) {
@@ -8,14 +6,16 @@ export async function fetchNews() {
     }
 
     try {
-        // Fetch Global Tech News
+        // Fetch Global Tech News with 1-hour revalidation
         const globalNewsPromise = fetch(
-            `https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=10&apiKey=${apiKey}`
+            `https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=15&apiKey=${apiKey}`,
+            { next: { revalidate: 3600 } }
         );
 
-        // Fetch India Tech News
+        // Fetch India News with 1-hour revalidation
         const indiaNewsPromise = fetch(
-            `https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=10&apiKey=${apiKey}`
+            `https://newsapi.org/v2/top-headlines?country=in&pageSize=15&apiKey=${apiKey}`,
+            { next: { revalidate: 3600 } }
         );
 
         const [globalResponse, indiaResponse] = await Promise.all([
@@ -23,30 +23,36 @@ export async function fetchNews() {
             indiaNewsPromise
         ]);
 
-        if (!globalResponse.ok) {
-            console.error(`Global NewsAPI failed with status ${globalResponse.status}`);
-        }
-        if (!indiaResponse.ok) {
-            console.error(`India NewsAPI failed with status ${indiaResponse.status}`);
+        if (!globalResponse.ok || !indiaResponse.ok) {
+            console.error("NewsAPI returned error status");
+            return getMockNews();
         }
 
-        const globalData = globalResponse.ok ? await globalResponse.json() : { articles: [] };
-        const indiaData = indiaResponse.ok ? await indiaResponse.json() : { articles: [] };
+        const globalData = await globalResponse.json();
+        const indiaData = await indiaResponse.json();
 
-        // Combine articles, prioritizing India news by interleaving or just concatenating
-        // Let's concatenate for now, maybe India first? Or mix them.
-        // Let's put India news first to ensure visibility as requested.
-        const allArticles = [...indiaData.articles, ...globalData.articles];
+        // Prioritize India news
+        const allArticles = [...(indiaData.articles || []), ...(globalData.articles || [])];
 
-        // Deduplicate based on URL
-        const uniqueArticles = Array.from(new Map(allArticles.map(item => [item.url, item])).values());
+        // Deduplicate based on URL and remove articles without images
+        const uniqueArticles = Array.from(new Map(
+            allArticles
+                .filter(item => item.urlToImage && item.title && item.title !== "[Removed]")
+                .map(item => [item.url, item])
+        ).values());
+
+        // Sort by publishedAt desc
+        uniqueArticles.sort((a: any, b: any) => 
+            new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+        );
 
         return uniqueArticles.map((article: any) => ({
+            id: article.url, // Use URL as unique ID for frontend keys
             title: article.title,
-            description: article.description || article.content || "No description available.",
+            summary: article.description || article.content || "No description available.",
             url: article.url,
-            urlToImage: article.urlToImage,
-            source: { name: article.source.name },
+            imageUrl: article.urlToImage,
+            source: article.source?.name || "Unknown Source",
             publishedAt: article.publishedAt,
         }));
     } catch (error) {
@@ -55,55 +61,24 @@ export async function fetchNews() {
     }
 }
 
-export async function updateNewsDatabase() {
-    const newsItems = await fetchNews();
-    let count = 0;
-
-    for (const item of newsItems) {
-        // Skip items without images or valid content
-        if (!item.urlToImage || !item.title || item.title === "[Removed]") continue;
-
-        const summary = item.description;
-
-        // Check if news already exists
-        const existing = await prisma.news.findFirst({
-            where: { url: item.url },
-        });
-
-        if (!existing) {
-            await prisma.news.create({
-                data: {
-                    title: item.title,
-                    summary: summary,
-                    url: item.url,
-                    imageUrl: item.urlToImage,
-                    source: item.source.name,
-                    publishedAt: new Date(item.publishedAt),
-                },
-            });
-            count++;
-        }
-    }
-
-    return count;
-}
-
 function getMockNews() {
     return [
         {
+            id: "mock-1",
             title: "AI Breakthrough in 2025 (Mock)",
-            description: "Scientists announce a major breakthrough in artificial general intelligence.",
+            summary: "Scientists announce a major breakthrough in artificial general intelligence.",
             url: "https://example.com/ai-breakthrough",
-            urlToImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000",
-            source: { name: "Tech Daily" },
+            imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000",
+            source: "Tech Daily",
             publishedAt: new Date().toISOString(),
         },
         {
+            id: "mock-2",
             title: "New Rust Framework Gains Popularity (Mock)",
-            description: "A new web framework for Rust is taking the developer community by storm.",
+            summary: "A new web framework for Rust is taking the developer community by storm.",
             url: "https://example.com/rust-framework",
-            urlToImage: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=1000",
-            source: { name: "Dev News" },
+            imageUrl: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=1000",
+            source: "Dev News",
             publishedAt: new Date().toISOString(),
         },
     ];

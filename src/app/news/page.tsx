@@ -1,16 +1,9 @@
 import React from "react";
-import { prisma } from "@/lib/db";
 import NewsCard from "@/components/features/NewsCard";
-
-async function getNews() {
-    const news = await prisma.news.findMany({
-        orderBy: { publishedAt: "desc" },
-    });
-    return news;
-}
+import { fetchNews } from "@/lib/news-service";
 
 export default async function NewsPage() {
-    const newsItems = await getNews();
+    const newsItems = await fetchNews();
 
     return (
         <div className="container mx-auto px-4 py-12">
@@ -23,7 +16,7 @@ export default async function NewsPage() {
 
             {newsItems.length === 0 ? (
                 <div className="text-center py-12">
-                    <p className="text-muted-foreground">No news items found. Try running the update script.</p>
+                    <p className="text-muted-foreground">No news items found.</p>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

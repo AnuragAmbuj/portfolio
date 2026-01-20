@@ -30,7 +30,12 @@ export default function NewsCard({ news, index }: NewsCardProps) {
                         src={news.imageUrl}
                         alt={news.title}
                         fill
+                        unoptimized
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000"; // Tech fallback
+                        }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
                 </div>
@@ -46,7 +51,7 @@ export default function NewsCard({ news, index }: NewsCardProps) {
                         {(() => {
                             try {
                                 const date = new Date(news.publishedAt);
-                                return isNaN(date.getTime())
+                                return Number.isNaN(date.getTime())
                                     ? "Recent"
                                     : format(date, "MMM d, yyyy");
                             } catch {
