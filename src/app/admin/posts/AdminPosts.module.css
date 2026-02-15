@@ -38,8 +38,8 @@
 }
 
 .published {
-    color: green;
-    background: #e6fffa;
+    color: var(--secondary);
+    background: rgba(var(--secondary-rgb), 0.1);
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     font-size: 0.8rem;
@@ -66,7 +66,7 @@
 .deleteBtn {
     background: none;
     border: none;
-    color: red;
+    color: var(--destructive);
     cursor: pointer;
     text-decoration: underline;
 }

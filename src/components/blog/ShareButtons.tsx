@@ -20,19 +20,19 @@ export default function ShareButtons({ title }: ShareButtonsProps) {
             name: "LinkedIn",
             icon: <Linkedin size={20} />,
             url: `https://www.linkedin.com/feed/?shareActive=true&text=${encodedTitle}%20${encodedUrl}`,
-            color: "hover:text-[#0077b5]",
+            color: "hover:text-brand-linkedin",
         },
         {
             name: "X (Twitter)",
             icon: <Twitter size={20} />,
             url: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
-            color: "hover:text-[#1DA1F2]",
+            color: "hover:text-brand-twitter",
         },
         {
             name: "Facebook",
             icon: <Facebook size={20} />,
             url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-            color: "hover:text-[#4267B2]",
+            color: "hover:text-brand-facebook",
         },
     ];
 

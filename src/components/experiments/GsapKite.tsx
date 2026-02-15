@@ -54,7 +54,7 @@ export default function GsapKite() {
           ref={pathRef}
           d="M -50,200 C 150,50 300,350 450,150 S 700,0 850,200"
           fill="none"
-          stroke="#94a3b8"
+          stroke="var(--gray-400)"
           strokeWidth="2"
           strokeDasharray="5,5"
           className="opacity-30"
@@ -66,7 +66,7 @@ export default function GsapKite() {
             <path d="M 0,20 L 0,100" stroke="currentColor" strokeWidth="1" className="text-slate-400" />
             
             {/* Kite Body */}
-            <path d="M 0,0 L 15,20 L 0,40 L -15,20 Z" fill="#ef4444" />
+            <path d="M 0,0 L 15,20 L 0,40 L -15,20 Z" fill="var(--destructive)" />
             
             {/* Kite Highlight */}
             <path d="M 0,0 L 15,20 L 0,20 Z" fill="#b91c1c" className="opacity-20" />
@@ -75,7 +75,7 @@ export default function GsapKite() {
             <path
                 d="M 0,40 Q 5,50 0,60 T 0,80"
                 fill="none"
-                stroke="#ef4444"
+                stroke="var(--destructive)"
                 strokeWidth="2"
             />
         </g>

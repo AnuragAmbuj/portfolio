@@ -10,45 +10,50 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                background: "var(--background)",
-                foreground: "var(--foreground)",
+                background: "rgba(var(--background-rgb), <alpha-value>)",
+                foreground: "rgba(var(--foreground-rgb), <alpha-value>)",
                 card: {
-                    DEFAULT: "var(--card)",
-                    foreground: "var(--card-foreground)",
+                    DEFAULT: "rgba(var(--card-rgb), <alpha-value>)",
+                    foreground: "rgba(var(--card-foreground-rgb), <alpha-value>)", // Note: Need to ensure this var exists or fallback
                 },
                 popover: {
-                    DEFAULT: "var(--popover)",
-                    foreground: "var(--popover-foreground)",
+                    DEFAULT: "rgba(var(--popover-rgb), <alpha-value>)",
+                    foreground: "rgba(var(--popover-foreground-rgb), <alpha-value>)",
                 },
                 primary: {
-                    DEFAULT: "var(--primary)",
-                    foreground: "var(--primary-foreground)",
+                    DEFAULT: "rgba(var(--primary-rgb), <alpha-value>)",
+                    foreground: "rgba(var(--primary-foreground-rgb), <alpha-value>)",
                 },
                 secondary: {
-                    DEFAULT: "var(--secondary)",
-                    foreground: "var(--secondary-foreground)",
+                    DEFAULT: "rgba(var(--secondary-rgb), <alpha-value>)",
+                    foreground: "rgba(var(--secondary-foreground-rgb), <alpha-value>)",
                 },
                 muted: {
-                    DEFAULT: "var(--muted)",
-                    foreground: "var(--muted-foreground)",
+                    DEFAULT: "rgba(var(--muted-rgb), <alpha-value>)",
+                    foreground: "rgba(var(--muted-foreground-rgb), <alpha-value>)",
                 },
                 accent: {
-                    DEFAULT: "var(--accent)",
-                    foreground: "var(--accent-foreground)",
+                    DEFAULT: "rgba(var(--accent-rgb), <alpha-value>)",
+                    foreground: "rgba(var(--accent-foreground-rgb), <alpha-value>)",
                 },
                 destructive: {
-                    DEFAULT: "var(--destructive)",
-                    foreground: "var(--destructive-foreground)",
+                    DEFAULT: "rgba(var(--destructive-rgb), <alpha-value>)",
+                    foreground: "rgba(var(--destructive-foreground-rgb), <alpha-value>)",
                 },
-                border: "var(--border)",
-                input: "var(--input)",
-                ring: "var(--ring)",
+                border: "rgba(var(--border-rgb), <alpha-value>)",
+                input: "rgba(var(--input-rgb), <alpha-value>)",
+                ring: "rgba(var(--ring-rgb), <alpha-value>)",
                 chart: {
-                    "1": "var(--chart-1)",
+                    "1": "var(--chart-1)", // Keep as var for now if no RGB
                     "2": "var(--chart-2)",
                     "3": "var(--chart-3)",
                     "4": "var(--chart-4)",
                     "5": "var(--chart-5)",
+                },
+                brand: {
+                    linkedin: "#0077b5",
+                    twitter: "#1DA1F2",
+                    facebook: "#4267B2",
                 },
             },
             borderRadius: {

@@ -97,13 +97,13 @@
 }
 
 .link:hover {
-    color: var(--secondary);
-    background: rgba(var(--secondary-rgb), 0.15);
+    color: var(--primary);
+    background: rgba(var(--primary-rgb), 0.1);
 }
 
 :global(.dark) .link:hover {
-    color: var(--secondary);
-    background: rgba(var(--secondary-rgb), 0.2);
+    color: var(--primary);
+    background: rgba(var(--primary-rgb), 0.15);
 }
 
 /* Mobile Controls */

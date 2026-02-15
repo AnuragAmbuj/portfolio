@@ -24,18 +24,19 @@
 .formGroup select {
     padding: 0.75rem 1rem;
     border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(var(--border-rgb), 0.2);
+    background: rgba(var(--background-rgb), 0.5);
     font-family: inherit;
     font-size: 1rem;
     transition: all 0.2s ease;
     outline: none;
+    color: var(--foreground);
 }
 
 .formGroup input[type="text"]:focus,
 .formGroup textarea:focus,
 .formGroup select:focus {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(var(--background-rgb), 0.8);
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
 }
@@ -44,15 +45,15 @@
 :global(.dark) .formGroup input[type="text"],
 :global(.dark) .formGroup textarea,
 :global(.dark) .formGroup select {
-    background: rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
+    background: rgba(var(--background-rgb), 0.3);
+    border-color: rgba(var(--border-rgb), 0.2);
+    color: var(--foreground);
 }
 
 :global(.dark) .formGroup input[type="text"]:focus,
 :global(.dark) .formGroup textarea:focus,
 :global(.dark) .formGroup select:focus {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(var(--background-rgb), 0.5);
     border-color: var(--secondary);
     box-shadow: 0 0 0 3px rgba(var(--secondary-rgb), 0.2);
 }
@@ -62,13 +63,13 @@
     align-items: center;
     gap: 0.75rem;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(var(--background-rgb), 0.3);
     border-radius: 8px;
     width: fit-content;
 }
 
 :global(.dark) .checkboxGroup {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(var(--background-rgb), 0.2);
 }
 
 .checkboxGroup input[type="checkbox"] {

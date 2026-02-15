@@ -14,14 +14,13 @@ export default function Navbar() {
         { name: "Work", href: "/#work" },
         { name: "About", href: "/about" },
         { name: "Blog", href: "/blog" },
-        { name: "Shop", href: "/shop" },
-        { name: "News", href: "/news" },
+        { name: "Attic", href: "/attic" },
         { name: "Contact", href: "/contact" },
     ];
 
     return (
         <>
-            <nav className={`${styles.navbar} bg-white/70 dark:bg-[#1B3C53]/70 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 shadow-lg shadow-black/5 dark:shadow-primary/10`}>
+            <nav className={`${styles.navbar} bg-white/70 dark:bg-background/70 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 shadow-lg shadow-black/5 dark:shadow-primary/10`}>
                 <Link href="/" className={styles.logo}>
                     <div className={styles.logoImageContainer}>
                         <Image

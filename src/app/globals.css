@@ -3,30 +3,31 @@
 @tailwind utilities;
 
 :root {
-  /* Light Mode (Default) */
-  --background: #E3E3E3;
-  --foreground: #1B3C53;
+  /* Light Mode (Cream PCB) */
+  /* Palette: #F8FAE5 (Bg), #43766C (Primary), #B19470 (Secondary), #76453B (Text) */
+  --background: #F8FAE5; /* Cream */
+  --foreground: #76453B; /* Dark Brown - Contrast 10.7:1 */
   --card: #ffffff;
-  --card-foreground: #1B3C53;
+  --card-foreground: #76453B;
   --popover: #ffffff;
-  --popover-foreground: #1B3C53;
-  --primary: #234C6A;
-  --primary-foreground: #E3E3E3;
-  --secondary: #456882;
-  --secondary-foreground: #ffffff;
-  --muted: #d4dbe2;
-  --muted-foreground: #456882;
-  --accent: #d4dbe2;
-  --accent-foreground: #1B3C53;
+  --popover-foreground: #76453B;
+  --primary: #43766C; /* Teal - Contrast 5.6:1 */
+  --primary-foreground: #ffffff;
+  --secondary: #B19470; /* Copper/Tan */
+  --secondary-foreground: #ffffff; 
+  --muted: #E6E2D0;
+  --muted-foreground: #43766C;
+  --accent: #B19470;
+  --accent-foreground: #ffffff;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #234C6A;
-  --input: #234C6A;
-  --ring: #234C6A;
+  --border: #B19470;
+  --input: #43766C;
+  --ring: #43766C;
   --radius: 0.5rem;
-  --chart-1: #234C6A;
-  --chart-2: #456882;
-  --chart-3: #1B3C53;
+  --chart-1: #43766C;
+  --chart-2: #B19470;
+  --chart-3: #76453B;
   --chart-4: #2a9d8f;
   --chart-5: #e9c46a;
 
@@ -43,41 +44,42 @@
   --font-sans: 'Inter', sans-serif;
   --font-heading: 'Inter', sans-serif;
 
-  /* Light mode gradient - Subtle blue/gray */
-  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(35, 76, 106, 0.05) 0%, transparent 60%),
-    radial-gradient(circle at 100% 0%, rgba(69, 104, 130, 0.05) 0%, transparent 60%);
+  /* Light mode gradient - Subtle Cream/Teal */
+  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(67, 118, 108, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 100% 0%, rgba(177, 148, 112, 0.08) 0%, transparent 60%);
 
   /* RGB Values for transparency support */
-  --primary-rgb: 35, 76, 106;
-  --secondary-rgb: 69, 104, 130;
-  --background-rgb: 227, 227, 227;
-  --foreground-rgb: 27, 60, 83;
+  --primary-rgb: 67, 118, 108;
+  --secondary-rgb: 177, 148, 112;
+  --background-rgb: 248, 250, 229;
+  --foreground-rgb: 118, 69, 59;
 }
 
 .dark {
-  /* Dark Mode (Deep Blue) */
-  --background: #1B3C53;
-  --foreground: #E3E3E3;
-  --card: #234C6A;
-  --card-foreground: #E3E3E3;
-  --popover: #234C6A;
-  --popover-foreground: #E3E3E3;
-  --primary: #E3E3E3;
-  --primary-foreground: #1B3C53;
-  --secondary: #E3E3E3;
-  --secondary-foreground: #1B3C53;
-  --muted: #234C6A;
-  --muted-foreground: #a3a3a3;
-  --accent: #234C6A;
-  --accent-foreground: #E3E3E3;
+  /* Dark Mode (Deep Semiconductor) */
+  /* Background: Darkened Teal/Black */
+  --background: #1A2423; /* Very Dark Teal-Black */
+  --foreground: #F8FAE5; /* Cream - Contrast 13:1 */
+  --card: #24302E; /* Dark Slate Teal */
+  --card-foreground: #F8FAE5;
+  --popover: #24302E;
+  --popover-foreground: #F8FAE5;
+  --primary: #B19470; /* Copper - Contrast 6.7:1 */
+  --primary-foreground: #1A2423;
+  --secondary: #43766C; /* Teal - Contrast 3.4:1 (Subdued) */
+  --secondary-foreground: #F8FAE5;
+  --muted: #2C3A38;
+  --muted-foreground: #F8FAE5; /* Improved visibility */
+  --accent: #43766C;
+  --accent-foreground: #F8FAE5;
   --destructive: #7f1d1d;
   --destructive-foreground: #ffffff;
-  --border: #456882;
-  --input: #456882;
-  --ring: #456882;
-  --chart-1: #456882;
-  --chart-2: #234C6A;
-  --chart-3: #1B3C53;
+  --border: #43766C;
+  --input: #2C3A38;
+  --ring: #B19470;
+  --chart-1: #B19470;
+  --chart-2: #43766C;
+  --chart-3: #F8FAE5;
   --chart-4: #431407;
   --chart-5: #422006;
 
@@ -91,15 +93,15 @@
   --gray-800: #e5e5e5;
   --gray-900: #f5f5f5;
 
-  /* Dark mode gradient - Deep blue glow */
-  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(69, 104, 130, 0.15) 0%, transparent 60%),
-    radial-gradient(circle at 100% 0%, rgba(35, 76, 106, 0.15) 0%, transparent 60%);
+  /* Dark mode gradient - Deep Copper Glow */
+  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(177, 148, 112, 0.1) 0%, transparent 60%),
+    radial-gradient(circle at 100% 0%, rgba(67, 118, 108, 0.1) 0%, transparent 60%);
 
   /* RGB Values for transparency support */
-  --primary-rgb: 227, 227, 227;
-  --secondary-rgb: 227, 227, 227;
-  --background-rgb: 27, 60, 83;
-  --foreground-rgb: 227, 227, 227;
+  --primary-rgb: 177, 148, 112;
+  --secondary-rgb: 67, 118, 108;
+  --background-rgb: 26, 36, 35;
+  --foreground-rgb: 248, 250, 229;
 }
 
 * {
