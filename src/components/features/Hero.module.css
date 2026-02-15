@@ -4,7 +4,7 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-top: 80px;
+    /* padding-top: 80px; Removed to avoid double padding with layout */
 }
 
 

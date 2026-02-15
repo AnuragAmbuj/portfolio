@@ -38,7 +38,7 @@ export default function RootLayout({
         >
           <SceneryBackground />
           <Navbar />
-          <main style={{ minHeight: "calc(100vh - 200px)", paddingTop: "140px" }}>
+          <main className="min-h-screen pt-32">
             {children}
           </main>
           <Footer />
