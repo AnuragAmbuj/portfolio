@@ -14,6 +14,7 @@ import SceneryBackground from "@/components/visuals/SceneryBackground";
 // ... (imports)
 
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // ... (imports)
 
@@ -43,6 +44,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
