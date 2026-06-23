@@ -44,9 +44,8 @@
   --font-sans: 'Inter', sans-serif;
   --font-heading: 'Inter', sans-serif;
 
-  /* Light mode gradient - Subtle Cream/Teal */
-  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(67, 118, 108, 0.08) 0%, transparent 60%),
-    radial-gradient(circle at 100% 0%, rgba(177, 148, 112, 0.08) 0%, transparent 60%);
+  /* Light mode gradient - Sleek Animated Linear */
+  --bg-gradient: linear-gradient(120deg, var(--background) 0%, rgba(var(--primary-rgb), 0.08) 50%, var(--background) 100%);
 
   /* RGB Values for transparency support */
   --primary-rgb: 67, 118, 108;
@@ -93,9 +92,8 @@
   --gray-800: #e5e5e5;
   --gray-900: #f5f5f5;
 
-  /* Dark mode gradient - Deep Copper Glow */
-  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(177, 148, 112, 0.1) 0%, transparent 60%),
-    radial-gradient(circle at 100% 0%, rgba(67, 118, 108, 0.1) 0%, transparent 60%);
+  /* Dark mode gradient - Sleek Animated Linear */
+  --bg-gradient: linear-gradient(120deg, var(--background) 0%, rgba(var(--secondary-rgb), 0.12) 50%, var(--background) 100%);
 
   /* RGB Values for transparency support */
   --primary-rgb: 177, 148, 112;
