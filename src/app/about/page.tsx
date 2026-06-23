@@ -26,9 +26,26 @@ export default function AboutPage() {
 
     const experiences = [
         {
+            company: "Applied Materials",
+            role: "Software Engineering Expert",
+            period: "Jun 2025 - Present",
+            logo: "/companies/Applied_Materials/Applied_Materials.svg",
+            description: "Designing software architectures for semiconductor manufacturing.",
+            projects: [
+                {
+                    name: "Domain Architecture",
+                    desc: "Designing domain-driven architectures."
+                },
+                {
+                    name: "Manufacturing Software",
+                    desc: "Developing software solutions for advanced semiconductor manufacturing."
+                }
+            ]
+        },
+        {
             company: "BluSmart Mobility",
             role: "Team Lead & Architect",
-            period: "Oct 2022 - Apr 2024",
+            period: "Oct 2022 - Apr 2025",
             logo: "/companies/Blusmart.png",
             description: "Led the backend engineering team for the ride-hailing platform.",
             projects: [
@@ -51,31 +68,6 @@ export default function AboutPage() {
                 {
                     name: "Config System",
                     desc: "Implemented a dynamic remote configuration system."
-                }
-            ]
-        },
-        {
-            company: "Freecharge",
-            role: "Lead SDE",
-            period: "Aug 2018 - Mar 2021",
-            logo: "/companies/Freecharge.jpeg",
-            description: "Developed merchant and subscription solutions.",
-            projects: [
-                {
-                    name: "Subscriptions",
-                    desc: "Built the subscription monetization platform."
-                },
-                {
-                    name: "Merchant Onboarding",
-                    desc: "Streamlined the documentation and integration process for merchants."
-                },
-                 {
-                    name: "System Scalability",
-                    desc: "Enhanced system architecture to handle peak transaction volumes."
-                },
-                {
-                    name: "Product Roadmap",
-                    desc: "Participated in product roadmap planning."
                 }
             ]
         },
@@ -122,19 +114,27 @@ export default function AboutPage() {
             ]
         },
         {
-            company: "Applied Materials",
-            role: "Software Engineering Expert",
-            period: "Jun 2025 - Present",
-            logo: "/companies/Applied_Materials/Applied_Materials.svg",
-            description: "Designing software architectures for semiconductor manufacturing.",
+            company: "Freecharge",
+            role: "Lead SDE",
+            period: "Aug 2018 - Mar 2021",
+            logo: "/companies/Freecharge.jpeg",
+            description: "Developed merchant and subscription solutions.",
             projects: [
                 {
-                    name: "Domain Architecture",
-                    desc: "Designing domain-driven architectures."
+                    name: "Subscriptions",
+                    desc: "Built the subscription monetization platform."
                 },
                 {
-                    name: "Manufacturing Software",
-                    desc: "Developing software solutions for advanced semiconductor manufacturing."
+                    name: "Merchant Onboarding",
+                    desc: "Streamlined the documentation and integration process for merchants."
+                },
+                 {
+                    name: "System Scalability",
+                    desc: "Enhanced system architecture to handle peak transaction volumes."
+                },
+                {
+                    name: "Product Roadmap",
+                    desc: "Participated in product roadmap planning."
                 }
             ]
         },
@@ -282,7 +282,10 @@ export default function AboutPage() {
                     </div>
                 </motion.div>
 
-                {/* 6. Experiences (Mapped) */}
+                {/* 6. Spacer to align the first experience to Column 0 in both 2-col and 3-col layouts */}
+                <div aria-hidden="true" style={{ height: 0, margin: 0, padding: 0 }} />
+
+                {/* 7. Experiences (Mapped) */}
                 {experiences.map((exp) => (
                     <motion.div 
                         key={exp.company} 
