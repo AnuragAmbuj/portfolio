@@ -10,8 +10,8 @@ export default function HeroModern() {
     <section className="relative pt-10 pb-16 md:pt-20 md:pb-24">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="space-y-6">
-          <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-muted border border-border text-primary">
-            Software Engineering Expert
+          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-muted border border-border text-primary tracking-wide">
+            Systems Architect @ Applied Materials • Ex-BluSmart, BharatPe
           </div>
 
           <div className="space-y-3">
