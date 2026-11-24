@@ -73,8 +73,8 @@ export default function SceneryBackground() {
         initFlakes();
 
         const isDark = resolvedTheme === "dark";
-        // Warm papyrus / soft snow tone from palette
-        const flakeColor = isDark ? "253, 240, 213" : "102, 155, 188";
+        // Warm ivory flakes in dark mode, soft warm taupe in light mode
+        const flakeColor = isDark ? "245, 239, 235" : "169, 133, 133";
 
         let isRunning = true;
 
@@ -101,22 +101,17 @@ export default function SceneryBackground() {
                 flake.x += Math.sin(flake.swing) * 0.35 + flake.speedX;
 
                 // Wrap around edges seamlessly
-                if (flake.y > height + 5) {
+                if (flake.y > height) {
                     flake.y = -5;
                     flake.x = Math.random() * width;
                 }
-                if (flake.x > width + 5) {
-                    flake.x = -5;
-                } else if (flake.x < -5) {
-                    flake.x = width + 5;
-                }
+                if (flake.x > width) flake.x = 0;
+                if (flake.x < 0) flake.x = width;
 
-                ctx.save();
                 ctx.globalAlpha = flake.opacity;
                 ctx.beginPath();
                 ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.restore();
             }
 
             animationFrameId = requestAnimationFrame(render);
@@ -134,26 +129,24 @@ export default function SceneryBackground() {
     if (!mounted) return null;
 
     return (
-        <div className="fixed inset-0 overflow-hidden z-[-1] pointer-events-none">
-            {/* Base Surface */}
+        <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden" aria-hidden="true">
+            {/* Clean Base Surface */}
             <div className="absolute inset-0 bg-background transition-colors duration-300" />
-
-            {/* Subtle holiday ambient glow (Deep Prussian Navy with warm Crimson/Gold hearth highlights) */}
+            
+            {/* Subtle warm amber ambient glow */}
             <div
-                className="absolute inset-0 pointer-events-none transition-opacity duration-700"
+                className="absolute inset-0 opacity-60 pointer-events-none transition-opacity duration-500"
                 style={{
-                    background:
-                        resolvedTheme === "dark"
-                            ? "radial-gradient(circle at 80% 10%, rgba(193, 18, 31, 0.08) 0%, transparent 50%), radial-gradient(circle at 20% 90%, rgba(102, 155, 188, 0.06) 0%, transparent 60%)"
-                            : "radial-gradient(circle at 80% 10%, rgba(193, 18, 31, 0.035) 0%, transparent 45%), radial-gradient(circle at 20% 90%, rgba(102, 155, 188, 0.05) 0%, transparent 50%)",
+                    background: resolvedTheme === "dark"
+                        ? "radial-gradient(circle at 50% 0%, rgba(255, 152, 8, 0.07) 0%, transparent 70%)"
+                        : "radial-gradient(circle at 50% 0%, rgba(255, 152, 8, 0.05) 0%, transparent 60%)"
                 }}
             />
 
-            {/* Faint, slow-drifting winter snow flurries */}
+            {/* Faint ambient winter flakes */}
             <canvas
                 ref={canvasRef}
                 className="absolute inset-0 w-full h-full pointer-events-none"
-                style={{ opacity: resolvedTheme === "dark" ? 0.75 : 0.55 }}
             />
         </div>
     );

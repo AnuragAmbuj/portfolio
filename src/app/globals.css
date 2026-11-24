@@ -3,133 +3,133 @@
 @tailwind utilities;
 
 :root {
-  /* Light Mode (Coolors: #780000, #C1121F, #FDF0D5, #003049, #669BBC) */
-  --background: #FDF0D5; /* Exact Papyrus Cream from palette */
-  --foreground: #003049; /* Exact Prussian Blue from palette */
+  /* Light Mode (ColorHunt: #FF9808, #ECCEA8, #A98585, #494848) */
+  --background: #FAF6F0; /* Soft warm porcelain sand */
+  --foreground: #494848; /* Exact deep charcoal from palette */
   --card: #FFFFFF;
-  --card-foreground: #003049;
+  --card-foreground: #494848;
   --popover: #FFFFFF;
-  --popover-foreground: #003049;
-  --primary: #C1121F; /* Exact Crimson from palette */
+  --popover-foreground: #494848;
+  --primary: #FF9808; /* Radiant Amber Orange from palette */
   --primary-foreground: #FFFFFF;
-  --secondary: #669BBC; /* Exact Steel Blue from palette */
+  --secondary: #A98585; /* Dusty rosewood taupe from palette */
   --secondary-foreground: #FFFFFF;
-  --muted: #F5E5C4; /* Soft warm tone */
-  --muted-foreground: #5C7688; /* Readable slate-blue */
-  --accent: #FDF0D5; /* Cream accent */
-  --accent-foreground: #003049;
-  --destructive: #780000; /* Exact Deep Burgundy from palette */
+  --muted: #F3ECE2; /* Soft sand tint */
+  --muted-foreground: #766E6E;
+  --accent: #ECCEA8; /* Warm almond sand from palette */
+  --accent-foreground: #494848;
+  --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
-  --border: #E8D7B5; /* Warm papyrus hairline border */
-  --input: #E8D7B5;
-  --ring: #C1121F;
+  --border: #E8DCCF; /* Soft warm hairline border */
+  --input: #E8DCCF;
+  --ring: #FF9808;
   --radius: 0.625rem;
-  --chart-1: #C1121F;
-  --chart-2: #003049;
-  --chart-3: #669BBC;
-  --chart-4: #780000;
-  --chart-5: #FDF0D5;
+  --chart-1: #FF9808;
+  --chart-2: #ECCEA8;
+  --chart-3: #A98585;
+  --chart-4: #494848;
+  --chart-5: #D4A373;
 
-  --gray-100: #FDF0D5;
-  --gray-200: #F5E5C4;
-  --gray-300: #E8D7B5;
-  --gray-400: #669BBC;
-  --gray-500: #5C7688;
-  --gray-600: #3D5A6E;
-  --gray-700: #003049;
-  --gray-800: #002235;
-  --gray-900: #001724;
+  --gray-100: #F7F1E9;
+  --gray-200: #E8DCCF;
+  --gray-300: #D8C7B5;
+  --gray-400: #A98585;
+  --gray-500: #766E6E;
+  --gray-600: #5C5656;
+  --gray-700: #494848;
+  --gray-800: #383737;
+  --gray-900: #232222;
 
   --font-sans: 'Google Sans Text', 'Google Sans', sans-serif;
   --font-heading: 'Google Sans', sans-serif;
 
-  /* Light mode ambient background */
-  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(193, 18, 31, 0.04) 0%, transparent 60%),
-    radial-gradient(circle at 100% 100%, rgba(102, 155, 188, 0.06) 0%, transparent 50%);
+  /* Light mode ambient background - Warm amber/sand tint */
+  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(255, 152, 8, 0.05) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(236, 206, 168, 0.1) 0%, transparent 50%);
 
   /* RGB Values for Tailwind alpha support */
-  --primary-rgb: 193, 18, 31;
-  --secondary-rgb: 102, 155, 188;
-  --background-rgb: 253, 240, 213;
-  --foreground-rgb: 0, 48, 73;
+  --primary-rgb: 255, 152, 8;
+  --secondary-rgb: 169, 133, 133;
+  --background-rgb: 250, 246, 240;
+  --foreground-rgb: 73, 72, 72;
   --card-rgb: 255, 255, 255;
-  --card-foreground-rgb: 0, 48, 73;
+  --card-foreground-rgb: 73, 72, 72;
   --popover-rgb: 255, 255, 255;
-  --popover-foreground-rgb: 0, 48, 73;
+  --popover-foreground-rgb: 73, 72, 72;
   --primary-foreground-rgb: 255, 255, 255;
   --secondary-foreground-rgb: 255, 255, 255;
-  --muted-rgb: 245, 229, 196;
-  --muted-foreground-rgb: 92, 118, 136;
-  --accent-rgb: 253, 240, 213;
-  --accent-foreground-rgb: 0, 48, 73;
-  --destructive-rgb: 120, 0, 0;
+  --muted-rgb: 243, 236, 226;
+  --muted-foreground-rgb: 118, 110, 110;
+  --accent-rgb: 236, 206, 168;
+  --accent-foreground-rgb: 73, 72, 72;
+  --destructive-rgb: 239, 68, 68;
   --destructive-foreground-rgb: 255, 255, 255;
-  --border-rgb: 232, 215, 181;
-  --input-rgb: 232, 215, 181;
-  --ring-rgb: 193, 18, 31;
+  --border-rgb: 232, 220, 207;
+  --input-rgb: 232, 220, 207;
+  --ring-rgb: 255, 152, 8;
 }
 
 .dark {
-  /* Dark Mode (Midnight Prussian Blue & Papyrus Cream) */
-  --background: #001B2B; /* Deep midnight navy */
-  --foreground: #FDF0D5; /* Papyrus Cream from palette */
-  --card: #003049; /* Prussian Blue from palette */
-  --card-foreground: #FDF0D5;
-  --popover: #003049;
-  --popover-foreground: #FDF0D5;
-  --primary: #C1121F; /* Crimson from palette */
-  --primary-foreground: #FFFFFF;
-  --secondary: #669BBC; /* Steel Blue from palette */
-  --secondary-foreground: #001B2B;
-  --muted: #00253B;
-  --muted-foreground: #8EB4CD;
-  --accent: #003049;
-  --accent-foreground: #FDF0D5;
-  --destructive: #780000;
+  /* Dark Mode (Warm Graphite & Amber Glow) */
+  --background: #232222; /* Warm deep charcoal */
+  --foreground: #F5EFEB; /* Soft warm ivory */
+  --card: #2D2C2C; /* Warm graphite elevated card */
+  --card-foreground: #F5EFEB;
+  --popover: #2D2C2C;
+  --popover-foreground: #F5EFEB;
+  --primary: #FF9808; /* Radiant Amber Orange */
+  --primary-foreground: #232222;
+  --secondary: #ECCEA8; /* Warm Sand */
+  --secondary-foreground: #232222;
+  --muted: #383737;
+  --muted-foreground: #A98585; /* Dusty taupe */
+  --accent: #494848; /* Palette charcoal */
+  --accent-foreground: #ECCEA8;
+  --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
-  --border: #134665; /* Subtle steel-navy divider */
-  --input: #134665;
-  --ring: #C1121F;
-  --chart-1: #C1121F;
-  --chart-2: #669BBC;
-  --chart-3: #FDF0D5;
-  --chart-4: #780000;
-  --chart-5: #3A6987;
+  --border: #3E3D3D; /* Subtle warm divider */
+  --input: #3E3D3D;
+  --ring: #FF9808;
+  --chart-1: #FF9808;
+  --chart-2: #ECCEA8;
+  --chart-3: #A98585;
+  --chart-4: #F87171;
+  --chart-5: #E5E7EB;
 
-  --gray-100: #00253B;
-  --gray-200: #003049;
-  --gray-300: #134665;
-  --gray-400: #669BBC;
-  --gray-500: #8EB4CD;
-  --gray-600: #C2D9E8;
-  --gray-700: #E6EEF5;
-  --gray-800: #F4E7CB;
-  --gray-900: #FDF0D5;
+  --gray-100: #2D2C2C;
+  --gray-200: #383737;
+  --gray-300: #494848;
+  --gray-400: #A98585;
+  --gray-500: #C4B0B0;
+  --gray-600: #D8C7B5;
+  --gray-700: #ECCEA8;
+  --gray-800: #F3ECE2;
+  --gray-900: #FAF6F0;
 
   /* Dark mode ambient background */
-  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(193, 18, 31, 0.08) 0%, transparent 70%),
-    radial-gradient(circle at 100% 100%, rgba(102, 155, 188, 0.06) 0%, transparent 50%);
+  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(255, 152, 8, 0.07) 0%, transparent 70%),
+    radial-gradient(circle at 100% 100%, rgba(236, 206, 168, 0.04) 0%, transparent 50%);
 
   /* RGB Values for Tailwind alpha support */
-  --primary-rgb: 193, 18, 31;
-  --secondary-rgb: 102, 155, 188;
-  --background-rgb: 0, 27, 43;
-  --foreground-rgb: 253, 240, 213;
-  --card-rgb: 0, 48, 73;
-  --card-foreground-rgb: 253, 240, 213;
-  --popover-rgb: 0, 48, 73;
-  --popover-foreground-rgb: 253, 240, 213;
-  --primary-foreground-rgb: 255, 255, 255;
-  --secondary-foreground-rgb: 0, 27, 43;
-  --muted-rgb: 0, 37, 59;
-  --muted-foreground-rgb: 142, 180, 205;
-  --accent-rgb: 0, 48, 73;
-  --accent-foreground-rgb: 253, 240, 213;
-  --destructive-rgb: 120, 0, 0;
+  --primary-rgb: 255, 152, 8;
+  --secondary-rgb: 236, 206, 168;
+  --background-rgb: 35, 34, 34;
+  --foreground-rgb: 245, 239, 235;
+  --card-rgb: 45, 44, 44;
+  --card-foreground-rgb: 245, 239, 235;
+  --popover-rgb: 45, 44, 44;
+  --popover-foreground-rgb: 245, 239, 235;
+  --primary-foreground-rgb: 35, 34, 34;
+  --secondary-foreground-rgb: 35, 34, 34;
+  --muted-rgb: 56, 55, 55;
+  --muted-foreground-rgb: 169, 133, 133;
+  --accent-rgb: 73, 72, 72;
+  --accent-foreground-rgb: 236, 206, 168;
+  --destructive-rgb: 239, 68, 68;
   --destructive-foreground-rgb: 255, 255, 255;
-  --border-rgb: 19, 70, 101;
-  --input-rgb: 19, 70, 101;
-  --ring-rgb: 193, 18, 31;
+  --border-rgb: 62, 61, 61;
+  --input-rgb: 62, 61, 61;
+  --ring-rgb: 255, 152, 8;
 }
 
 * {
@@ -186,21 +186,21 @@ body::before {
 }
 
 .dark .glass {
-  background: rgba(0, 48, 73, 0.8);
+  background: rgba(45, 44, 44, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(102, 155, 188, 0.2);
+  border: 1px solid rgba(236, 206, 168, 0.12);
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #C1121F 0%, #780000 60%, #003049 100%);
+  background: linear-gradient(135deg, #FF9808 0%, #D97706 50%, #A98585 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .dark .text-gradient {
-  background: linear-gradient(135deg, #FDF0D5 0%, #669BBC 50%, #C1121F 100%);
+  background: linear-gradient(135deg, #ECCEA8 0%, #FF9808 60%, #FFA726 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -238,7 +238,7 @@ h3 {
 
 p {
   margin-bottom: 1.5rem;
-  color: var(--muted-foreground);
+  color: var(--gray-500);
   line-height: 1.8;
 }
 
