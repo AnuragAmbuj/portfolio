@@ -4,24 +4,24 @@
 
 :root {
   /* Light Mode (Coolors: #780000, #C1121F, #FDF0D5, #003049, #669BBC) */
-  --background: #FAF6ED; /* Warm soft cream based on #FDF0D5 */
-  --foreground: #003049; /* Deep Prussian Blue from palette */
+  --background: #FDF0D5; /* Exact Papyrus Cream from palette */
+  --foreground: #003049; /* Exact Prussian Blue from palette */
   --card: #FFFFFF;
   --card-foreground: #003049;
   --popover: #FFFFFF;
   --popover-foreground: #003049;
-  --primary: #C1121F; /* Crimson from palette */
+  --primary: #C1121F; /* Exact Crimson from palette */
   --primary-foreground: #FFFFFF;
-  --secondary: #669BBC; /* Steel Blue from palette */
+  --secondary: #669BBC; /* Exact Steel Blue from palette */
   --secondary-foreground: #FFFFFF;
-  --muted: #FDF0D5; /* Papyrus Cream from palette */
+  --muted: #F5E5C4; /* Soft warm tone */
   --muted-foreground: #5C7688; /* Readable slate-blue */
   --accent: #FDF0D5; /* Cream accent */
   --accent-foreground: #003049;
-  --destructive: #780000; /* Deep Burgundy from palette */
+  --destructive: #780000; /* Exact Deep Burgundy from palette */
   --destructive-foreground: #FFFFFF;
-  --border: #E8DECA; /* Subtle warm border */
-  --input: #E8DECA;
+  --border: #E8D7B5; /* Warm papyrus hairline border */
+  --input: #E8D7B5;
   --ring: #C1121F;
   --radius: 0.625rem;
   --chart-1: #C1121F;
@@ -30,9 +30,9 @@
   --chart-4: #780000;
   --chart-5: #FDF0D5;
 
-  --gray-100: #FAF6ED;
-  --gray-200: #FDF0D5;
-  --gray-300: #E2D7BE;
+  --gray-100: #FDF0D5;
+  --gray-200: #F5E5C4;
+  --gray-300: #E8D7B5;
   --gray-400: #669BBC;
   --gray-500: #5C7688;
   --gray-600: #3D5A6E;
@@ -50,7 +50,7 @@
   /* RGB Values for Tailwind alpha support */
   --primary-rgb: 193, 18, 31;
   --secondary-rgb: 102, 155, 188;
-  --background-rgb: 250, 246, 237;
+  --background-rgb: 253, 240, 213;
   --foreground-rgb: 0, 48, 73;
   --card-rgb: 255, 255, 255;
   --card-foreground-rgb: 0, 48, 73;
@@ -58,14 +58,14 @@
   --popover-foreground-rgb: 0, 48, 73;
   --primary-foreground-rgb: 255, 255, 255;
   --secondary-foreground-rgb: 255, 255, 255;
-  --muted-rgb: 253, 240, 213;
+  --muted-rgb: 245, 229, 196;
   --muted-foreground-rgb: 92, 118, 136;
   --accent-rgb: 253, 240, 213;
   --accent-foreground-rgb: 0, 48, 73;
   --destructive-rgb: 120, 0, 0;
   --destructive-foreground-rgb: 255, 255, 255;
-  --border-rgb: 232, 222, 202;
-  --input-rgb: 232, 222, 202;
+  --border-rgb: 232, 215, 181;
+  --input-rgb: 232, 215, 181;
   --ring-rgb: 193, 18, 31;
 }
 
