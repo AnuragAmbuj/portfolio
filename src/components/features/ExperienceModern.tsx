@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 interface ExperienceItem {
   role: string;
   company: string;
   period: string;
-  description: string;
   logo: string;
+  highlights: string[];
   tags: string[];
 }
 
@@ -16,49 +16,71 @@ const experiences: ExperienceItem[] = [
     role: "Software Engineering Expert",
     company: "Applied Materials",
     period: "Jun 2025 - Present",
-    description: "Designing domain-driven architectures for semiconductor manufacturing software.",
     logo: "/companies/Applied_Materials/Applied_Materials.svg",
-    tags: ["Distributed Systems", "Domain-Driven Design"],
+    highlights: [
+      "Designing domain-driven architectures for semiconductor software",
+      "Developing mission-critical manufacturing execution solutions",
+    ],
+    tags: ["Distributed Systems", "Domain-Driven Design", "Semiconductor Tech"],
   },
   {
-    role: "Team Lead",
+    role: "Team Lead & Architect",
     company: "BluSmart Mobility",
     period: "Oct 2022 - Apr 2024",
-    description: "Led backend engineering for the electric ride-hailing platform, core dispatch, and charging services.",
     logo: "/companies/Blusmart.png",
-    tags: ["High Concurrency", "Fleet Dispatch", "Microservices"],
+    highlights: [
+      "Led backend engineering teams for Hub and Fleet technologies",
+      "Built charging recommendation platform for EV fleet optimization",
+      "Architected streaming data pipelines for vehicle telemetry",
+      "Optimized JVM performance, reducing infra costs by 50%",
+    ],
+    tags: ["Fleet Tech", "Telemetry", "JVM Tuning", "Kafka"],
   },
   {
     role: "SDE 3",
     company: "BharatPe",
     period: "Apr 2022 - Oct 2022",
-    description: "Built high-performance lending and merchant bill payment services.",
     logo: "/companies/BharatPe/BharatPe_idcm_6aijV_0.svg",
-    tags: ["FinTech", "Lending", "Event Streaming"],
+    highlights: [
+      "Implemented rule engine for merchant convenience fee calculations",
+      "Designed and deployed card tokenization architecture",
+      "Built high-throughput systems for user offer management",
+    ],
+    tags: ["FinTech", "Rule Engines", "Tokenization", "Payments"],
   },
   {
     role: "SDE 2",
     company: "Mobikwik",
     period: "Jun 2021 - Mar 2022",
-    description: "Worked on the Lending Management System (LMS) and repayment solutions.",
     logo: "/companies/mobikwik.png",
-    tags: ["LMS", "Payment Gateways"],
+    highlights: [
+      "Owned Lending Management System (LMS) core components",
+      "Developed high-volume loan repayment processing features",
+    ],
+    tags: ["LMS", "Loan Repayments", "Distributed DBs"],
   },
   {
     role: "Lead SDE",
     company: "Freecharge",
     period: "Aug 2018 - Mar 2021",
-    description: "Led backend feature development for digital payments and merchant solutions.",
     logo: "/companies/Freecharge.jpeg",
-    tags: ["Payments", "Java"],
+    highlights: [
+      "Built merchant subscription and monetization platform",
+      "Enhanced core backend architecture to handle peak transaction spikes",
+      "Streamlined merchant onboarding and third-party integrations",
+    ],
+    tags: ["Merchant Platform", "Subscriptions", "Java", "Scalability"],
   },
   {
     role: "Software Engineer",
     company: "Envestnet | Yodlee",
     period: "Jul 2016 - Aug 2018",
-    description: "Developed financial data aggregation and analytics pipelines.",
     logo: "/companies/Yodlee.jpeg",
-    tags: ["Financial Aggregation", "Data Pipelines"],
+    highlights: [
+      "Engineered financial data aggregation platforms for enterprise clients",
+      "Optimized high-volume ETL data processing pipelines",
+    ],
+    tags: ["Data Aggregation", "ETL Pipelines", "Optimization"],
   },
 ];
 
@@ -75,7 +97,7 @@ export default function ExperienceModern() {
               Work History
             </h2>
             <p className="text-muted-foreground mt-1 text-sm sm:text-base">
-              Roles and companies over the past 10 years.
+              Roles, engineering ownership, and systems delivered across 10 years.
             </p>
           </div>
 
@@ -88,49 +110,58 @@ export default function ExperienceModern() {
           </Link>
         </div>
 
-        <div className="space-y-3">
+        {/* Compact 2-Column Grid eliminating empty space */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {experiences.map((exp) => (
             <div
               key={`${exp.company}-${exp.period}`}
-              className="p-5 rounded-xl bg-card border border-border hover:border-primary/40 transition-colors"
+              className="p-5 rounded-xl bg-card border border-border hover:border-primary/40 transition-colors flex flex-col justify-between"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="flex items-center gap-3.5">
-                  <div className="relative w-10 h-10 rounded-lg bg-muted p-1.5 border border-border flex items-center justify-center shrink-0 overflow-hidden">
-                    <Image
-                      src={exp.logo}
-                      alt={exp.company}
-                      width={28}
-                      height={28}
-                      className="object-contain max-h-7 max-w-7"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold text-foreground">
-                      {exp.role}
-                    </h3>
-                    <div className="text-xs font-medium text-muted-foreground">
-                      {exp.company}
+              <div>
+                {/* Header: Logo, Title, Period */}
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <div className="flex items-center gap-3">
+                    <div className="relative w-9 h-9 rounded-lg bg-muted p-1 border border-border flex items-center justify-center shrink-0 overflow-hidden">
+                      <Image
+                        src={exp.logo}
+                        alt={exp.company}
+                        width={26}
+                        height={26}
+                        className="object-contain max-h-6 max-w-6"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-sm sm:text-base font-bold text-foreground leading-snug">
+                        {exp.role}
+                      </h3>
+                      <div className="text-xs font-medium text-muted-foreground">
+                        {exp.company}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="self-start sm:self-auto">
-                  <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-muted text-foreground border border-border">
+                  <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-muted text-foreground border border-border whitespace-nowrap shrink-0">
                     {exp.period}
                   </span>
                 </div>
+
+                {/* Specific Engineering Accomplishments */}
+                <ul className="space-y-1.5 my-3 text-xs sm:text-sm text-foreground/85 leading-relaxed">
+                  {exp.highlights.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                {exp.description}
-              </p>
-
-              <div className="mt-3 flex flex-wrap gap-1.5">
+              {/* Tags */}
+              <div className="mt-3 pt-3 border-t border-border/40 flex flex-wrap gap-1.5">
                 {exp.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-2 py-0.5 rounded bg-muted text-foreground/80 font-mono"
+                    className="text-[11px] px-2 py-0.5 rounded bg-muted text-foreground/80 font-mono"
                   >
                     {tag}
                   </span>
