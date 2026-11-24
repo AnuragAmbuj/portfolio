@@ -9,7 +9,6 @@ interface ShareButtonsProps {
 
 export default function ShareButtons({ title }: ShareButtonsProps) {
     const pathname = usePathname();
-    // Default to proper URL in production, fallback for dev
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://anuragambuj.com";
     const url = `${baseUrl}${pathname}`;
     const encodedUrl = encodeURIComponent(url);
@@ -18,21 +17,21 @@ export default function ShareButtons({ title }: ShareButtonsProps) {
     const shareLinks = [
         {
             name: "LinkedIn",
-            icon: <Linkedin size={20} />,
+            icon: <Linkedin size={16} />,
             url: `https://www.linkedin.com/feed/?shareActive=true&text=${encodedTitle}%20${encodedUrl}`,
-            color: "hover:text-brand-linkedin",
+            color: "hover:text-primary",
         },
         {
             name: "X (Twitter)",
-            icon: <Twitter size={20} />,
+            icon: <Twitter size={16} />,
             url: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
-            color: "hover:text-brand-twitter",
+            color: "hover:text-primary",
         },
         {
             name: "Facebook",
-            icon: <Facebook size={20} />,
+            icon: <Facebook size={16} />,
             url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-            color: "hover:text-brand-facebook",
+            color: "hover:text-primary",
         },
     ];
 
@@ -41,14 +40,14 @@ export default function ShareButtons({ title }: ShareButtonsProps) {
     };
 
     return (
-        <div className="flex items-center justify-center gap-4">
-            <Share2 size={16} className="text-muted-foreground" />
-            <div className="flex gap-2">
+        <div className="flex items-center gap-2">
+            <span className="text-xs text-muted-foreground mr-1">Share</span>
+            <div className="flex gap-1.5">
                 {shareLinks.map((link) => (
                     <button
                         key={link.name}
                         onClick={() => handleShare(link.url)}
-                        className={`p-1.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors duration-200 ${link.color} hover:bg-gray-200 dark:hover:bg-gray-700`}
+                        className={`p-1.5 rounded-lg bg-muted text-foreground/80 border border-border transition-colors ${link.color}`}
                         title={`Share on ${link.name}`}
                         aria-label={`Share on ${link.name}`}
                     >

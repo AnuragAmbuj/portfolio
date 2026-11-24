@@ -1,22 +1,19 @@
 .link {
-    color: var(--secondary);
-    text-decoration: none;
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
     font-weight: 500;
-    border-bottom: 1px solid transparent;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    position: relative;
-    z-index: 10;
+    transition: opacity 0.2s ease;
 }
 
 .link:hover {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
+    opacity: 0.8;
 }
 
 .image {
-    border-radius: 8px;
+    border-radius: 12px;
     max-width: 100%;
     height: auto;
-    margin: 2rem 0;
+    margin: 2.5rem auto;
+    border: 1px solid var(--border);
 }
