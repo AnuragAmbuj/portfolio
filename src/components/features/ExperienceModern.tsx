@@ -118,31 +118,31 @@ export default function ExperienceModern() {
               className="p-5 rounded-xl bg-card border border-border hover:border-primary/40 transition-colors flex flex-col justify-between"
             >
               <div>
-                {/* Header: Logo, Title, Period */}
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <div className="flex items-center gap-3">
-                    <div className="relative w-9 h-9 rounded-lg bg-muted p-1 border border-border flex items-center justify-center shrink-0 overflow-hidden">
-                      <Image
-                        src={exp.logo}
-                        alt={exp.company}
-                        width={26}
-                        height={26}
-                        className="object-contain max-h-6 max-w-6"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="text-sm sm:text-base font-bold text-foreground leading-snug">
-                        {exp.role}
-                      </h3>
-                      <div className="text-xs font-medium text-muted-foreground">
-                        {exp.company}
-                      </div>
-                    </div>
+                {/* Header: Logo, Title, Company, Period */}
+                <div className="flex items-start gap-3.5 mb-3">
+                  <div className="relative w-10 h-10 rounded-lg bg-muted/60 p-1.5 border border-border flex items-center justify-center shrink-0 overflow-hidden mt-0.5">
+                    <Image
+                      src={exp.logo}
+                      alt={exp.company}
+                      width={28}
+                      height={28}
+                      className="object-contain max-h-7 max-w-7"
+                    />
                   </div>
 
-                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-muted text-primary border border-border whitespace-nowrap shrink-0">
-                    {exp.period}
-                  </span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-baseline justify-between gap-2">
+                      <h3 className="text-sm sm:text-base font-bold text-foreground leading-snug tracking-tight">
+                        {exp.role}
+                      </h3>
+                      <span className="text-[11px] font-mono font-medium text-muted-foreground whitespace-nowrap shrink-0">
+                        {exp.period}
+                      </span>
+                    </div>
+                    <div className="text-xs font-medium text-primary mt-0.5">
+                      {exp.company}
+                    </div>
+                  </div>
                 </div>
 
                 {/* Specific Engineering Accomplishments */}

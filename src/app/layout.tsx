@@ -39,7 +39,7 @@ export default function RootLayout({
         >
           <SceneryBackground />
           <Navbar />
-          <main className="min-h-screen pt-20 sm:pt-24">
+          <main className="min-h-screen pt-28 sm:pt-32">
             {children}
           </main>
           <Footer />
