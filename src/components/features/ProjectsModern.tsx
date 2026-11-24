@@ -47,15 +47,14 @@ export default async function ProjectsModern() {
                       <FolderGit2 size={18} />
                     </div>
                     {project.languages && project.languages.length > 0 ? (
-                      <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-muted border border-border text-foreground flex items-center gap-1.5">
-                        <span
-                          className="w-1.5 h-1.5 rounded-full"
-                          style={{ backgroundColor: project.languages[0].color || "#FF9808" }}
-                        />
+                      <span
+                        className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-muted border border-border"
+                        style={{ color: project.languages[0].color || "var(--primary)" }}
+                      >
                         {project.languages[0].name}
                       </span>
                     ) : project.tech && project.tech.length > 0 ? (
-                      <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-muted border border-border text-foreground">
+                      <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-muted border border-border text-primary">
                         {project.tech[0]}
                       </span>
                     ) : null}

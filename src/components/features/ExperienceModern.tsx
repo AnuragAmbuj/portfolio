@@ -140,20 +140,19 @@ export default function ExperienceModern() {
                     </div>
                   </div>
 
-                  <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-muted text-foreground border border-border whitespace-nowrap shrink-0">
+                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-muted text-primary border border-border whitespace-nowrap shrink-0">
                     {exp.period}
                   </span>
                 </div>
 
                 {/* Specific Engineering Accomplishments */}
-                <ul className="space-y-1.5 my-3 text-xs sm:text-sm text-foreground/85 leading-relaxed">
+                <div className="space-y-1.5 my-3 text-xs sm:text-sm text-foreground/85 leading-relaxed">
                   {exp.highlights.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
-                      <span>{item}</span>
-                    </li>
+                    <p key={item} className="leading-snug">
+                      {item}
+                    </p>
                   ))}
-                </ul>
+                </div>
               </div>
 
               {/* Tags */}

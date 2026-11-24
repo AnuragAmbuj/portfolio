@@ -53,7 +53,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                             <User size={14} className="text-primary" />
                             <span>{post.authorName || "Anurag Ambuj"}</span>
                         </span>
-                        <span>•</span>
+                        <span className="text-border">/</span>
                         <span className={styles.metaItem}>
                             <Calendar size={14} className="text-primary" />
                             <span>
@@ -64,7 +64,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                                 })}
                             </span>
                         </span>
-                        <span>•</span>
+                        <span className="text-border">/</span>
                         <span className={styles.metaItem}>
                             <Clock size={14} className="text-primary" />
                             <span>{readTimeMinutes} min read</span>
