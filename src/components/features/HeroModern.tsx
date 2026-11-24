@@ -26,7 +26,7 @@ export default function HeroModern() {
           </div>
 
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-            10 years of experience designing and scaling backend platforms across semiconductor
+            Over a decade of experience designing and scaling backend platforms across semiconductor
             manufacturing, EV mobility, and fintech. Focused on domain-driven design,
             event-driven architectures, and low-latency systems.
           </p>

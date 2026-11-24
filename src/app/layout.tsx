@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "anuragambuj.dev | Software Engineering Expert",
-  description: "Portfolio of Anurag Ambuj - Software Engineering Expert with 10 years of experience in Java, Go, Rust & Zig.",
+  description: "Portfolio of Anurag Ambuj - Software Engineering Expert with over a decade of experience in Java, Go, Rust & Zig.",
 };
 
 import { ThemeProvider } from "@/components/providers/ThemeProvider";

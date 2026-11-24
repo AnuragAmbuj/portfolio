@@ -97,7 +97,7 @@ export default function ExperienceModern() {
               Work History
             </h2>
             <p className="text-muted-foreground mt-1 text-sm sm:text-base">
-              Roles, engineering ownership, and systems delivered across 10 years.
+              Roles, engineering ownership, and systems delivered over a decade.
             </p>
           </div>
 
