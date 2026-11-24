@@ -78,6 +78,7 @@
 }
 
 .primaryBtn:hover {
+    color: var(--primary-foreground) !important;
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.35);
 }

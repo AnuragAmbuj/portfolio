@@ -96,7 +96,7 @@ export default async function LatestWritingModern() {
 
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-medium text-sm hover:brightness-105 transition-all self-start sm:self-auto shrink-0"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 hover:text-primary-foreground active:scale-[0.98] transition-all self-start sm:self-auto shrink-0"
           >
             <Mail size={15} />
             <span>Send Message</span>

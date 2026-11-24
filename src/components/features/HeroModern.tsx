@@ -34,7 +34,7 @@ export default function HeroModern() {
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <Link
               href="/#projects"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-medium text-sm hover:brightness-105 transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 hover:text-primary-foreground active:scale-[0.98] transition-all"
             >
               <span>View Projects</span>
               <ArrowRight size={15} />
@@ -42,7 +42,7 @@ export default function HeroModern() {
 
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-card border border-border text-foreground font-medium text-sm hover:border-primary/50 transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-card border border-border text-foreground font-medium text-sm hover:border-primary/50 hover:bg-muted/50 hover:text-foreground active:scale-[0.98] transition-all"
             >
               <span>Read Blog</span>
             </Link>
