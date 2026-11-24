@@ -19,7 +19,7 @@ export default function ProjectCard({ project, layout = "grid" }: ProjectCardPro
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -5 }}
       transition={{ duration: 0.3 }}
-      className={`group relative bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-primary/10 transition-all duration-300 ${
+      className={`group relative bg-card border border-border rounded-xl overflow-hidden hover:border-primary/50 hover:shadow-lg dark:hover:shadow-none transition-all duration-300 ${
         !isGrid ? "flex flex-col md:flex-row gap-6 p-6" : "p-6 flex flex-col h-full"
       }`}
     >

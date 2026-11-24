@@ -1,6 +1,6 @@
 .toggle {
     background: transparent;
-    border: 1px solid rgba(var(--primary-rgb), 0.2);
+    border: 1px solid var(--border);
     color: var(--foreground);
     padding: 0.5rem;
     border-radius: 50%;
@@ -14,6 +14,7 @@
 .toggle:hover {
     background: rgba(var(--primary-rgb), 0.1);
     border-color: var(--primary);
+    color: var(--primary);
     transform: scale(1.05);
 }
 

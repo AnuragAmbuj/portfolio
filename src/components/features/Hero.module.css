@@ -85,15 +85,15 @@
 .secondaryBtn {
     padding: 0.8rem 1.5rem;
     border-radius: 50px;
-    border: 1px solid var(--secondary);
+    border: 1px solid var(--border);
     color: var(--foreground);
     font-weight: 500;
     transition: all 0.3s ease;
 }
 
 .secondaryBtn:hover {
-    border-color: var(--secondary);
-    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary);
+    background: rgba(var(--primary-rgb), 0.08);
 }
 
 .socials {
@@ -107,7 +107,7 @@
 }
 
 .socials a:hover {
-    color: var(--secondary);
+    color: var(--primary);
     transform: translateY(-2px);
 }
 
