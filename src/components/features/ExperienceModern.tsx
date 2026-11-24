@@ -24,7 +24,7 @@ const experiences: ExperienceItem[] = [
     tags: ["Distributed Systems", "Domain-Driven Design", "Semiconductor Tech"],
   },
   {
-    role: "Team Lead & Architect",
+    role: "Team Lead - Engineering",
     company: "BluSmart Mobility",
     period: "Oct 2022 - May 2025",
     logo: "/companies/Blusmart.png",
