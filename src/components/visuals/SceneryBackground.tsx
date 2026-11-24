@@ -23,11 +23,11 @@ export default function SceneryBackground() {
             
             {/* Subtle, eye-friendly ambient glow without distracting particle motion */}
             <div
-                className="absolute inset-0 opacity-50 pointer-events-none transition-opacity duration-500"
+                className="absolute inset-0 opacity-60 pointer-events-none transition-opacity duration-500"
                 style={{
                     background: resolvedTheme === "dark"
-                        ? "radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.04) 0%, transparent 70%)"
-                        : "radial-gradient(circle at 50% 0%, rgba(2, 132, 199, 0.03) 0%, transparent 60%)"
+                        ? "radial-gradient(circle at 50% 0%, rgba(255, 152, 8, 0.07) 0%, transparent 70%)"
+                        : "radial-gradient(circle at 50% 0%, rgba(255, 152, 8, 0.05) 0%, transparent 60%)"
                 }}
             />
         </div>
