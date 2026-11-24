@@ -26,7 +26,7 @@ const experiences: ExperienceItem[] = [
   {
     role: "Team Lead & Architect",
     company: "BluSmart Mobility",
-    period: "Oct 2022 - Apr 2024",
+    period: "Oct 2022 - May 2025",
     logo: "/companies/Blusmart.png",
     highlights: [
       "Led backend engineering teams for Hub and Fleet technologies",

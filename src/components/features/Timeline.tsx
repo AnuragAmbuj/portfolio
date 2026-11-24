@@ -17,7 +17,7 @@ const experiences = [
     {
         role: "Team Lead",
         company: "BluSmart Mobility",
-        period: "Oct 2022 - Apr 2024",
+        period: "Oct 2022 - May 2025",
         description: "Led the backend team for the all-electric ride-hailing platform. Architected core services and managed team delivery. Built tech teams from scratch to support the growth.",
         logo: "/companies/Blusmart.png",
     },
