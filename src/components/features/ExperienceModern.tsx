@@ -86,7 +86,7 @@ const experiences: ExperienceItem[] = [
 
 export default function ExperienceModern() {
   return (
-    <section className="py-16 border-t border-border/60">
+    <section className="py-16">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
@@ -156,7 +156,7 @@ export default function ExperienceModern() {
               </div>
 
               {/* Tags */}
-              <div className="mt-3 pt-3 border-t border-border/40 flex flex-wrap gap-1.5">
+              <div className="mt-3 pt-1 flex flex-wrap gap-1.5">
                 {exp.tags.map((tag) => (
                   <span
                     key={tag}

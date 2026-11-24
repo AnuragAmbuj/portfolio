@@ -30,7 +30,7 @@ export default async function LatestWritingModern() {
   }
 
   return (
-    <section className="py-16 border-t border-border/60">
+    <section className="py-16">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
@@ -75,7 +75,7 @@ export default async function LatestWritingModern() {
                   </p>
                 </div>
 
-                <div className="pt-3 mt-4 border-t border-border/40 flex items-center gap-1 text-xs font-medium text-primary">
+                <div className="pt-1 mt-4 flex items-center gap-1 text-xs font-medium text-primary">
                   <span>Read</span>
                   <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
                 </div>

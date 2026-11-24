@@ -10,7 +10,7 @@ export default async function ProjectsModern() {
     .slice(0, 4);
 
   return (
-    <section id="projects" className="py-16 border-t border-border/60">
+    <section id="projects" className="py-16">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
@@ -89,7 +89,7 @@ export default async function ProjectsModern() {
                 </p>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-border/40 flex items-center justify-between text-xs text-muted-foreground">
+              <div className="pt-2 mt-4 flex items-center justify-between text-xs text-muted-foreground">
                 <span>
                   Updated {new Date(project.pushedAt).toLocaleDateString("en-US", { month: "short", year: "numeric" })}
                 </span>

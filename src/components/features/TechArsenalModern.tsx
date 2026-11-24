@@ -23,7 +23,7 @@ const SKILL_GROUPS = [
 
 export default function TechArsenalModern() {
   return (
-    <section className="py-16 border-t border-border/60">
+    <section className="py-16">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="mb-10">
           <div className="text-xs uppercase tracking-wider font-semibold text-primary mb-1">
@@ -57,7 +57,7 @@ export default function TechArsenalModern() {
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-border/40">
+                <div className="flex flex-wrap gap-1.5 pt-2">
                   {group.skills.map((skill) => (
                     <span
                       key={skill}
