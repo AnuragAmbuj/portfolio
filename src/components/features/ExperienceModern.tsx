@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Briefcase } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface ExperienceItem {
   role: string;
@@ -16,128 +16,121 @@ const experiences: ExperienceItem[] = [
     role: "Software Engineering Expert",
     company: "Applied Materials",
     period: "Jun 2025 - Present",
-    description: "Designing domain-driven architectures and distributed control software required for advanced semiconductor manufacturing processes.",
+    description: "Designing domain-driven architectures for semiconductor manufacturing software.",
     logo: "/companies/Applied_Materials/Applied_Materials.svg",
-    tags: ["Distributed Systems", "Domain-Driven Design", "Semiconductor Tech"],
+    tags: ["Distributed Systems", "Domain-Driven Design"],
   },
   {
     role: "Team Lead",
     company: "BluSmart Mobility",
     period: "Oct 2022 - Apr 2024",
-    description: "Led the core backend engineering team for India's premier all-electric ride-hailing platform. Architected mission-critical dispatch and charging infrastructure services.",
+    description: "Led backend engineering for the electric ride-hailing platform, core dispatch, and charging services.",
     logo: "/companies/Blusmart.png",
-    tags: ["High-Concurrency", "EV Fleet Dispatch", "Team Leadership", "Microservices"],
+    tags: ["High Concurrency", "Fleet Dispatch", "Microservices"],
   },
   {
     role: "SDE 3",
     company: "BharatPe",
     period: "Apr 2022 - Oct 2022",
-    description: "Architected high-throughput lending engines and merchant bill payment pipelines, ensuring sub-second settlement and bulletproof consistency.",
+    description: "Built high-performance lending and merchant bill payment services.",
     logo: "/companies/BharatPe/BharatPe_idcm_6aijV_0.svg",
-    tags: ["FinTech", "High-Throughput Lending", "Event Streaming"],
+    tags: ["FinTech", "Lending", "Event Streaming"],
   },
   {
     role: "SDE 2",
     company: "Mobikwik",
     period: "Jun 2021 - Mar 2022",
-    description: "Engineered scalable Lending Management Systems (LMS) and fault-tolerant repayment pipelines handling multi-million transaction volumes.",
+    description: "Worked on the Lending Management System (LMS) and repayment solutions.",
     logo: "/companies/mobikwik.png",
-    tags: ["LMS", "Payment Gateways", "Distributed Databases"],
+    tags: ["LMS", "Payment Gateways"],
   },
   {
     role: "Lead SDE",
     company: "Freecharge",
     period: "Aug 2018 - Mar 2021",
-    description: "Led the core backend team delivering merchant payment settlement systems, wallet infrastructure, and third-party banking integrations.",
+    description: "Led backend feature development for digital payments and merchant solutions.",
     logo: "/companies/Freecharge.jpeg",
-    tags: ["Merchant Platform", "Digital Payments", "Java"],
+    tags: ["Payments", "Java"],
   },
   {
     role: "Software Engineer",
     company: "Envestnet | Yodlee",
     period: "Jul 2016 - Aug 2018",
-    description: "Built high-volume financial data aggregation engines and high-throughput analytics pipelines for enterprise tier banking clients.",
+    description: "Developed financial data aggregation and analytics pipelines.",
     logo: "/companies/Yodlee.jpeg",
-    tags: ["Financial Aggregation", "Data Pipelines", "Performance Optimization"],
+    tags: ["Financial Aggregation", "Data Pipelines"],
   },
 ];
 
 export default function ExperienceModern() {
   return (
-    <section className="py-20 border-t border-border/60">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+    <section className="py-16 border-t border-border/60">
+      <div className="container mx-auto px-4 max-w-5xl">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
-            <div className="text-xs uppercase tracking-wider font-semibold text-primary mb-2">
-              Career Trajectory
+            <div className="text-xs uppercase tracking-wider font-semibold text-primary mb-1">
+              Experience
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-              Production Experience &amp; Scale
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+              Work History
             </h2>
-            <p className="text-muted-foreground mt-2 max-w-xl text-base">
-              Over a decade of leading teams and engineering high-scale distributed backends.
+            <p className="text-muted-foreground mt-1 text-sm sm:text-base">
+              Roles and companies over the past 10 years.
             </p>
           </div>
 
           <Link
             href="/about"
-            className="group inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline self-start md:self-end"
+            className="group inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline self-start md:self-end"
           >
-            <span>Read Complete Background</span>
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            <span>Full Profile</span>
+            <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>
 
-        {/* High-Density Clean List */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {experiences.map((exp) => (
             <div
               key={`${exp.company}-${exp.period}`}
-              className="group p-5 sm:p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-200 hover:shadow-md"
+              className="p-5 rounded-xl bg-card border border-border hover:border-primary/40 transition-colors"
             >
-              <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-                
-                {/* Left: Logo & Role */}
-                <div className="flex items-start gap-4">
-                  <div className="relative w-12 h-12 rounded-xl bg-muted/60 p-2 border border-border/60 flex items-center justify-center shrink-0 overflow-hidden">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-3.5">
+                  <div className="relative w-10 h-10 rounded-lg bg-muted p-1.5 border border-border flex items-center justify-center shrink-0 overflow-hidden">
                     <Image
                       src={exp.logo}
                       alt={exp.company}
-                      width={32}
-                      height={32}
-                      className="object-contain max-h-8 max-w-8"
+                      width={28}
+                      height={28}
+                      className="object-contain max-h-7 max-w-7"
                     />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                    <h3 className="text-base font-bold text-foreground">
                       {exp.role}
                     </h3>
-                    <div className="text-sm font-medium text-foreground/80">
+                    <div className="text-xs font-medium text-muted-foreground">
                       {exp.company}
                     </div>
                   </div>
                 </div>
 
-                {/* Right: Period Tag */}
-                <div className="self-start md:self-center">
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-muted border border-border text-foreground">
+                <div className="self-start sm:self-auto">
+                  <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-muted text-foreground border border-border">
                     {exp.period}
                   </span>
                 </div>
               </div>
 
-              {/* Description */}
-              <p className="mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
                 {exp.description}
               </p>
 
-              {/* Tags */}
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="mt-3 flex flex-wrap gap-1.5">
                 {exp.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-2.5 py-1 rounded-md bg-muted/70 text-foreground/80 border border-border/40 font-mono"
+                    className="text-xs px-2 py-0.5 rounded bg-muted text-foreground/80 font-mono"
                   >
                     {tag}
                   </span>
