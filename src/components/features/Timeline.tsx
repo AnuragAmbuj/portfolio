@@ -15,9 +15,9 @@ const experiences = [
         logo: "/companies/Applied_Materials/Applied_Materials.svg",
     },
     {
-        role: "Team Lead",
+        role: "Team Lead - Engineering",
         company: "BluSmart Mobility",
-        period: "Oct 2022 - Apr 2024",
+        period: "Oct 2022 - May 2025",
         description: "Led the backend team for the all-electric ride-hailing platform. Architected core services and managed team delivery. Built tech teams from scratch to support the growth.",
         logo: "/companies/Blusmart.png",
     },

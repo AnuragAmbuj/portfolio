@@ -19,7 +19,7 @@ export default function ProjectCard({ project, layout = "grid" }: ProjectCardPro
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -5 }}
       transition={{ duration: 0.3 }}
-      className={`group relative bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-primary/10 transition-all duration-300 ${
+      className={`group relative bg-card border border-border rounded-xl overflow-hidden hover:border-primary/50 hover:shadow-lg dark:hover:shadow-none transition-all duration-300 ${
         !isGrid ? "flex flex-col md:flex-row gap-6 p-6" : "p-6 flex flex-col h-full"
       }`}
     >
@@ -65,9 +65,9 @@ export default function ProjectCard({ project, layout = "grid" }: ProjectCardPro
                     project.languages.map((lang) => (
                         <span
                             key={lang.name}
-                            className="flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                            className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-muted border border-border"
+                            style={{ color: lang.color }}
                         >
-                            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: lang.color }} />
                             {lang.name}
                         </span>
                     ))
@@ -75,7 +75,7 @@ export default function ProjectCard({ project, layout = "grid" }: ProjectCardPro
                     project.tech.slice(0, 5).map((tech) => (
                     <span
                         key={tech}
-                        className="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300"
+                        className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-muted border border-border text-primary"
                     >
                         {tech}
                     </span>

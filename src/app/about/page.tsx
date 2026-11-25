@@ -44,8 +44,8 @@ export default function AboutPage() {
         },
         {
             company: "BluSmart Mobility",
-            role: "Team Lead & Architect",
-            period: "Oct 2022 - Apr 2025",
+            role: "Team Lead - Engineering",
+            period: "Oct 2022 - May 2025",
             logo: "/companies/Blusmart.png",
             description: "Led the backend engineering team for the ride-hailing platform.",
             projects: [

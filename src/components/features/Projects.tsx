@@ -34,7 +34,7 @@ export default async function Projects() {
         <div className="flex justify-center">
             <Link 
                 href="/projects"
-                className="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full hover:border-primary hover:text-primary transition-all duration-300 shadow-sm"
+                className="group flex items-center gap-2 px-6 py-3 bg-card border border-border rounded-full hover:border-primary hover:text-primary transition-all duration-300 shadow-sm"
             >
                 <span className="font-medium">View All Projects</span>
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />

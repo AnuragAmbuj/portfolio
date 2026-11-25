@@ -18,21 +18,21 @@ export default function ProjectsClientPage({ initialProjects }: ProjectsClientPa
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
             <div>
-                 <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
+                 <h1 className="text-4xl font-bold text-foreground mb-4">
                     All Projects
                 </h1>
-                <p className="text-lg text-slate-600 dark:text-slate-400">
+                <p className="text-lg text-muted-foreground">
                     A comprehensive list of my open source work and repositories.
                 </p>
             </div>
           
-          <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg self-start md:self-center">
+          <div className="flex items-center gap-2 bg-muted p-1 rounded-lg self-start md:self-center">
             <button
               onClick={() => setLayout("grid")}
               className={`p-2 rounded-md transition-all ${
                 layout === "grid"
-                  ? "bg-white dark:bg-slate-700 shadow-sm text-primary"
-                  : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
+                  ? "bg-card shadow-sm text-primary"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
               aria-label="Grid view"
             >
@@ -42,8 +42,8 @@ export default function ProjectsClientPage({ initialProjects }: ProjectsClientPa
               onClick={() => setLayout("list")}
               className={`p-2 rounded-md transition-all ${
                 layout === "list"
-                  ? "bg-white dark:bg-slate-700 shadow-sm text-primary"
-                  : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
+                  ? "bg-card shadow-sm text-primary"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
               aria-label="List view"
             >

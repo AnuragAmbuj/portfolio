@@ -3,103 +3,133 @@
 @tailwind utilities;
 
 :root {
-  /* Light Mode (Cream PCB) */
-  /* Palette: #F8FAE5 (Bg), #43766C (Primary), #B19470 (Secondary), #76453B (Text) */
-  --background: #F8FAE5; /* Cream */
-  --foreground: #76453B; /* Dark Brown - Contrast 10.7:1 */
-  --card: #ffffff;
-  --card-foreground: #76453B;
-  --popover: #ffffff;
-  --popover-foreground: #76453B;
-  --primary: #43766C; /* Teal - Contrast 5.6:1 */
-  --primary-foreground: #ffffff;
-  --secondary: #B19470; /* Copper/Tan */
-  --secondary-foreground: #ffffff; 
-  --muted: #E6E2D0;
-  --muted-foreground: #43766C;
-  --accent: #B19470;
-  --accent-foreground: #ffffff;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: #B19470;
-  --input: #43766C;
-  --ring: #43766C;
-  --radius: 0.5rem;
-  --chart-1: #43766C;
-  --chart-2: #B19470;
-  --chart-3: #76453B;
-  --chart-4: #2a9d8f;
-  --chart-5: #e9c46a;
+  /* Light Mode (ColorHunt: #FF9808, #ECCEA8, #A98585, #494848) */
+  --background: #FAF6F0; /* Soft warm porcelain sand */
+  --foreground: #494848; /* Exact deep charcoal from palette */
+  --card: #FFFFFF;
+  --card-foreground: #494848;
+  --popover: #FFFFFF;
+  --popover-foreground: #494848;
+  --primary: #FF9808; /* Radiant Amber Orange from palette */
+  --primary-foreground: #FFFFFF;
+  --secondary: #A98585; /* Dusty rosewood taupe from palette */
+  --secondary-foreground: #FFFFFF;
+  --muted: #F3ECE2; /* Soft sand tint */
+  --muted-foreground: #766E6E;
+  --accent: #ECCEA8; /* Warm almond sand from palette */
+  --accent-foreground: #494848;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #E8DCCF; /* Soft warm hairline border */
+  --input: #E8DCCF;
+  --ring: #FF9808;
+  --radius: 0.625rem;
+  --chart-1: #FF9808;
+  --chart-2: #ECCEA8;
+  --chart-3: #A98585;
+  --chart-4: #494848;
+  --chart-5: #D4A373;
 
-  --gray-100: #f1f5f9;
-  --gray-200: #e2e8f0;
-  --gray-300: #cbd5e1;
-  --gray-400: #94a3b8;
-  --gray-500: #64748b;
-  --gray-600: #475569;
-  --gray-700: #334155;
-  --gray-800: #1e293b;
-  --gray-900: #0f172a;
+  --gray-100: #F7F1E9;
+  --gray-200: #E8DCCF;
+  --gray-300: #D8C7B5;
+  --gray-400: #A98585;
+  --gray-500: #766E6E;
+  --gray-600: #5C5656;
+  --gray-700: #494848;
+  --gray-800: #383737;
+  --gray-900: #232222;
 
-  --font-sans: 'Inter', sans-serif;
-  --font-heading: 'Inter', sans-serif;
+  --font-sans: 'Google Sans Text', 'Google Sans', sans-serif;
+  --font-heading: 'Google Sans', sans-serif;
 
-  /* Light mode gradient - Sleek Animated Linear */
-  --bg-gradient: linear-gradient(120deg, var(--background) 0%, rgba(var(--primary-rgb), 0.08) 50%, var(--background) 100%);
+  /* Light mode ambient background - Warm amber/sand tint */
+  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(255, 152, 8, 0.05) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(236, 206, 168, 0.1) 0%, transparent 50%);
 
-  /* RGB Values for transparency support */
-  --primary-rgb: 67, 118, 108;
-  --secondary-rgb: 177, 148, 112;
-  --background-rgb: 248, 250, 229;
-  --foreground-rgb: 118, 69, 59;
+  /* RGB Values for Tailwind alpha support */
+  --primary-rgb: 255, 152, 8;
+  --secondary-rgb: 169, 133, 133;
+  --background-rgb: 250, 246, 240;
+  --foreground-rgb: 73, 72, 72;
+  --card-rgb: 255, 255, 255;
+  --card-foreground-rgb: 73, 72, 72;
+  --popover-rgb: 255, 255, 255;
+  --popover-foreground-rgb: 73, 72, 72;
+  --primary-foreground-rgb: 255, 255, 255;
+  --secondary-foreground-rgb: 255, 255, 255;
+  --muted-rgb: 243, 236, 226;
+  --muted-foreground-rgb: 118, 110, 110;
+  --accent-rgb: 236, 206, 168;
+  --accent-foreground-rgb: 73, 72, 72;
+  --destructive-rgb: 239, 68, 68;
+  --destructive-foreground-rgb: 255, 255, 255;
+  --border-rgb: 232, 220, 207;
+  --input-rgb: 232, 220, 207;
+  --ring-rgb: 255, 152, 8;
 }
 
 .dark {
-  /* Dark Mode (Deep Semiconductor) */
-  /* Background: Darkened Teal/Black */
-  --background: #1A2423; /* Very Dark Teal-Black */
-  --foreground: #F8FAE5; /* Cream - Contrast 13:1 */
-  --card: #24302E; /* Dark Slate Teal */
-  --card-foreground: #F8FAE5;
-  --popover: #24302E;
-  --popover-foreground: #F8FAE5;
-  --primary: #B19470; /* Copper - Contrast 6.7:1 */
-  --primary-foreground: #1A2423;
-  --secondary: #43766C; /* Teal - Contrast 3.4:1 (Subdued) */
-  --secondary-foreground: #F8FAE5;
-  --muted: #2C3A38;
-  --muted-foreground: #F8FAE5; /* Improved visibility */
-  --accent: #43766C;
-  --accent-foreground: #F8FAE5;
-  --destructive: #7f1d1d;
-  --destructive-foreground: #ffffff;
-  --border: #43766C;
-  --input: #2C3A38;
-  --ring: #B19470;
-  --chart-1: #B19470;
-  --chart-2: #43766C;
-  --chart-3: #F8FAE5;
-  --chart-4: #431407;
-  --chart-5: #422006;
+  /* Dark Mode (Warm Graphite & Amber Glow) */
+  --background: #232222; /* Warm deep charcoal */
+  --foreground: #F5EFEB; /* Soft warm ivory */
+  --card: #2D2C2C; /* Warm graphite elevated card */
+  --card-foreground: #F5EFEB;
+  --popover: #2D2C2C;
+  --popover-foreground: #F5EFEB;
+  --primary: #FF9808; /* Radiant Amber Orange */
+  --primary-foreground: #232222;
+  --secondary: #ECCEA8; /* Warm Sand */
+  --secondary-foreground: #232222;
+  --muted: #383737;
+  --muted-foreground: #A98585; /* Dusty taupe */
+  --accent: #494848; /* Palette charcoal */
+  --accent-foreground: #ECCEA8;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #3E3D3D; /* Subtle warm divider */
+  --input: #3E3D3D;
+  --ring: #FF9808;
+  --chart-1: #FF9808;
+  --chart-2: #ECCEA8;
+  --chart-3: #A98585;
+  --chart-4: #F87171;
+  --chart-5: #E5E7EB;
 
-  --gray-100: #1a1a2e;
-  --gray-200: #16213e;
-  --gray-300: #404040;
-  --gray-400: #a3a3a3;
-  --gray-500: #737373;
-  --gray-600: #525252;
-  --gray-700: #d4d4d4;
-  --gray-800: #e5e5e5;
-  --gray-900: #f5f5f5;
+  --gray-100: #2D2C2C;
+  --gray-200: #383737;
+  --gray-300: #494848;
+  --gray-400: #A98585;
+  --gray-500: #C4B0B0;
+  --gray-600: #D8C7B5;
+  --gray-700: #ECCEA8;
+  --gray-800: #F3ECE2;
+  --gray-900: #FAF6F0;
 
-  /* Dark mode gradient - Sleek Animated Linear */
-  --bg-gradient: linear-gradient(120deg, var(--background) 0%, rgba(var(--secondary-rgb), 0.12) 50%, var(--background) 100%);
+  /* Dark mode ambient background */
+  --bg-gradient: radial-gradient(circle at 50% 0%, rgba(255, 152, 8, 0.07) 0%, transparent 70%),
+    radial-gradient(circle at 100% 100%, rgba(236, 206, 168, 0.04) 0%, transparent 50%);
 
-  /* RGB Values for transparency support */
-  --primary-rgb: 177, 148, 112;
-  --secondary-rgb: 67, 118, 108;
-  --background-rgb: 26, 36, 35;
-  --foreground-rgb: 248, 250, 229;
+  /* RGB Values for Tailwind alpha support */
+  --primary-rgb: 255, 152, 8;
+  --secondary-rgb: 236, 206, 168;
+  --background-rgb: 35, 34, 34;
+  --foreground-rgb: 245, 239, 235;
+  --card-rgb: 45, 44, 44;
+  --card-foreground-rgb: 245, 239, 235;
+  --popover-rgb: 45, 44, 44;
+  --popover-foreground-rgb: 245, 239, 235;
+  --primary-foreground-rgb: 35, 34, 34;
+  --secondary-foreground-rgb: 35, 34, 34;
+  --muted-rgb: 56, 55, 55;
+  --muted-foreground-rgb: 169, 133, 133;
+  --accent-rgb: 73, 72, 72;
+  --accent-foreground-rgb: 236, 206, 168;
+  --destructive-rgb: 239, 68, 68;
+  --destructive-foreground-rgb: 255, 255, 255;
+  --border-rgb: 62, 61, 61;
+  --input-rgb: 62, 61, 61;
+  --ring-rgb: 255, 152, 8;
 }
 
 * {
@@ -119,7 +149,7 @@ body {
   overflow-x: hidden;
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-sans), sans-serif !important;
+  font-family: var(--font-sans), 'Google Sans', sans-serif !important;
   position: relative;
   min-height: 100vh;
 }
@@ -134,14 +164,11 @@ body::before {
   pointer-events: none;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: var(--secondary);
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 /* Utility classes */
@@ -152,35 +179,35 @@ a:hover {
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border);
 }
 
 .dark .glass {
-  background: rgba(3, 0, 20, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(45, 44, 44, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(236, 206, 168, 0.12);
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  /* Dark Blue to Muted Blue for Light Mode */
+  background: linear-gradient(135deg, #FF9808 0%, #D97706 50%, #A98585 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .dark .text-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, var(--primary) 100%);
-  /* White to Muted Blue for Dark Mode */
+  background: linear-gradient(135deg, #ECCEA8 0%, #FF9808 60%, #FFA726 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .glow {
-  box-shadow: 0 0 20px rgba(69, 104, 130, 0.3);
+  box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.25);
 }
 
 /* Typography */
@@ -190,11 +217,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-heading), sans-serif !important;
+  font-family: var(--font-heading), 'Google Sans', sans-serif !important;
   font-weight: 700;
-  letter-spacing: -0.03em;
-  /* Tighter for modern look */
-  line-height: 1.1;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
   margin-bottom: 1rem;
 }
 
@@ -217,7 +243,7 @@ p {
 }
 
 .dark p {
-  color: #a3a3a3;
+  color: var(--muted-foreground);
 }
 
 /* Scrollbar */
@@ -230,7 +256,7 @@ p {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gray-200);
+  background: var(--border);
   border-radius: 4px;
 }
 
@@ -239,6 +265,6 @@ p {
 }
 
 ::selection {
-  background: var(--primary);
-  color: white;
+  background: rgba(var(--primary-rgb), 0.25);
+  color: var(--foreground);
 }

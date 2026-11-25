@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "anuragambuj.dev | Software Engineering Expert",
-  description: "Portfolio of Anurag Ambuj - Software Engineering Expert with 10 years of experience in Java, Go, Rust & Zig.",
+  description: "Portfolio of Anurag Ambuj - Software Engineering Expert with over a decade of experience in Java, Go, Rust & Zig.",
 };
 
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
@@ -28,7 +28,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700&family=Google+Sans+Text:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="antialiased">
         <ThemeProvider
@@ -39,7 +39,7 @@ export default function RootLayout({
         >
           <SceneryBackground />
           <Navbar />
-          <main className="min-h-screen pt-32">
+          <main className="min-h-screen pt-28 sm:pt-32">
             {children}
           </main>
           <Footer />
