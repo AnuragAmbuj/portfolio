@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface ExperienceItem {
   role: string;
@@ -86,18 +86,19 @@ const experiences: ExperienceItem[] = [
 
 export default function ExperienceModern() {
   return (
-    <section className="py-16">
+    <section className="py-20 md:py-28">
       <div className="container mx-auto px-4 max-w-5xl">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
-            <div className="text-xs uppercase tracking-wider font-semibold text-primary mb-1">
+            <p className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] font-semibold text-primary mb-2">
+              <span className="inline-block h-px w-8 bg-primary" aria-hidden="true" />
               Experience
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-              Work History
+            </p>
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-foreground">
+              A decade of shipping systems
             </h2>
-            <p className="text-muted-foreground mt-1 text-sm sm:text-base">
-              Roles, engineering ownership, and systems delivered over a decade.
+            <p className="text-muted-foreground mt-2 text-sm sm:text-base max-w-xl">
+              Roles, engineering ownership, and the platforms delivered along the way.
             </p>
           </div>
 
@@ -110,61 +111,63 @@ export default function ExperienceModern() {
           </Link>
         </div>
 
-        {/* Compact 2-Column Grid eliminating empty space */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Editorial timeline: single column, rule-separated rows */}
+        <div className="border-t border-border">
           {experiences.map((exp) => (
             <div
               key={`${exp.company}-${exp.period}`}
-              className="p-5 rounded-xl bg-card border border-border hover:border-primary/40 transition-colors flex flex-col justify-between"
+              className="group grid grid-cols-1 md:grid-cols-[180px_1fr] gap-2 md:gap-10 py-7 border-b border-border"
             >
-              <div>
-                {/* Header: Logo, Title, Company, Period */}
-                <div className="flex items-start gap-3.5 mb-3">
-                  <div className="relative w-10 h-10 rounded-lg bg-muted/60 p-1.5 border border-border flex items-center justify-center shrink-0 overflow-hidden mt-0.5">
-                    <Image
-                      src={exp.logo}
-                      alt={exp.company}
-                      width={28}
-                      height={28}
-                      className="object-contain max-h-7 max-w-7"
-                    />
-                  </div>
-
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-baseline justify-between gap-2">
-                      <h3 className="text-sm sm:text-base font-bold text-foreground leading-snug tracking-tight">
-                        {exp.role}
-                      </h3>
-                      <span className="text-[11px] font-mono font-medium text-muted-foreground whitespace-nowrap shrink-0">
-                        {exp.period}
-                      </span>
-                    </div>
-                    <div className="text-xs font-medium text-primary mt-0.5">
-                      {exp.company}
-                    </div>
-                  </div>
+              {/* Left rail: period + logo */}
+              <div className="flex md:flex-col items-center md:items-start gap-3 md:gap-3">
+                <div className="relative w-9 h-9 rounded-lg bg-muted/60 p-1.5 border border-border flex items-center justify-center shrink-0 overflow-hidden">
+                  <Image
+                    src={exp.logo}
+                    alt={exp.company}
+                    width={26}
+                    height={26}
+                    className="object-contain max-h-6 max-w-6"
+                  />
                 </div>
-
-                {/* Specific Engineering Accomplishments */}
-                <div className="space-y-1.5 my-3 text-xs sm:text-sm text-foreground/85 leading-relaxed">
-                  {exp.highlights.map((item) => (
-                    <p key={item} className="leading-snug">
-                      {item}
-                    </p>
-                  ))}
-                </div>
+                <span className="text-xs font-mono tabular-nums text-muted-foreground">
+                  {exp.period}
+                </span>
               </div>
 
-              {/* Tags */}
-              <div className="mt-3 pt-1 flex flex-wrap gap-1.5">
-                {exp.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[11px] px-2 py-0.5 rounded bg-muted text-foreground/80 font-mono"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              {/* Right: role, company, highlights, tags */}
+              <div className="min-w-0">
+                <h3 className="text-lg sm:text-xl font-bold text-foreground leading-snug">
+                  {exp.role}
+                </h3>
+                <div className="text-sm font-medium text-primary mt-0.5">
+                  {exp.company}
+                </div>
+
+                <ul className="mt-3 space-y-1.5">
+                  {exp.highlights.map((item) => (
+                    <li
+                      key={item}
+                      className="flex gap-2.5 text-sm text-foreground/85 leading-relaxed"
+                    >
+                      <span
+                        className="mt-[9px] inline-block h-1 w-1 rounded-full bg-primary shrink-0"
+                        aria-hidden="true"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {exp.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[11px] px-2 py-0.5 rounded bg-muted text-foreground/80 font-mono"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}

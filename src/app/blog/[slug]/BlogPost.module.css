@@ -171,9 +171,9 @@
 
 /* Code block pre */
 .content pre {
-    background: #181818 !important;
+    background: var(--card) !important;
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: var(--radius);
     padding: 1.25rem;
     overflow-x: auto;
     margin: 2rem 0;

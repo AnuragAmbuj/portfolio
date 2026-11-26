@@ -1,28 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { Download, BookOpen, Code2 } from "lucide-react";
+import { Download, ArrowRight } from "lucide-react";
 import styles from "./about.module.css";
-import MasonryGrid from "../../components/layout/MasonryGrid";
 
 export default function AboutPage() {
-    const [currentFrame, setCurrentFrame] = useState(0);
-    const profileImages = [
-        "/profile-2d-1.png", // Neutral
-        "/profile-2d-2.png", // Smile
-        "/profile-2d-3.png", // Laugh
-        "/profile-2d-2.png", // Smile (cycle back)
-    ];
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentFrame((prev) => (prev + 1) % profileImages.length);
-        }, 200); 
-
-        return () => clearInterval(interval);
-    }, [profileImages.length]);
+    const [portraitLoaded, setPortraitLoaded] = useState(false);
 
     const experiences = [
         {
@@ -166,170 +150,117 @@ export default function AboutPage() {
 
 
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
+    const skills: Record<string, string[]> = {
+        Languages: ["Java", "Go", "Rust", "Zig", "Kotlin", "TypeScript", "SQL"],
+        "Core Competencies": ["Distributed Systems", "Microservices", "Domain Driven Design", "Event Sourcing", "System Design"],
+        "Technologies & Tools": ["Spring Boot", "Kafka", "AWS", "Kubernetes", "Docker", "Terraform", "PostgreSQL", "MongoDB", "MySQL", "Redis", "Elasticsearch"]
     };
 
+    const stats = [
+        { value: "10+", label: "Years of Experience" },
+        { value: "500M+", label: "Requests/Day Scaled" },
+        { value: "4", label: "Product Domains Shipped" }
+    ];
 
     return (
         <main className={styles.container}>
-            <MasonryGrid
-                gap={24}
-                breakpoints={{
-                    0: 1,    // Mobile
-                    768: 2,  // Tablet
-                    1024: 3, // Desktop
-                    1280: 3  // Large Desktop - usually 3 is wide enough, or 4 if very wide. 
-                             // Let's try 3 for better density as requested.
-                }}
-            >
-                {/* 1. Profile Tile */}
-                <motion.div className={`${styles.bentoItem} ${styles.itemProfile}`} variants={itemVariants} initial="hidden" animate="visible">
-                    <div className={styles.profileHeader}>
-                        <div className={styles.imageWrapper}>
-                            <Image
-                                src={profileImages[currentFrame]}
-                                alt="Anurag Ambuj"
-                                fill
-                                className={styles.profileImage}
-                                priority
-                            />
-                        </div>
-                        <div>
-                            <h1 className={styles.title}>Anurag Ambuj</h1>
-                            <p className={styles.subtitle}>
-                                Software Engineering Expert with over a decade of experience architecting high-performance distributed systems. Proven track record in scaling Backend infrastructure for FinTech and Mobility unicorns, now driving software innovation in Semiconductor manufacturing.
-                            </p>
-                            <div className="flex gap-2 flex-wrap">
-                                 <div className={styles.skillTag}>Team Leadership</div>
-                                 <div className={styles.skillTag}>System Design</div>
-                                 <div className={styles.skillTag}>Cloud Native</div>
-                            </div>
-                        </div>
-                        <a
-                            href="/Anurag_Ambuj_Resume.pdf"
-                            className={styles.downloadBtn}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            download="Anurag_Ambuj_Resume.pdf"
-                        >
-                            <Download size={20} />
-                            Download Resume
+            <section className={styles.hero}>
+                <div className={styles.portrait}>
+                    <Image src="/profile-2d-2.png" alt="Portrait of Anurag Ambuj" fill sizes="(min-width: 768px) 240px, 160px" className={styles.portraitImage} priority />
+                </div>
+                <div>
+                    <p className={styles.eyebrow}>About</p>
+                    <h1 className={styles.headline}>Systems that hold under pressure</h1>
+                    <p className={styles.lede}>
+                        I am Anurag Ambuj, a software engineering expert with over a decade of experience architecting high-performance distributed systems. I have scaled backend infrastructure for FinTech and Mobility unicorns, and now design software for semiconductor manufacturing.
+                    </p>
+                    <div className={styles.ctaRow}>
+                        <a href="/Anurag_Ambuj_Resume.pdf" className={styles.primaryBtn} target="_blank" rel="noopener noreferrer" download="Anurag_Ambuj_Resume.pdf">
+                            <Download size={18} /> Download Resume
+                        </a>
+                        <a href="/projects" className={styles.secondaryBtn}>
+                            See my work <ArrowRight size={16} />
                         </a>
                     </div>
-                </motion.div>
+                </div>
+            </section>
 
-                {/* 2. Stats 1 - Years */}
-                <motion.div className={`${styles.bentoItem} ${styles.itemStats}`} variants={itemVariants} initial="hidden" animate="visible">
-                    <div>
-                        <div className="text-4xl font-bold text-primary">10+</div>
-                        <div className="text-sm text-muted-foreground uppercase tracking-wider mt-1">Years of Experience</div>
+            <section className={styles.statBand} aria-label="Career at a glance">
+                {stats.map((s) => (
+                    <div key={s.label}>
+                        <div className={styles.statValue}>{s.value}</div>
+                        <div className={styles.statLabel}>{s.label}</div>
                     </div>
-                 </motion.div>
+                ))}
+            </section>
 
-                 {/* 3. Tech Stack */}
-                <motion.div className={`${styles.bentoItem} ${styles.itemSkills}`} variants={itemVariants} initial="hidden" animate="visible">
-                    <h2 className={styles.sectionTitle}>
-                        <Code2 size={20} /> Technical Stack
-                    </h2>
-                    <div className={styles.skillsGrid}>
-                         {/* Languages */}
-                         <div className={styles.skillCategory}>Languages</div>
-                         <div className={styles.skillList}>
-                            {["Java", "Go", "Rust", "Zig", "Kotlin", "TypeScript", "SQL"].map(s => (
-                                <span key={s} className={styles.skillTag}>{s}</span>
-                            ))}
-                         </div>
-                         
-                         {/* Architect/Core Skills */}
-                         <div className={styles.skillCategory}>Core Competencies</div>
-                         <div className={styles.skillList}>
-                            {["Distributed Systems", "Microservices", "Domain Driven Design", "Event Sourcing", "System Design"].map(s => (
-                                <span key={s} className={styles.skillTag}>{s}</span>
-                            ))}
-                         </div>
-
-                         {/* Tools & Frameworks */}
-                         <div className={styles.skillCategory}>Technologies & Tools</div>
-                         <div className={styles.skillList}>
-                            {["Spring Boot", "Kafka", "AWS", "Kubernetes", "Docker", "Terraform", "PostgreSQL", "MongoDB", "MySQL", "Redis", "Elasticsearch"].map(s => (
-                                <span key={s} className={styles.skillTag}>{s}</span>
-                            ))}
-                         </div>
-                    </div>
-                </motion.div>
-
-                 {/* 4. Stats 2 - Requests */}
-                 <motion.div className={`${styles.bentoItem} ${styles.itemStats}`} variants={itemVariants} initial="hidden" animate="visible">
-                    <div>
-                        <div className="text-4xl font-bold text-secondary">500M+</div>
-                        <div className="text-sm text-muted-foreground uppercase tracking-wider mt-1">Requests/Day Scaled</div>
-                    </div>
-                 </motion.div>
-
-                 {/* 5. Courses */}
-                <motion.div className={`${styles.bentoItem} ${styles.itemEducation}`} variants={itemVariants} initial="hidden" animate="visible">
-                     <h2 className={styles.sectionTitle}>
-                        <BookOpen size={20} /> Courses
-                    </h2>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                        {courses.map((c) => (
-                            <div key={c.name} className="px-3 py-1 bg-primary/10 rounded-full text-xs font-medium text-primary border border-primary/20">
-                                {c.name}
+            <section className={styles.split}>
+                <div>
+                    <h2 className={styles.sectionHeading}>The short version</h2>
+                    <p className={styles.bodyText}>
+                        Since 2016 I have built the money-moving side of software: data aggregation at Envestnet | Yodlee, merchant subscriptions at Freecharge, lending and card tokenization at Mobikwik and BharatPe, then ride-hailing and charging infrastructure at BluSmart. Today I apply the same discipline to semiconductor manufacturing software at Applied Materials.
+                    </p>
+                    <p className={styles.bodyText}>
+                        The throughline: systems that stay correct at peak load, owned end to end, from domain model to deployment.
+                    </p>
+                </div>
+                <div>
+                    <h2 className={styles.sectionHeading}>The toolkit</h2>
+                    {Object.entries(skills).map(([category, items]) => (
+                        <div key={category} className={styles.skillGroup}>
+                            <div className={styles.skillCategory}>{category}</div>
+                            <div className={styles.skillList}>
+                                {items.map((s) => (
+                                    <span key={s} className={styles.skillTag}>{s}</span>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-                </motion.div>
+                        </div>
+                    ))}
+                </div>
+            </section>
 
-                {/* 6. Spacer to align the first experience to Column 0 in both 2-col and 3-col layouts */}
-                <div aria-hidden="true" style={{ height: 0, margin: 0, padding: 0 }} />
-
-                {/* 7. Experiences (Mapped) */}
+            <section className={styles.timeline}>
+                <h2 className={styles.sectionHeading}>Where I have worked</h2>
                 {experiences.map((exp) => (
-                    <motion.div 
-                        key={exp.company} 
-                        className={`${styles.bentoItem} ${styles.itemProject}`}
-                        variants={itemVariants}
-                        initial="hidden"
-                        animate="visible"
-                    >
-                         <div className="flex justify-between items-start mb-4 border-b border-border pb-3">
-                            <div className="flex-1 pr-4">
-                                <div className="flex items-center gap-2 mb-1">
-                                    <span className={styles.timelineBadge}>{exp.period}</span>
-                                </div>
-                                <h3 className="text-xl font-bold text-foreground leading-tight">{exp.role}</h3>
-                                <div className="text-sm font-medium text-primary mt-1 opacity-90">{exp.company}</div>
-                            </div>
+                    <article key={exp.company} className={styles.entry}>
+                        <div className={styles.entryMeta}>
                             {exp.logo && (
                                 <div className={styles.logoWrapper}>
-                                    <Image 
-                                        src={exp.logo} 
-                                        alt={exp.company} 
-                                        fill 
-                                        className={styles.companyLogo} 
-                                    />
+                                    <Image src={exp.logo} alt={exp.company + " logo"} fill sizes="40px" className={styles.companyLogo} />
                                 </div>
                             )}
-                         </div>
-                         
-                         <p className="text-sm text-muted-foreground mb-4 italic">
-                             {exp.description}
-                         </p>
-
-                         <div className={styles.projectGrid}>
-                            {exp.projects.map((p) => ( 
-                                <div key={p.name} className={styles.subProjectCard}>
-                                    <h4 className={styles.subProjectTitle}>{p.name}</h4>
-                                    <p className={styles.subProjectDesc}>{p.desc}</p>
-                                </div>
-                            ))}
-                         </div>
-                    </motion.div>
+                            <div>
+                                <span className={styles.period}>{exp.period}</span>
+                                <span className={styles.periodDesktop}>{exp.period}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 className={styles.role}>{exp.role}</h3>
+                            <div className={styles.company}>{exp.company}</div>
+                            <p className={styles.entryDesc}>{exp.description}</p>
+                            <div className={styles.projectGrid}>
+                                {exp.projects.map((p) => (
+                                    <div key={p.name} className={styles.subProjectCard}>
+                                        <h4 className={styles.subProjectTitle}>{p.name}</h4>
+                                        <p className={styles.subProjectDesc}>{p.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </article>
                 ))}
+            </section>
 
-            </MasonryGrid>
+            <section className={styles.courses}>
+                <h2 className={styles.sectionHeading}>Always learning</h2>
+                <div className={styles.courseList}>
+                    {courses.map((c) => (
+                        <span key={c.name} className={styles.courseChip}>
+                            {c.name} <strong>{c.date}</strong>
+                        </span>
+                    ))}
+                </div>
+            </section>
         </main>
     );
 }

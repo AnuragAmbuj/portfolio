@@ -23,45 +23,47 @@ const SKILL_GROUPS = [
 
 export default function TechArsenalModern() {
   return (
-    <section className="py-16">
+    <section className="py-20 md:py-28">
       <div className="container mx-auto px-4 max-w-5xl">
-        <div className="mb-10">
-          <div className="text-xs uppercase tracking-wider font-semibold text-primary mb-1">
-            Technical Stack
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-            Skills &amp; Technologies
+        <div className="mb-12">
+          <p className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] font-semibold text-primary mb-2">
+            <span className="inline-block h-px w-8 bg-primary" aria-hidden="true" />
+            Technical stack
+          </p>
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-foreground">
+            Tools of the trade
           </h2>
-          <p className="text-muted-foreground mt-1 text-sm sm:text-base">
-            Tools and languages used in production systems.
+          <p className="text-muted-foreground mt-2 text-sm sm:text-base max-w-xl">
+            Languages and infrastructure used in production systems, day to day.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {/* Full-width rule-separated skill rows, one accent column for the label */}
+        <div className="border-t border-border">
           {SKILL_GROUPS.map((group) => {
             const Icon = group.icon;
             return (
               <div
                 key={group.title}
-                className="p-5 sm:p-6 rounded-xl bg-card border border-border flex flex-col justify-between"
+                className="grid grid-cols-1 md:grid-cols-[240px_1fr] gap-3 md:gap-10 py-7 border-b border-border"
               >
                 <div>
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-3">
-                    <Icon size={18} />
-                  </div>
-                  <h3 className="text-base font-bold text-foreground mb-1">
+                  <h3 className="flex items-center gap-2 text-base font-semibold text-foreground">
+                    <span className="text-primary">
+                      <Icon size={18} aria-hidden="true" />
+                    </span>
                     {group.title}
                   </h3>
-                  <p className="text-xs text-muted-foreground mb-4">
+                  <p className="text-xs text-muted-foreground mt-1.5 max-w-[26ch]">
                     {group.description}
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-1.5 pt-2">
+                <div className="flex flex-wrap gap-2">
                   {group.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="text-xs px-2.5 py-1 rounded-md bg-muted text-foreground border border-border/40 font-mono"
+                      className="text-sm px-3 py-1.5 rounded-md bg-muted text-foreground border border-border/60 font-mono"
                     >
                       {skill}
                     </span>

@@ -12,7 +12,7 @@ export default function AtticHeader() {
                 className="text-4xl md:text-6xl font-bold mb-6 flex items-center flex-wrap gap-4"
             >
                 <div>The <span className="text-gradient">Attic</span></div>
-                <span className="text-sm font-medium px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-500 border border-yellow-500/20">
+                <span className="text-sm font-medium px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
                     Coming Soon
                 </span>
             </motion.h1>
