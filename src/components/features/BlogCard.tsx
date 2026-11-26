@@ -21,7 +21,7 @@ interface BlogCardProps {
 export default function BlogCard({ post, index }: BlogCardProps) {
     return (
         <motion.div
-            className="group relative overflow-hidden rounded-xl bg-card border border-border/50 hover:border-primary/50 transition-colors h-full flex flex-col"
+            className="group relative overflow-hidden rounded-lg bg-card border border-border hover:border-primary/60 transition-colors h-full flex flex-col"
         >
             <Link href={`/blog/${post.slug}`} className="flex flex-col h-full">
                 <div className="relative h-48 w-full overflow-hidden bg-muted">

@@ -126,7 +126,7 @@ export default function ContactForm() {
                         <div className={styles.formGroup}>
                             <div className="flex justify-between items-center mb-2">
                                 <label htmlFor="message" className={styles.label}>Message</label>
-                                <span className={`text-xs ${messageLength >= 255 ? "text-red-500" : "text-white/50"}`}>
+                                <span className={`text-xs ${messageLength >= 255 ? "text-red-500" : "text-muted-foreground"}`}>
                                     {messageLength}/255
                                 </span>
                             </div>
